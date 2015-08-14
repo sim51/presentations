@@ -1,0 +1,5 @@
+=== SQL is a standard
+
+[.step]
+* Everyone know SQL langage
+* Every product have a SQL connector, so SQL is universal !

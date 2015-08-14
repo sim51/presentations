@@ -1,0 +1,24 @@
+== Is there a trap ?
+
+=== Some limitations
+
+[.step]
+* No WRITE operation (for now)
+* No help on PG planner when doing JOIN on other table
+* Cypher query must return a collection (with alias)
+* Postgres do all mathematical et aggregation operation !
+
+
+=== Reduce the amount of fetched data
+
+Where clauses are pushed to Neo4j
+
+* equality, inequality (=, <>, >, <, ⇐, >=)
+* like, ilike and their negations
+
+[source, sql]
+----
+SELECT * FROM neo4j_movie WHERE movie LIKE 'Matr%';
+
+MATCH (n:Movie) WITH  n.title as movie WHERE movie=~'Matr.*';
+----

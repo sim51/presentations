@@ -1,0 +1,22 @@
+:revealjsdir: assets/reveal.js
+:source-highlighter: highlightjs
+:revealjs_history: true
+:customjs: js/main.js
+:customcss: css/main.css
+:author: Benoit Simard
+:twitter: @logisima
+:email: benoit.simard@neotechnology.com
+
+= From NoSQL to SQL
+How to connect Neo4j to any SQL tools
+
+include::why_sql/main.adoc[]
+
+include::how_to_do/main.adoc[]
+
+include::limitation/main.adoc[]
+
+include::cypher_in_sql/main.adoc[]
+
+include::demo/main.adoc[]
+

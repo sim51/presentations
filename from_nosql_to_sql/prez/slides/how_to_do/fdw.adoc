@@ -1,0 +1,8 @@
+=== Foreign Data Wrapper
+
+It is a standardized way of handling access to remote objects from SQL
+
+[.step]
+* It's a SQL specification since 2003
+* Was introduced into PG since 2011
+* READ & WRITE operation since 2013

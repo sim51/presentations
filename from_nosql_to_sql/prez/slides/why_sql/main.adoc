@@ -1,0 +1,5 @@
+== Why a return to SQL ?
+
+include::intro.adoc[]
+
+include::example.adoc[]
