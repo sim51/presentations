@@ -1,9 +1,7 @@
 var gulp = require('gulp'),
-    jshint = require('gulp-jshint'),
     uglify = require('gulp-uglify'),
     minifyCSS = require('gulp-minify-css'),
-    exec = require('child_process').exec,
-    livereload = require('gulp-livereload'),
+    execSync = require('exec-sync'),
     watch = require('gulp-watch'),
     concat = require('gulp-concat'),
     less = require('gulp-less'),
@@ -20,12 +18,11 @@ application = {
     },
     js: {
         src: ["prez/js/**/*.js"],
-        deps: [
-        ],
+        deps: [],
         dest: "dist/js/"
     },
     assets: {
-        src: [ "prez/assets/**/*.*", "node_modules/@(reveal.js)/**/*.*"],
+        src: ["prez/assets/**/*.*", "node_modules/@(reveal.js)/**/*.*"],
         dest: "dist/assets"
     }
 };
@@ -41,7 +38,8 @@ gulp.task('less', function () {
         .pipe(concat('main.css'))
         .pipe(minifyCSS())
         .pipe(sourcemaps.write('.'))
-        .pipe(gulp.dest(application.less.dest));
+        .pipe(gulp.dest(application.less.dest))
+        .pipe(connect.reload());
     return stream;
 });
 
@@ -49,7 +47,7 @@ gulp.task('less', function () {
  * Concat & minify JS application files.
  */
 gulp.task('js', function () {
-  // Make only one concat / minify JS file
+    // Make only one concat / minify JS file
     var src = application.js.deps;
     src = src.concat(application.js.src);
 
@@ -58,7 +56,8 @@ gulp.task('js', function () {
         .pipe(concat('main.js'))
         .pipe(uglify())
         .pipe(sourcemaps.write('.'))
-        .pipe(gulp.dest(application.js.dest));
+        .pipe(gulp.dest(application.js.dest))
+        .pipe(connect.reload());
     return stream;
 });
 
@@ -67,8 +66,8 @@ gulp.task('js', function () {
  */
 gulp.task('assets', function () {
     var stream = gulp.src(application.assets.src)
-            .pipe(gulp.dest(application.assets.dest))
-            .pipe(connect.reload());
+        .pipe(gulp.dest(application.assets.dest))
+        .pipe(connect.reload());
     return stream;
 });
 
@@ -76,19 +75,21 @@ gulp.task('assets', function () {
  *  Generate asciidoctor
  */
 gulp.task('asciidoctor', function () {
-  
-  // checkout asciidoctor reveal backend
-  if( !fs.existsSync('.tmp/asciidoctor-revealjs')) {
-    exec('git clone git@github.com:sim51/asciidoctor-reveal.js.git .tmp/asciidoctor-reveal.js', function(code, output) {
-      console.log(output);
+
+    // checkout asciidoctor reveal backend
+    if (!fs.existsSync('.tmp/asciidoctor-revealjs')) {
+        execSync('git clone git@github.com:sim51/asciidoctor-reveal.js.git .tmp/asciidoctor-reveal.js', function (err, stdout, stderr) {
+            console.log(stdout);
+            console.log(stderr);
+        });
+    }
+
+    // execute asciidoctor
+    execSync('asciidoctor -T .tmp/asciidoctor-reveal.js/templates/slim -D dist ./prez/slides/main.adoc', function (err, stdout, stderr) {
+        console.log(stderr);
     });
-  } 
-  
-  // execute asciidoctor
-  exec('asciidoctor -T .tmp/asciidoctor-reveal.js/templates/slim -D dist ./prez/slides/main.adoc', function(code, output) {
-      console.log(output);
-    });
-});  
+    connect.reload()
+});
 
 /**
  * Clean task
@@ -113,9 +114,9 @@ gulp.task('webserver', function () {
  * Gulp watch : on each change file.
  */
 gulp.task('watch', function () {
-   
+
     // watching all file for 'rebuild' & reload
-    watch("./prez/**/*.*",{read: false, verbose:true}, function () {
+    watch("./prez/**/*.*", {read: false, verbose: true}, function () {
         gulp.start("build");
     });
 
