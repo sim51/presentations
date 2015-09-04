@@ -1,22 +1,7 @@
-=== Neo4j Foreign Data Wrapper
+=== Configuration
 
-https://github.com/sim51/neo4j-fwd
-
-image::assets/github.png[]
-
-=== Declare a Neo4j server
-
-[source, sql]
-----
-CREATE SERVER multicorn_neo4j FOREIGN DATA WRAPPER multicorn
-  OPTIONS (
-      wrapper  'neo4jPg.neo4jfdw.Neo4jForeignDataWrapper',
-      server   'localhost',
-      port     '7474',
-      user     'neo4j',
-      password 'admin'
-  );
-----
+* Create a Neo4j server (host & security)
+* Declare a foreign table that is in fact a cypher query
 
 === Declare a table
 
@@ -29,7 +14,7 @@ CREATE FOREIGN TABLE neo4j_movie (
   );
 ----
 
-IMPORTANT: cypher query must return a collection, annd you have to give an alias on each return variable
+cypher query must return a collection, and you have to give an alias on each return variable
 
 === Make SQL !
 
@@ -42,6 +27,10 @@ SELECT count(*) FROM neo4j_movie WHERE movie LIKE '%Matrix%';
 
 === The best of two worlds
 
-You can also make some JOIN with other table !
-
 image::assets/neo4j-fdw.png[]
+
+=== Source code
+
+https://github.com/sim51/neo4j-fwd
+
+image::assets/github.png[]

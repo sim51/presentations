@@ -2,7 +2,35 @@
 
 It is a standardized way of handling access to remote objects from SQL
 
-[.step]
 * It's a SQL specification since 2003
 * Was introduced into PG since 2011
 * READ & WRITE operation since 2013
+
+=== How it works ?
+
+PostgreSQL as a Proxy
+
+[graphviz]
+----
+digraph finite_state_machine {
+  rankdir=LR;
+  node [ shape = circle
+         distortion = "0.0",
+         orientation = "0.0",
+         skew = "0.0",
+         color = white,
+         style = filled,
+         fixedsize = true,
+         width = 1.2
+       ];
+
+   "Application" [color=gold];
+   "PostgreSQL" [color=deepskyblue];
+   "Neo4j" [color=green];
+
+    Application -> PostgreSQL [label="SQL query"]
+    PostgreSQL -> Neo4j [label="Cypher query"]
+
+}
+----
+

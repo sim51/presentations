@@ -1,0 +1,4 @@
+=== But ...
+
+* We don't want to make Neo4j a SQL tool !
+* We would like to use some SQL tool with the power of Neo4j

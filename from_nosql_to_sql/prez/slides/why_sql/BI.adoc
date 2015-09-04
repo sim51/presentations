@@ -1,0 +1,13 @@
+=== Business intelligence
+
+* Give value to your data
+* Values are in the relationship between your data
+
+=== BI databases are Graphs !
+
+Datawharehouse, Datamarts
+
+image::assets/snowflake.png[snowflake]
+
+Relational database => A lot of joins => poor performances
+

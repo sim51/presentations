@@ -1,4 +1,4 @@
-== Why not make cypher query into SQL ?
+== Cypher query into SQL ?
 
 === The cypher function
 

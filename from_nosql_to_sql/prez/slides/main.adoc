@@ -1,6 +1,7 @@
 :revealjsdir: assets/reveal.js
 :source-highlighter: highlightjs
 :revealjs_history: true
+:revealjs_width: '90%'
 :customjs: js/main.js
 :customcss: css/main.css
 :author: Benoit Simard
@@ -16,7 +17,9 @@ include::how_to_do/main.adoc[]
 
 include::limitation/main.adoc[]
 
-include::cypher_in_sql/main.adoc[]
-
 include::demo/main.adoc[]
+
+== Question ?
+
+include::cypher_in_sql/main.adoc[]
 

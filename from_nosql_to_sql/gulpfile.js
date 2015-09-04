@@ -85,7 +85,8 @@ gulp.task('asciidoctor', function () {
     }
 
     // execute asciidoctor
-    execSync('asciidoctor -T .tmp/asciidoctor-reveal.js/templates/slim -D dist ./prez/slides/main.adoc', function (err, stdout, stderr) {
+    execSync('asciidoctor -r asciidoctor-diagram -T .tmp/asciidoctor-reveal.js/templates/slim -D dist ./prez/slides/main.adoc', function (err, stdout, stderr) {
+        console.log(stdout);
         console.log(stderr);
     });
     connect.reload()

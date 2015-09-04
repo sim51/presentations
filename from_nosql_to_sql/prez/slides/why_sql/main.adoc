@@ -1,5 +1,9 @@
-== Why a return to SQL ?
+== Why to go back to SQL ?
 
 include::intro.adoc[]
 
-include::example.adoc[]
+include::bad_sql.adoc[]
+
+include::BI.adoc[]
+
+//include::example.adoc[]

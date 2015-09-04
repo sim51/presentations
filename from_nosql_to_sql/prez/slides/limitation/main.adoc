@@ -2,12 +2,8 @@
 
 === Some limitations
 
-[.step]
 * No WRITE operation (for now)
-* No help on PG planner when doing JOIN on other table
-* Cypher query must return a collection (with alias)
-* Postgres do all mathematical et aggregation operation !
-
+* Postgres do all mathematical & aggregation operations !
 
 === Reduce the amount of fetched data
 
