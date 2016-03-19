@@ -1,0 +1,5 @@
+=== Vers 800 :Le problème du cavalier
+
+Un cavalier posé sur une case d'un échiquier doit en visiter toutes les cases sans passer deux fois sur la même.
+
+image::assets/historique/cavalier.gif[height="500"]

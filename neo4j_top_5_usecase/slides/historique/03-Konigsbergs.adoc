@@ -1,0 +1,15 @@
+=== Les 7 ponts de Konigsbergs
+
+Est-ce qu'il existe une promenade permettant à partir d'un point de départ au choix, de passer une et une seule fois par chaque pont.
+
+image::assets/historique/konigsberg1.png[height="300"]
+
+=== Les 7 ponts de Konigsbergs
+
+image::assets/historique/konigsberg2.png[]
+
+=== Les 7 ponts de Konigsbergs
+
+image::assets/historique/konigsberg3.png[height="300"]
+
+Théorie des graphes et des parcours Eulerien

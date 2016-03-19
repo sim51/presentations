@@ -1,0 +1,7 @@
+=== Des questions ?
+
+* **Twitter:** Suivez les comptes @neojFr & @neo4j
+* **Google group :**  Avec les groupes Neo4jFr & Neo4j
+* **Stackoverflow :**  avec les tags neo4j & cypher
+
+image::assets/questions.png[]

@@ -1,6 +1,6 @@
-== Cypher query into SQL ?
+== Du Cypher en SQL ?
 
-=== The cypher function
+=== La fonction cypher
 
 * cypher(query, server, port, login, password)
 * cypher(query, server)
@@ -28,11 +28,11 @@ SELECT cypher  FROM cypher('MATCH (n:Location) RETURN n LIMIT 10', 'localhost', 
 
 === Limitation
 
- * There is no limitation except the format of the response : JSON
+ * Aucune limitation si ce n'est le format de la réponse : le JSON
 
-=== But ... PG love JSON
+=== Mais ... PG aime le JSON
 
-PG 9.4 have a function name json_to_record, that convert our json into a collection of typed tuple !
+PG 9.4 a une fonction  `json_to_record` qui convertit le JSON en Tuple !
 
 [source, sql]
 ----

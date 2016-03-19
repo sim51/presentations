@@ -1,0 +1,338 @@
+:revealjs_width: '100%'
+:revealjs_customtheme: /themes/neo4j/style/main.css
+:author: Benoit Simard (@logisima)
+
+= Neo4j overview
+
+== History
+
+=== Leonhard Euler 1707-1783
+
+image::assets/euler.png[]
+
+=== Konigsbergs
+
+image::assets/konigsberg3.png[]
+
+== Why Graph database ?
+
+=== Data complexity
+
+image::assets/nosql-graph.png[]
+
+=== Linked Data
+
+image::assets/linked-data.png[]
+
+=== Relation in RDBMS
+
+image::assets/rdbms.png[]
+
+* schema not flexible
+* poor performances on linked data (@see snowflake schema)
+* complexe queries
+
+=== Relation in No-SQL
+
+image::assets/nosql.png[]
+
+=== Graph database
+
+image::assets/whiteboard.png[]
+
+=== When to use it ?
+
+* Do you need a flexible schema ?
+* Do your data are  highly connected ?
+* Do you need near real time ?
+
+*Recommendation, fraud detection, MDM, network analysis, impact analysis, ACL, ...*
+
+
+== What is a Graph database ?
+
+=== Neo4j
+
+* Since 2010
+* License under GPLv3
+* Full ACID
+* HA
+* Schemaless
+
+=== Concept
+
+[graphviz]
+----
+digraph finite_state_machine {
+  rankdir=TB;
+  node [
+    shape = Mrecord,
+  ];
+
+    "Graph";
+    "Nodes";
+    "Relations";
+    "Properties";
+
+    "Graph" -> "Nodes" [ label = "STOCK DATA INTO" ];
+    "Graph" -> "Relations" [ label = "STOCK DATA INTO"];
+    "Nodes" -> "Properties" [label = "HAVE" ];
+    "Relations" -> "Properties" [ label = "HAVE" ];
+    "Relations" -> "Nodes" [label = "LINK" ];
+}
+----
+
+=== Nodes
+
+[graphviz]
+----
+digraph finite_state_machine {
+  rankdir=LR;
+  node [
+    shape = Mrecord,
+  ];
+
+  "Nodes";
+  "Properties";
+  "Labels";
+
+  Nodes -> Properties [ label = "CAN HAVE"];
+  Nodes -> Labels [ label = "CAN HAVE"];
+}
+---- 
+
+[graphviz]
+----
+digraph finite_state_machine {
+
+    rankdir=LR;
+    node [
+         shape = Mrecord
+    ];
+
+    ACTOR [ label = "Person, Actor | name = \'Keanu Reeves\' \l birth = 1964" ];
+}
+----
+
+=== Relationships
+
+[graphviz]
+----
+digraph finite_state_machine {
+  rankdir=LR;
+  node [
+    shape = Mrecord,
+  ];
+
+  "Relation";
+  "Start node";
+  "End node";
+  "Properties";
+  "Type";
+
+  Relation -> Type [label = "HAS"];
+  Relation -> "Start node" [label = "HAS"];
+  Relation -> "End node" [label = "HAS"];
+  Relation -> Properties [label = "CAN HAVE"];
+}
+----
+
+
+[graphviz]
+----
+digraph finite_state_machine {
+
+    rankdir=LR;
+    node [
+         shape = Mrecord
+    ];
+
+    ACTOR [ label = "Person, Actor | name = \'Keanu Reeves\' \l birth = 1964" ];
+    MOVIE [ label = "Movie | nom = \'Matrix\' \l released = 1999 " ];
+
+    ACTOR -> MOVIE [ label = "ACTED IN \l role = 'Thomas Anderson' " ];
+}
+----
+
+=== Index & constraint
+
+*Indexes*
+
+  * on a property for all nodes that have a label
+ 
+*Constraint*
+
+  * for the uniqueness of a property
+  * for the existence of a property
+ 
+
+== How to query ?
+
+=== Cypher
+
+Cypher is Neo4j’s graph query language
+
+* Declarative Pattern-Matching language
+* SQL-like syntax
+* Designed for graphs
+
+=== All is pattern
+
+image::assets/pattern.png[]
+
+=== Ascii Art
+
+image::assets/cypher.png[]
+
+=== Let see it in action
+
+=== Indexes
+
+[source,cypher]
+----
+CREATE INDEX ON :Person(name)
+CREATE INDEX ON :Movie(title)
+----
+
+=== Query
+
+[source,cypher]
+----
+MATCH (a)-[:ACTED_IN]->(m)<-[:DIRECTED]-(a)
+RETURN a.name, m.title;
+----
+
+=== List all the characters in the movie “The Matrix”
+
+[source,cypher]
+----
+MATCH (matrix:Movie)<-[r:ACTED_IN]-(actor)
+WHERE matrix.title="The Matrix"
+RETURN r.roles, actor.name
+----
+
+=== Query
+
+[source,cypher]
+----
+MATCH (tom:Person)-[:ACTED_IN]->(movie:Movie)
+WHERE tom.name="Tom Hanks"
+AND movie.released < 1992
+RETURN movie.title
+----
+
+=== Query
+
+[source,cypher]
+----
+MATCH (actor:Person)-[r:ACTED_IN]->(movie)
+WHERE actor.name="Keanu Reeves"
+AND "Neo" IN (r.roles)
+RETURN movie.title
+----
+
+=== Query
+
+[source,cypher]
+----
+MATCH (tom:Person)-[:ACTED_IN]->(movie),
+      (a:Person)-[:ACTED_IN]->(movie)
+WHERE tom.name="Tom Hanks"
+  AND a.born < tom.born
+RETURN DISTINCT a.name, (tom.born - a.born) AS diff
+----
+
+=== Query
+
+[source,cypher]
+----
+MATCH (keanu:Person)-[:ACTED_IN]->(movie),
+      (n)-[:ACTED_IN]->(movie),
+      (hugo:Person)
+WHERE keanu.name="Keanu Reeves" AND
+      hugo.name="Hugo Weaving"
+AND NOT (hugo)-[:ACTED_IN]->(movie)
+RETURN DISTINCT n.name
+----
+
+=== Who are the five busiest actors?
+
+[source,cypher]
+----
+MATCH (a:Person)-[:ACTED_IN]->()
+RETURN a.name, count(*) AS count
+ORDER BY count DESC
+LIMIT 5
+----
+
+=== Recommend 3 actors that Keanu Reeves should work with (but hasn’t).
+
+[source,cypher]
+----
+MATCH (keanu:Person)-[:ACTED_IN]->()<-[:ACTED_IN]-(c),
+      (c)-[:ACTED_IN]->()<-[:ACTED_IN]-(coc)
+WHERE keanu.name="Keanu Reeves"
+  AND coc <> keanu
+  AND NOT((keanu)-[:ACTED_IN]->()<-[:ACTED_IN]-(coc))
+RETURN coc.name, count(coc)
+ORDER BY count(coc) DESC
+LIMIT 3
+----
+
+=== Add KNOWS relationships between all actors who acted in the same movie
+
+[source,cypher]
+----
+MATCH (a:Person)-[:ACTED_IN]->()<-[:ACTED_IN]-(b:Person)
+MERGE (a)-[:KNOWS]-(b);
+----
+
+=== Friends-of-Friends
+
+[source,cypher]
+----
+MATCH (keanu:Person)-[:KNOWS*2]-(fof)
+WHERE keanu.name="Keanu Reeves"
+RETURN DISTINCT fof.name
+----
+
+=== Query
+
+[source,cypher]
+----
+MATCH (keanu:Person)-[:KNOWS*2]-(fof)
+WHERE keanu.name="Keanu Reeves"
+  AND keanu <> fof AND NOT (keanu)-[:KNOWS]-(fof)
+RETURN DISTINCT fof.name
+----
+
+=== Query
+
+[source,cypher]
+----
+MATCH p=shortestPath(
+  (charlize:Person)-[:KNOWS*]-(bacon:Person)
+)
+WHERE charlize.name="Charlize Theron" AND
+      bacon.name="Kevin Bacon"
+RETURN length(rels(p))
+----
+
+=== Return the names of the people joining Charlize to Kevin.
+
+[source,cypher]
+----
+MATCH p=shortestPath((charlize:Person)-[:KNOWS*]-(bacon:Person))
+WHERE charlize.name="Charlize Theron" AND
+      bacon.name="Kevin Bacon"
+RETURN [n in nodes(p) | n.name] AS names;
+----
+
+== Question ?
+
+== Graph Connect
+
+30% off with code `MEETUP30`
+
+image::assets/graph-connect.png[]
+

@@ -1,0 +1,13 @@
+=== GraphConnect Europe
+
+**20% de réduction avec le code NEWS20 !!!**
+
+Mardi 26 Avril, 2016, Queen Elizabeth II Centre, Londres
+
+ * 3 Thématiques + Lightning Talks
+ * GraphClinics: Rencontrez nos experts
+ * Networking
+
+Formation, Lundi 25 Avril 2016, 9h30-17h30 : Fundamentals, Modelling, Neo4j in Production, Creating a Recommendation Engine
+
+image::assets/graph-connect.png[]

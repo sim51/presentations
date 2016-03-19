@@ -1,0 +1,5 @@
+== Demo
+
+=== In action
+
+video::./assets/demo.mp4[width=100%, options=autoplay]

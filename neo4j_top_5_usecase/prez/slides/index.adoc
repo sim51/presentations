@@ -1,0 +1,25 @@
+:revealjsdir: assets/reveal.js
+:source-highlighter: highlightjs
+:revealjs_history: true
+:idprefix: slide_
+:revealjs_width: '100%'
+:revealjs_customtheme: css/main.css
+
+:author: Benoit Simard (@logisima)
+
+= Top 5 des cas d'utilisations
+
+include::./historique/index.adoc[]
+
+include::./neo4j_overview/index.adoc[]
+
+include::./use-case/index.adoc[]
+
+include::./graph-connect.adoc[]
+
+include::./questions.adoc[]
+
+
+
+
+

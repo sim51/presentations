@@ -8,8 +8,8 @@
 :twitter: @logisima
 :email: benoit.simard@neotechnology.com
 
-= From NoSQL to SQL
-How to connect Neo4j to any SQL tools
+= Du NoSQL au SQL
+Comment connecter Neo4j à tous vos outils SQL
 
 include::why_sql/main.adoc[]
 
@@ -19,7 +19,7 @@ include::limitation/main.adoc[]
 
 include::demo/main.adoc[]
 
-== Question ?
-
 include::cypher_in_sql/main.adoc[]
+
+== Question ?
 

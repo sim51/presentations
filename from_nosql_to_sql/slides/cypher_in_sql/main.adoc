@@ -1,0 +1,53 @@
+== Du Cypher en SQL ?
+
+=== La fonction cypher
+
+* cypher(query, server, port, login, password)
+* cypher(query, server)
+* cypher(query)
+
+=== Example
+
+[source, sql]
+----
+SELECT cypher  FROM cypher('MATCH (n:Location) RETURN n LIMIT 10', 'localhost', '7474', 'neo4j', 'admin');
+                                                            cypher
+------------------------------------------------------------------------------------------------------------------------------
+ {"n":{"labels": ["Location"],"properties": {"y": 1906520.0, "x": 1158953.0, "name": "025XX W AUGUSTA BLVD"}}}
+ {"n":{"labels": ["Location"],"properties": {"y": 1842294.0, "x": 1175702.0, "name": "094XX S HARVARD AVE"}}}
+ {"n":{"labels": ["Location"],"properties": {"y": 1931163.0, "x": 1152905.0, "name": "047XX N KIMBALL AVE"}}}
+ {"n":{"labels": ["Location"],"properties": {"y": 1887355.0, "x": 1149049.0, "name": "041XX W 24TH PL"}}}
+ {"n":{"labels": ["Location"],"properties": {"y": 1869892.0, "x": 1176061.0, "name": "001XX W 53RD ST"}}}
+ {"n":{"labels": ["Location"],"properties": {"y": 1862782.0, "x": 1180056.0, "name": "063XX S DR MARTIN LUTHER KING JR DR"}}}
+ {"n":{"labels": ["Location"],"properties": {"y": 1908312.0, "x": 1175281.0, "name": "001XX W DIVISION ST"}}}
+ {"n":{"labels": ["Location"],"properties": {"y": 1899998.0, "x": 1139456.0, "name": "0000X N PINE AVE"}}}
+ {"n":{"labels": ["Location"],"properties": {"y": 1908407.0, "x": 1176113.0, "name": "012XX N STATE PKWY"}}}
+ {"n":{"labels": ["Location"],"properties": {"y": 1888098.0, "x": 1148713.0, "name": "023XX S KEELER AVE"}}}
+(10 lignes)
+----
+
+=== Limitation
+
+ * Aucune limitation si ce n'est le format de la réponse : le JSON
+
+=== Mais ... PG aime le JSON
+
+PG 9.4 a une fonction  `json_to_record` qui convertit le JSON en Tuple !
+
+[source, sql]
+----
+SELECT year, id  FROM cypher('MATCH (y:Year)<-[r]-(m) RETURN y.value AS year, m.id AS id LIMIT 10', 'localhost', '7474', 'neo4j', 'admin') , json_to_record(cypher) as x(year int, id varchar)
+ year |    id
+------+----------
+ 2015 | 10016718
+ 2015 | 10017521
+ 2015 | 10018383
+ 2015 | 10087834
+ 2015 | 10017190
+ 2015 | 10017379
+ 2015 | 10017246
+ 2015 | 10017248
+ 2015 | 10017208
+ 2015 | 10017211
+(10 lignes)
+----
