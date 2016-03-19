@@ -1,2 +1,9 @@
 = My presentations repository
 
+== From NoSQL to SQL
+
+A little presentation on how to integrate Neo4j with postgreSQL via a foreign data wrapper
+
+* slides : http://sim51.github.io/presentations/from_nosql_to_sql/
+* pdf : http://sim51.github.io/presentations/from_nosql_to_sql/slides.pdf
+

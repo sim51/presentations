@@ -1,5 +1,0 @@
-=== Neo4j
-
-Premières lignes de code datent de **2000** et la **version 1.0** est sortie en **2010**.
-
-image::assets/neo4j_overview/overview.png[]

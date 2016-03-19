@@ -1,7 +1,0 @@
-== Comment on fait ça ?
-
-include::postgresql.adoc[]
-
-include::fdw.adoc[]
-
-include::fdw-neo4j.adoc[]
