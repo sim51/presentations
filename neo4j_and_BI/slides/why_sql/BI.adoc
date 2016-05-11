@@ -1,0 +1,13 @@
+=== Business intelligence
+
+* Donner de la valeur à vos données
+* La valeur se trouve dans les relations entre vos données
+
+=== Les bases BI sont des graphs !
+
+Datawharehouse, Datamarts
+
+image::assets/snowflake.png[snowflake]
+
+Base relationnelle => beaucoup de jointures => mauvaises performances
+

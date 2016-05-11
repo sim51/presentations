@@ -165,6 +165,14 @@ digraph finite_state_machine {
   * for the uniqueness of a property
   * for the existence of a property
  
+== Top use-cases 
+
+=== Yeah !
+
+*(Graph)-[:ARE]->(Everywhere)*
+
+include::use-case/index.adoc[]
+
 
 == How to query ?
 

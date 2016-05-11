@@ -1,0 +1,163 @@
+= Making the demo
+
+== Neo4j
+
+* Import northwind dataset
+* Make a query 'Some data' to show the result
+
+== What is the average price of american supplier by category
+
+=== Prepare cypher query
+
+[source, cypher]
+----
+MATCH
+    (s:Supplier)-->(p:Product)-->(c:Category)
+RETURN
+    p.productName AS name,
+    p.unitsInStock AS stock,
+    p.unitPrice AS price,
+    c.categoryName AS category,
+    s.companyName AS supplier,
+    s.country AS supplierCountry
+----
+
+=== Postgres
+
+* create the database
+
+[source,shell]
+----
+postregres=# create database northwind;
+postregres=# \connect northwind;
+northwind=#
+----
+
+* Create the extension
+
+[source, shell]
+----
+northwind=#CREATE EXTENSION multicorn;
+CREATE EXTENSION
+----
+
+* Create a neo4j server
+
+[source, shell]
+----
+northwind=#CREATE SERVER multicorn_neo4j FOREIGN DATA WRAPPER multicorn
+  OPTIONS (
+      wrapper  'neo4jPg.neo4jfdw.Neo4jForeignDataWrapper',
+      server   'localhost',
+      port     '7474',
+      user     'neo4j',
+      password 'admin'
+  );
+----
+
+* Create the foreign table
+
+[source, shell]
+----
+northwind=#CREATE FOREIGN TABLE product(
+    name varchar,
+    stock integer,
+    price float,
+    category varchar,
+    supplier varchar,
+    country varchar
+) SERVER multicorn_neo4j OPTIONS (
+    cypher 'MATCH
+                (s:Supplier)-->(p:Product)-->(c:Category)
+            RETURN
+                p.productName AS name,
+                p.unitsInStock AS stock,
+                p.unitPrice AS price,
+                c.categoryName AS category,
+                s.companyName AS supplier,
+                s.country AS country'
+);
+----
+
+[source, shell]
+----
+northwind=#select * from product;
+----
+
+
+=== Tableau
+
+* Create postgres connection
+* Make a custom sql query : 'select * from product where country like 'USA'
+* Make some charts !
+
+
+== Cypher in SQL
+
+=== Install function
+
+[source,sql]
+----
+mydatabase=#
+CREATE EXTENSION plpythonu;
+
+mydatabase=#
+CREATE OR REPLACE FUNCTION cypher(query text) RETURNS SETOF json
+LANGUAGE plpythonu
+AS $$
+from neo4jPg import neo4jPGFunction
+for result in neo4jPGFunction.cypher_default_server(plpy, query):
+    yield result
+$$;
+CREATE OR REPLACE FUNCTION cypher(query text, server text) RETURNS SETOF json
+LANGUAGE plpythonu
+AS $$
+from neo4jPg import neo4jPGFunction
+for result in neo4jPGFunction.cypher_with_server(plpy, query, server):
+    yield result
+$$;
+CREATE OR REPLACE FUNCTION cypher(query text, server text, port text, login text, password text) RETURNS SETOF json
+LANGUAGE plpythonu
+AS $$
+from neo4jPg import neo4jPGFunction
+for result in neo4jPGFunction.cypher(plpy, query, server, port, login, password):
+    yield result
+$$;
+----
+
+
+=== Make a Cypher sql query
+
+* it returns JSON !
+
+=== JSON to Record
+
+[source,sql]
+----
+SELECT
+    year,
+    id
+FROM
+    cypher('MATCH (y:Year)<-[r]-(m) RETURN y.value AS year, m.id AS id LIMIT 10', 'localhost', '7474', 'neo4j', 'admin') ,
+    json_to_record(cypher) as x(year int, id varchar)
+----
+
+
+SELECT
+    *
+FROM
+    cypher('MATCH
+                           (s:Supplier)-->(p:Product)-->(c:Category)
+                       RETURN
+                           p.productName AS name,
+                           p.unitsInStock AS stock,
+                           p.unitPrice AS price,
+                           c.categoryName AS category,
+                           s.companyName AS supplier,
+                           s.country AS country', 'localhost', '7474', 'neo4j', 'admin') ,
+    json_to_record(cypher) as x(name varchar,
+                                    stock integer,
+                                    price float,
+                                    category varchar,
+                                    supplier varchar,
+                                    country varchar);

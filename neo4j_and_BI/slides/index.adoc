@@ -1,0 +1,221 @@
+:revealjs_width: '100%'
+:revealjs_customtheme: ../themes/neo4j/style/main.css
+:author: Benoit Simard (@logisima)
+
+= Neo4j et la BI
+
+== La business Intelligence
+
+=== Definition
+
+*La BI désigne les moyens, les outils et les méthodes qui permettent de collecter, consolider, modéliser et restituer les données, en vue d'offrir une aide à la décision*
+
+* Donner de la valeur à vos données
+* Mettre en relations les données
+
+Nécessite un outil de stockage des données performant permettant de facilement les relier entre elles
+
+=== Linked data
+
+**Les relations existant entre les données sont presques plus importantes que les données elles-mêmes**
+
+image::assets/linked-data.png[height=500]
+
+=== Compléxité des données
+
+complexité = f(**volumétrie**, semi-structure, **connectivité**)
+
+image::assets/01_data_complexity.png[height=500]
+
+=== Les domaines de la BI
+
+image::assets/BI_component.jpg[]
+
+* Collecte, consolidation et modélisation
+* Exploration des données
+* Analyse / Reporting
+
+
+
+== Collecte, consolidation et modélisation
+
+=== Datamart
+
+Les modèles en  étoile sont  des graphes !
+
+image::assets/snowflake.png[snowflake]
+
+=== Les avantages de Neo4j
+
+image::assets/neo4j.png[width="200"]
+
+* Facilité de modélisation vos données liées
+** Base de données graphe
+** Sans schema
+* Performance au niveau des requêtes (jointures) 
+
+===  Le modèle relationnel
+
+image::assets/from_relational_model.png[width="900"]
+
+=== Le modèle en graphe
+
+image::assets/to_graph_model.png[width="800"]
+
+=== Importer vos données dans Neo4j
+
+Extraire, transformer & charger vos données (ETL)
+
+image::assets/talend.jpeg[]
+
+http://http://sim51.github.io/neo4j-talend-component
+
+=== Exemple
+
+image::assets/talend-batch.png[width="900"]
+
+=== MDM 
+
+image::assets/adidas.jpg[height="100"]
+
+Adidas utilise Neo4j pour créer leur référentiel interne, incluant les données sur les produits, les marchés, les médias sociaux, les actifs numériques, ...
+
+image::assets/Wine-Data-System.jpg[]
+
+Wine Data System utilise Neo4j pour réconcilier les bases de données des négociants afin de construire un référenciel unique.
+
+
+== Explorer vos données
+
+=== Via le browser
+
+image::assets/neo4j_browser.png[width="500"]
+
+* Il faut connaitre le langage de requête *Cypher*
+* Approche pour les techniques
+
+=== Via des outils d'exploration
+
+image::assets/linkurious.png[width="900"]
+
+=== Développez vos dataviz
+
+image::assets/dataviz-custom.png[width="900"]
+
+
+== Analyser les données
+
+=== Neo4j est interopérable
+
+image::assets/neo4j.png[width="200"]
+
+* Accès au données via une API REST/JSON
+* Il existe forcément un driver pour vous 
+** JDBC : https://github.com/neo4j-contrib/neo4j-jdbc
+** R : http://www.rdocumentation.org/packages/RNeo4j
+
+=== Les outils du marché
+
+image::assets/market-tools.png[]
+
+Ce sont des outils qui fonctionnent *principalement* sur des bases SQL (générateur de requêtes SQL).
+
+=== SQL est partout
+
+image::assets/sql.png[]
+
+Tous les produits possèdent un connecteur SQL
+
+=== Neo4j et le SQL
+
+Foreign Data Wrapper est une manière standard de récupérer des objets distants en SQL
+
+* Spécification SQL depuis 2003
+* Dans postgresql dépuis 2011
+
+image::assets/postgres.png[width="300"]
+
+=== Comment cela fonctionne ?
+
+image::assets/postgres-fdw.png[]
+
+[graphviz]
+----
+digraph finite_state_machine {
+  rankdir=LR;
+  node [ shape = circle
+         distortion = "0.0",
+         orientation = "0.0",
+         skew = "0.0",
+         color = white,
+         style = filled,
+         fixedsize = true,
+         width = 1.2
+       ];
+
+   "Application" [color=gold];
+   "PostgreSQL" [color=deepskyblue];
+   "Neo4j" [color=green];
+
+    Application -> PostgreSQL [label="SQL query"]
+    PostgreSQL -> Neo4j [label="Cypher query"]
+
+}
+----
+
+=== Exemple
+
+* Déclarer une table étrangère correspondante à une requête Cypher
+
+[source, sql]
+----
+CREATE FOREIGN TABLE neo4j_movie (
+    movie varchar
+  ) SERVER multicorn_neo4j OPTIONS (
+    cypher 'MATCH (n:Movie) RETURN n.title as movie'
+  );
+----
+
+=== Du SQL, du SQL !
+
+[source, sql]
+----
+SELECT * FROM neo4j_movie;
+SELECT count(*) FROM neo4j_movie;
+SELECT count(*) FROM neo4j_movie WHERE movie LIKE '%Matrix%';
+----
+
+=== Intégration avec Tableau
+
+Démonstration : https://www.youtube.com/watch?v=Pkc748HmH9o
+
+== Merci !
+
+=== GraphConnect Europe
+
+**20% de réduction avec le code NEWS20 !!!**
+
+Mardi 26 Avril, 2016, Queen Elizabeth II Centre, Londres
+
+ * 3 Thématiques + Lightning Talks
+ * GraphClinics: Rencontrez nos experts
+ * Networking
+
+Formation, Lundi 25 Avril 2016, 9h30-17h30 : Fundamentals, Modelling, Neo4j in Production, Creating a Recommendation Engine
+
+image::assets/graph-connect.png[]
+
+=== Des questions ?
+
+* **Twitter:** Suivez les comptes @neojFr & @neo4j
+* **Google group :**  Avec les groupes Neo4jFr & Neo4j
+* **Stackoverflow :**  avec les tags neo4j & cypher
+
+image::assets/questions.png[]
+
+
+
+
+
+
+

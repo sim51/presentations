@@ -4,6 +4,30 @@
 
 = Neo4j 3.X
 
+== introduction
+
+[class="split5050"]
+=== Benoit Simard, consultant
+
+image::assets/me.JPG[height=500]
+
+* benoit.simard@neotechnology.com
+* @logisima
+* Addicte aux graphes
+
+=== Paris Graph Meetup
+
+*Les prochains évènements*
+
+image::assets/calendar.png[height=200]
+
+* *1er juin :* Les graphes dans les projets industriels orientés data, par Kernix
+* *15 juin :* Venue sur Paris de Andres Taylor (le créateur de Cypher)
+
+Après une pause estivale, on reprend en septembre.
+
+*Et n'hésitez pas à proposer des talks ou des sujets !*
+
 == L'histoire de Neo4j
 
 [class="split5050"]
@@ -26,7 +50,7 @@ image::assets/voiture-2.png[]
 * Cypher dans la 1.4
 
 [class="split5050"]
-=== Neo4j 2.X - 2014 à 2015
+=== Neo4j 2.X - 2014 à 2016
 
 image::assets/voiture-3.jpg[height=500]
 
@@ -62,7 +86,7 @@ image::assets/fondements.png[]
 image::assets/big-graph.png[]
 
 [class="split8020"]
-=== Les indexess c'est majeur non ?
+=== Les indexes, c'est majeur
 
 image::assets/lucene.png[]
 
@@ -84,7 +108,7 @@ image::assets/docker.png[height=400]
 
 Modification de la structure 
 
-[source,shell]
+[source,text/x-sh]
 ----
 ├── bin
 ├── certificates
@@ -104,7 +128,7 @@ Modification de la structure
 
 Un seul fichier de conf `conf/neo4j.conf`, avec les propriétés namespacés
 
-[source,shell]
+[source,text/x-sh]
 ----
 ...
 #
@@ -124,7 +148,7 @@ dbms.connector.bolt.tls_level=OPTIONAL
 
 Tous les fichiers de logs sont à présent dans le répertoire `logs`
 
-[source,shell]
+[source,text/x-sh]
 ----
 logs/
 ├── debug.log <= anciennement messages.log dans graph.db

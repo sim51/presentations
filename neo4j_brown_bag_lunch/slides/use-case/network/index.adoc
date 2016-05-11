@@ -1,0 +1,62 @@
+== Les réseaux informatiques
+
+=== Les réseaux informatiques
+
+**Un réseau est un graphe !**
+
+image::assets/use-case/network/usecase-network-it.png[]
+
+=== Pourquoi du graphe ?
+
+* Modélisation/stockage naturelle
+* Meilleur visualisation et apprehension des données
+* Permet de réaliser des analyses d'impacts en cas de panne
+* A l'inverse, voir les redondances du réseau
+
+=== Les défis lées aux réseaux
+
+**Résolution des problèmes sur un réseau**
+
+Les interdépendances physiques et humaines sont extrêmement complexes dans un réseau
+ou un environnement informatique, ce qui rend difficile la résolution des problèmes.
+
+
+**Analyse d'impact**
+
+Les relations existant parmi les noeuds d’un réseau ne sont ni purement linéaires ni hiérarchiques
+et il est donc difficile de déterminer les interdépendances des éléments du réseau les uns envers les autres.
+
+
+**Nombre croissant de noeuds physiques et virtuels**
+
+Du fait de la croissance rapide dans la taille et le volume des données,
+le système doit prendre en compte à la fois les besoins actuels et futurs.
+
+
+=== Etude de cas : Analyse d'impact chez SFR
+
+Modélisation de leur reseau physique dans Neo4j.
+
+image::assets/use-case/network/sfr.png[height="600"]
+
+=== Etude de cas : Analyse d'impact chez SFR
+
+**Problème**
+
+* Une semaine entière pour planifier une maintenance.
+* Analyste d’impact sur de multiples systèmes (>30).
+* Changements quotidiens dans l’infrastructure.
+* Identifier les clients impactés par une maintenance.
+* Identifier les faiblesses du réseau (Deuxième projet).
+* Une semaine entière pour connaitre le noeud de raccordement d'un nouveau client (Troisième projet).
+
+=== Etude de cas : Analyse d'impact chez SFR
+
+**Bénéfice**
+
+* Identification temps réel des clients liées à une panne.
+* Gestion d’inventaire réseaux très flexible.
+* Une seule source de vérité (Neo4j) représentant le réseau entier.
+* Système dynamique de chargement (ETL)  des données issues de +30 sources variées.
+* Mise en application rapide des changements métiers.
+

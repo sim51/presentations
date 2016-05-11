@@ -1,0 +1,52 @@
+== La gestion des identités et des accès
+
+=== La gestion des identités et des accès
+
+image::assets/use-case/acl/ACL.png[]
+
+=== Pourquoi du graphe ?
+
+**C'est un graphe !**
+
+image::assets/use-case/acl/usecase-identity-access.png[]
+
+=== Les défis lées à la gestion des identités / accès
+
+**Autorisations d’identité et d’accès hautement interconnectées**
+
+Pour vérifier une identité précise et ses autorisations d’accès,
+le système doit traverser un jeu de données hautement interconnectées dont le volume et la complexité augmentent en permanence.
+
+
+**Productivité et satisfaction du client**
+
+À mesure que le volume d’utilisateurs, de produits et d’autorisations augmente, les systèmes traditionnels n’assurent plus de réponses réactives, ce qui se traduit par une frustration chez les utilisateurs.
+
+
+**Structure et environnement dynamiques**
+
+Avec l’augmentation rapide de la taille des utilisateurs et de leurs métadonnées associées, votre application doit prendre en compte les besoins de gestion des identités à la fois actuels et futurs.
+
+
+=== Etude de cas : Telenor
+
+Telenor permet à ses clients entreprises d’utiliser leurs comptes pour ajouter ou supprimer des services à leurs employés.
+
+Ainsi il faut grarantir que les utilisateurs et les administrateurs ne voient et ne modifient que les parties de l’entreprise et les
+services qu’ils ont le droit de gérer.
+
+image::assets/use-case/acl/identity-access-management-telenor.jpg[height="500"]
+
+=== Etude de cas : Telenor
+
+**Définition du problème**
+
+ * Besoin d’un contrôle d’accès fiable pour 5 millions de clients, souscriptions et accords.
+ * Dépendances complexes entre les groupes, sociétés, individus, comptes, produits, souscriptions, services et accords
+
+**Bénéfices**
+
+ * Architecture flexible et dynamique.
+ * Performance exceptionnelle.
+ * Bas coût comparé aux autres alternatives.
+ * Modèle de données extensible supportant l’ajout de nouvelles applications et fonctionnalités.

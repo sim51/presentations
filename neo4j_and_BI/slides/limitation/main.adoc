@@ -1,0 +1,20 @@
+== Loup, loup ?
+
+=== Some limitations
+
+* Pas d'écriture (pour le moment)
+* Postgres fait toutes les opérations mathématiques && d'aggrégations !
+
+=== Reduire le nombre de données retournées
+
+Les clauses 'WHERE' sont envoyées à Neo4j
+
+* égalité, inégalité, .. (=, <>, >, <, ⇐, >=)
+* like, ilike et leur négation
+
+[source, sql]
+----
+SELECT * FROM neo4j_movie WHERE movie LIKE 'Matr%';
+
+MATCH (n:Movie) WITH  n.title as movie WHERE movie=~'Matr.*';
+----

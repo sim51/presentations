@@ -1,0 +1,8 @@
+=== Mais ...
+
+* Nous ne voulons pas faire de Neo4j un outil SQL !
+* Nous voulons utiliser des outils SQL avec la puissance de Neo4j
+
+=== !
+
+image::assets/sf_bridge.jpg[]
