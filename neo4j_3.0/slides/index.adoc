@@ -2,7 +2,7 @@
 :revealjs_customtheme: ../themes/neo4j/style/main.css
 :author: Benoit Simard (@logisima)
 
-= Neo4j 3.X
+= Neo4j 3.0
 
 == introduction
 
@@ -14,19 +14,16 @@ image::assets/me.JPG[height=500]
 * benoit.simard@neotechnology.com
 * @logisima
 * Addicte aux graphes
+* Formateur
 
-=== Paris Graph Meetup
-
-*Les prochains évènements*
+=== Les prochains évènements
 
 image::assets/calendar.png[height=200]
 
 * *1er juin :* Les graphes dans les projets industriels orientés data, par Kernix
 * *15 juin :* Venue sur Paris de Andres Taylor (le créateur de Cypher)
-
-Après une pause estivale, on reprend en septembre.
-
-*Et n'hésitez pas à proposer des talks ou des sujets !*
+* *28 juin:* Graphes & Finance - Plongée dans les Panama Papers
+* **21 septembre :** Graph day Paris
 
 == L'histoire de Neo4j
 
@@ -60,7 +57,7 @@ image::assets/voiture-3.jpg[height=500]
 * Neo4j Browser
 * Page Cache
 
-== Neo4j 3.X
+== Neo4j 3.0
 
 [class="split7030"]
 === Les fondements
@@ -108,7 +105,7 @@ image::assets/docker.png[height=400]
 
 Modification de la structure 
 
-[source,text/x-sh]
+[source, shell]
 ----
 ├── bin
 ├── certificates
@@ -128,7 +125,7 @@ Modification de la structure
 
 Un seul fichier de conf `conf/neo4j.conf`, avec les propriétés namespacés
 
-[source,text/x-sh]
+[source, shell]
 ----
 ...
 #
@@ -148,7 +145,7 @@ dbms.connector.bolt.tls_level=OPTIONAL
 
 Tous les fichiers de logs sont à présent dans le répertoire `logs`
 
-[source,text/x-sh]
+[source, shell]
 ----
 logs/
 ├── debug.log <= anciennement messages.log dans graph.db
@@ -174,7 +171,7 @@ image::assets/bolt-drivers.png[]
 
 === Bolt
 
-[source,javascript]
+[source, javascript]
 ----
 // Javascript
 var driver = Graph.Database.driver("bolt://localhost");
@@ -182,7 +179,7 @@ var session = driver.session();
 var result = session.run("MATCH (u:User) RETURN u.name");
 ----
 
-[source,python]
+[source, python]
 ----
 // Python
 driver = Graph.Database.driver("bolt://localhost")
@@ -190,7 +187,7 @@ session = driver.session()
 result = session.run("MATCH (u:User) RETURN u.name")
 ----
 
-[source,text/x-java]
+[source, text/x-java]
 ----
 // Java
 Driver driver = GraphDatabase.driver( "bolt://localhost" );
@@ -199,7 +196,7 @@ try ( Session session = driver.session() ) {
 }
 ----
 
-[source,text/x-java]
+[source, text/x-java]
 ----
 // .NET
 using (var driver = GraphDatabase.Driver("bolt://localhost"))
@@ -236,7 +233,7 @@ image::assets/procedure-built-in.png[]
 
 https://github.com/neo4j-contrib/neo4j-apoc-procedures
 
-* *Obtenir le meta-graph :* `CALL apoc.meta.gaph()`
+* *Obtenir le meta-graph :* `CALL apoc.meta.graph()`
 * *Charger des données en JDBC :*
 ** `CALL apoc.load.driver('com.mysql.jdbc.Driver')`
 ** `CALL apoc.load.jdbc('jdbc:mysql:localhost/mysql', 'SELECT * FROM user') YIELD row CREATE (:User {name:row.User})`
@@ -295,7 +292,7 @@ CREATE (c)-[:CONTAINS]->(p);
 
 Les prédicats utilisés dans la clause `WHERE` sont maintenant évalués pendant l'algorithme !
 
-[source,cypher]
+[source, cypher]
 ----
 MATCH (a:Loc {name:"Nantes"}),(b:Loc {name:"Paris"})
 MATCH trip = shortestPath((a)-[roads:ROAD*]->(b))
@@ -321,5 +318,6 @@ http://neo4j.com/guides/upgrade/#neo4j-3-0
 * **Twitter:** Suivez les comptes @neojFr & @neo4j
 * **Google group :**  Avec les groupes Neo4jFr & Neo4j
 * **Stackoverflow :**  avec les tags neo4j & cypher
+* **Slack :** http://neo4j-users-slack-invite.herokuapp.com/
 
 image::assets/questions.png[]
