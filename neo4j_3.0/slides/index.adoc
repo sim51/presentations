@@ -296,7 +296,10 @@ Les prédicats utilisés dans la clause `WHERE` sont maintenant évalués pendan
 ----
 MATCH (a:Loc {name:"Nantes"}),(b:Loc {name:"Paris"})
 MATCH trip = shortestPath((a)-[roads:ROAD*]->(b))
-WHERE NONE(r in roads WHERE r.closed or r.speed < 30) AND reduce(s=0, r in roads | s + r.distance) < 300
+WHERE 
+  NONE(r in roads WHERE r.closed or r.speed < 30) AND 
+  ALL (r in  roads WHERE r.type = 'Autoroute') AND
+  reduce(s=0, r in roads | s + r.distance) < 300
 RETURN trip;
 ----
 

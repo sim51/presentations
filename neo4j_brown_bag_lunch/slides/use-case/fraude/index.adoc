@@ -1,13 +1,5 @@
 == La détection de fraudes
 
-=== La détection de fraudes
-
-* La fraude coute des milliards chaque années aux banques et assurances
-* Les techniques de fraudes sont de plus en plus sophistiquées
-* Il faut constater la fraude en temps réel  (ie. avant qu'elle est lieu)
-
-image::assets/use-case/fraude/fraude.jpg[]
-
 === Pourquoi du graphe ?
 
 Bien qu’aucune mesure de détection de fraudes ne soit parfaite, il est possible d’introduire des améliorations considérables si l’on se penche sur les connexions qui relient les points de données individuels.
@@ -15,23 +7,6 @@ Bien qu’aucune mesure de détection de fraudes ne soit parfaite, il est possib
 **Il faut étudier l'interconnexion des données**
 
 image::assets/use-case/fraude/graph-database-fraud-detection.png[]
-
-=== Les défis lées à la détection de fraudes
-
-**Effectuer une analyse complexe des liens pour découvrir les schémas de fraude**
-
-Découvrir les réseaux de fraude nécessite d’exécuter une analyse d’une complexité élevée sur les relations existant entre les données ; une difficulté exacerbée par la croissance des réseaux de fraude.
-
-
-**Détecter et empêcher les fraudes en temps réel**
-
-Pour faire barrage à un réseau de fraude, vous devez effectuer une analyse des liens en temps réel au niveau d’un jeu de données interconnectées, à partir de la création d’un faux compte jusqu’à l’exécution d’une transaction frauduleuse.
-
-
-**Réseaux de fraude en évolution et dynamiques**
-
-Les réseaux de fraude se développent continuellement en forme et en taille et votre application doit détecter ces schémas de fraude dans cet environnement hautement dynamique.
-
 
 === Etude de cas : Fraude dans le e-commerce
 

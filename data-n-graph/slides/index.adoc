@@ -1,0 +1,183 @@
+:revealjs_width: '100%'
+:revealjs_customtheme: ../themes/neo4j/style/main.css
+:author: Benoit Simard (@logisima)
+
+= Des datas & des graphes
+
+== Introduction
+
+[class="split5050"]
+=== Benoit Simard
+
+image::assets/me.JPG[height=500]
+
+* Ancien de l'IMA
+* Graphe addicte
+* Libérateur de données
+* contact@bsimard .com
+* @logisima
+
+== La data
+
+=== Une question de taille ?
+
+Tous les deux ans, on double la quantité de données produites
+
+image::assets/data-growth.jpg[height=500]
+
+=== Le Big Data
+
+image::assets/big-data.png[height=500]
+
+=== Linked data
+
+**La valeur n'est pas dans la donnée, mais dans ses relations**
+
+image::assets/linked-data.png[height=500]
+
+=== Le processing
+
+complexity = f(size, **connectivité**)
+
+image::assets/processing-time.png[height=500]
+
+__A quand les ordinateurs quantiques ?__
+
+== Les bases de données
+
+=== Les bases relationnelles
+
+* Existent depuis les années 80
+* Base ACID
+* Gèrent les relations
+* Données très structurées
+* Peux stocker de grosse volumétrie (plusieurs To)
+* Théorie des ensembles
+
+http://www.postgresqlfr.org/temoignages:le_bon_coin 
+ 
+(3To de données - 1To RAM - 160 cores)
+
+=== ACID
+
+image::assets/acid.png[height=500]
+
+=== La mouvance NoSQL
+
+image::assets/nosql-graph.png[height=500]
+
+=== Le monde ensembliste
+
+**Les relations sont calculés => dans le pire des cas cela revient à faire un produit cartésian des tables**
+
+image::assets/sql-joins.jpg[height=500]
+
+=== Les bases graphes
+
+**Les relations sont persistés sur le disque, le travail est local**
+
+image::assets/db-graph.png[height=500]
+
+=== Performance
+
+Parfait pour :
+ * les données/requêtes connectées
+ * le temps-réel
+
+image::assets/graph-vs-sql-time.jpg[]
+
+== Qui s'en sert ?
+
+=== Google
+
+Google est devenu le premier moteur de recherche grâce à son algorithme basé sur les graphes : *le page rank*
+
+image::assets/search-engines.jpg[height=500]
+
+=== TF / IDF
+
+**Terme frequency :**  Nombre de fois que le mot apparaît dans un document +
+**Inverse Document Frequency :** Nombre de fois que le mot apparait dans un ensemble de document
+
+image::assets/tf-idf.jpg[height=500]
+
+=== Invisible touch
+
+image::assets/seo-invisible-text.jpg[height=500]
+
+=== Page Rank
+
+**Cartographie thématique du web**
+
+image::assets/PageRank.png[height=500]
+
+
+== Recommendation
+
+=== Moteur de recommandation en temps réel
+
+Des réseaux sociaux, à la vente au détail, de service ou dans le secteur des médias, la recommandation est partout !
+
+**Objectif :** offrir une recommandation en temps réel, hautement ciblés et contextuelles afin quelle soit pertinentes pour l'utilisateur
+
+image::assets/recommandation.png[]
+
+
+=== Filtrage collaboratif
+
+Le système est simple : trouver des personnes qui me ressemblent, et voir ce qu'elles ont fait et que je n'ai pas fait
+
+**Les amis de mes amis avec lesquels je ne suis pas ami**
+
+=== Meetic
+
+image::assets/meetic-graph.png[]
+
+== La detection de fraude
+
+=== Les panama papers
+
+C'est la plus large fuite de données de l'histoire, et de loin !
+
+image::assets/amount_of_data.png[width=800]
+
+=== L'opacité
+
+Ajouter un maximum d'intermédiaire pour rendre le plus opaque possible (holding + offshore).
+
+image::assets/offshore.jpg[width=800]
+
+=== C'est du graph !
+
+image::assets/linkurious.png[width=800]
+
+__Il faut suivre les petits cailloux__
+
+== Le routing
+
+=== Ebay Now !
+
+**La livraison en moins de deux heures !**
+
+image::assets/ebay2.png[width=800]
+
+__Même principe qu'Uber pool__
+
+== Graphs are everywhere !
+
+=== Les cas d'utilisation
+
+image::assets/customer.jpg[height=800]
+
+
+=== un est tout, tout est un
+
+**Le monde est connecté**
+
+image::assets/world-graph.png[height=600]
+
+== Merci
+
+=== Des questions ?
+
+image::assets/questions.png[]

@@ -137,7 +137,6 @@ digraph finite_state_machine {
 }
 ----
 
-
 [graphviz]
 ----
 digraph finite_state_machine {
@@ -338,9 +337,9 @@ RETURN [n in nodes(p) | n.name] AS names;
 
 == Question ?
 
-== Graph Connect
+== Prochain évènements
 
-30% off with code `MEETUP30`
+* **Graph Day Paris :**  mercredi 21 Septembre
+* **Training Graph Modeling :** mardi 25 Octobre à Paris
 
-image::assets/graph-connect.png[]
 
