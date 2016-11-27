@@ -1,0 +1,168 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="author" content="Benoit Simard (@logisima)"><title>Neo4j 3.0</title><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui" name="viewport"><link href="../reveal.js/css/reveal.css" rel="stylesheet"><link rel="stylesheet" href="../themes/neo4j/style/main.css" id="theme"><link href="../reveal.js/lib/css/zenburn.css" rel="stylesheet"><script>document.write( '<link rel="stylesheet" href="../reveal.js/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );</script></head><body><div class="reveal"><div class="slides"><section><h1>Neo4j 3.0</h1><p><small>Benoit Simard (@logisima)</small></p></section><section><section id="slide_introduction"><h2>introduction</h2></section><section id="slide_benoit_simard_consultant" class="split5050"><h2>Benoit Simard, consultant</h2><div class="imageblock" style=""><div class="content"><img src="assets/me.JPG" alt="me" height="500"></div></div>
+<div class="ulist"><ul><li><p><a href="mailto:benoit.simard@neotechnology.com">benoit.simard@neotechnology.com</a></p></li><li><p>@logisima</p></li><li><p>Addicte aux graphes</p></li><li><p>Formateur</p></li></ul></div></section><section id="slide_les_prochains_évènements"><h2>Les prochains évènements</h2><div class="imageblock" style=""><div class="content"><img src="assets/calendar.png" alt="calendar" height="200"></div></div>
+<div class="ulist"><ul><li><p><strong>1er juin :</strong> Les graphes dans les projets industriels orientés data, par Kernix</p></li><li><p><strong>15 juin :</strong> Venue sur Paris de Andres Taylor (le créateur de Cypher)</p></li><li><p><strong>28 juin:</strong> Graphes &amp; Finance - Plongée dans les Panama Papers</p></li><li><p><strong>21 septembre :</strong> Graph day Paris</p></li></ul></div></section></section>
+<section><section id="slide_l_histoire_de_neo4j"><h2>L&#8217;histoire de Neo4j</h2></section><section id="slide_neo4j_0_x_2000_à_2010" class="split5050"><h2>Neo4j 0.X - 2000 à 2010</h2><div class="imageblock" style=""><div class="content"><img src="assets/voiture-1.png" alt="voiture 1"></div></div>
+<div class="ulist"><ul><li><p><strong>API Java</strong></p></li><li><p>JAR de petite taille</p></li><li><p>Indexation basique</p></li></ul></div></section><section id="slide_neo4j_1_x_2010_à_2014" class="split5050"><h2>Neo4j 1.X - 2010 à 2014</h2><div class="imageblock" style=""><div class="content"><img src="assets/voiture-2.png" alt="voiture 2"></div></div>
+<div class="ulist"><ul><li><p><strong>API REST</strong></p></li><li><p>Serveur Neo4j</p></li><li><p>Mode cluster</p></li><li><p>Cypher dans la 1.4</p></li></ul></div></section><section id="slide_neo4j_2_x_2014_à_2016" class="split5050"><h2>Neo4j 2.X - 2014 à 2016</h2><div class="imageblock" style=""><div class="content"><img src="assets/voiture-3.jpg" alt="voiture 3" height="500"></div></div>
+<div class="ulist"><ul><li><p><strong>Cypher par defaut (ajout de l&#8217;écriture)</strong></p></li><li><p>Ajout des Labels</p></li><li><p>Schema</p></li><li><p>Neo4j Browser</p></li><li><p>Page Cache</p></li></ul></div></section></section>
+<section><section id="slide_neo4j_3_0"><h2>Neo4j 3.0</h2></section><section id="slide_les_fondements" class="split7030"><h2>Les fondements</h2><div class="imageblock" style=""><div class="content"><img src="assets/daft-punk.jpg" alt="daft punk"></div></div>
+<div class="paragraph"><p>Permettre à tout le monde de développer des applications graphes</p></div>
+<div class="ulist"><ul><li><p>Simplement</p></li><li><p>Rapidement</p></li><li><p>Sans contrainte de volumétrie</p></li></ul></div></section><section id="slide_les_fondements_2"><h2>Les fondements</h2><div class="imageblock" style=""><div class="content"><img src="assets/fondements.png" alt="fondements"></div></div></section></section>
+<section><section id="slide_du_coté_des_architectes"><h2>Du coté des architectes</h2></section><section id="slide_jusqu_au_bout_de_l_extrême_limite"><h2>Jusqu&#8217;au bout de l&#8217;extrême limite !</h2><div class="paragraph"><p><strong>EE :</strong> Un nouveau moteur de stockage qui abolit les limites de Neo4j (&gt; 1 quadrillion) !</p></div>
+<div class="imageblock" style=""><div class="content"><img src="assets/big-graph.png" alt="big graph"></div></div></section><section id="slide_les_indexes_c_est_majeur" class="split8020"><h2>Les indexes, c&#8217;est majeur</h2><div class="imageblock" style=""><div class="content"><img src="assets/lucene.png" alt="lucene"></div></div>
+<div class="ulist"><ul><li><p>Mise à jour de lucene en version 5</p></li><li><p>Indexation en parallèle (meilleure performance en écriture)</p></li><li><p>Partitonnement des indexes lucene (suppression de la limitation de 2 milliards)</p></li></ul></div></section></section>
+<section><section id="slide_pour_les_ops"><h2>Pour les ops !</h2></section><section id="slide_cloud_virtualisation_containers" class="split8020"><h2>Cloud , virtualisation, containers</h2><div class="ulist"><ul><li><p>Amélioration des performances sur les environnements virtualisés (Optimisation du page-cache)</p></li><li><p>Image docker officielle</p></li></ul></div>
+<div class="imageblock" style=""><div class="content"><img src="assets/docker.png" alt="docker" height="400"></div></div></section><section id="slide_refactoring_la_structure"><h2>Refactoring : la structure</h2><div class="paragraph"><p>Modification de la structure</p></div>
+<div class="listingblock"><div class="content"><pre class="highlight"><textarea class="shell language-shell">├── bin
+├── certificates
+├── conf
+├── data
+│   ├── databases
+│   │   └── graph.db
+│   └── dbms
+├── import
+├── lib
+├── logs
+├── plugins
+└── run</textarea></pre></div></div></section><section id="slide_refactoring_la_configuration"><h2>Refactoring : la configuration</h2><div class="paragraph"><p>Un seul fichier de conf <code>conf/neo4j.conf</code>, avec les propriétés namespacés</p></div>
+<div class="listingblock"><div class="content"><pre class="highlight"><textarea class="shell language-shell">...
+#
+# Bolt connector
+#
+dbms.connector.bolt.type=BOLT
+dbms.connector.bolt.enabled=true
+dbms.connector.bolt.tls_level=OPTIONAL
+# To have Bolt accept non-local connections, uncomment this line:
+# dbms.connector.bolt.address=0.0.0.0:7687
+...</textarea></pre></div></div>
+<div class="paragraph"><p><strong>/!\ Les noms des propriétés ont donc changé !</strong></p></div></section><section id="slide_refactoring_les_logs"><h2>Refactoring : les logs</h2><div class="paragraph"><p>Tous les fichiers de logs sont à présent dans le répertoire <code>logs</code></p></div>
+<div class="listingblock"><div class="content"><pre class="highlight"><textarea class="shell language-shell">logs/
+├── debug.log &lt;= anciennement messages.log dans graph.db
+└── neo4j.log</textarea></pre></div></div></section></section>
+<section><section id="slide_le_coin_des_développeurs"><h2>Le coin des développeurs</h2></section><section id="slide_bolt" class="split5050"><h2>Bolt</h2><div class="imageblock" style=""><div class="content"><img src="assets/bolt.png" alt="bolt"></div></div>
+<div class="ulist"><ul><li><p><strong>Protocole binaire</strong></p></li><li><p><strong>Transport :</strong> TCP &amp; Websocket</p></li><li><p><strong>Sécurisé :</strong> TLS &amp; authentification par défaut</p></li><li><p>Versionné</p></li><li><p>bolt://localhost:7687</p></li></ul></div></section><section id="slide_bolt_drivers_officiels"><h2>Bolt: drivers officiels</h2><div class="imageblock" style=""><div class="content"><img src="assets/bolt-drivers.png" alt="bolt drivers"></div></div></section><section id="slide_bolt_2"><h2>Bolt</h2><div class="listingblock"><div class="content"><pre class="highlight"><textarea class="javascript language-javascript">// Javascript
+var driver = Graph.Database.driver("bolt://localhost");
+var session = driver.session();
+var result = session.run("MATCH (u:User) RETURN u.name");</textarea></pre></div></div>
+<div class="listingblock"><div class="content"><pre class="highlight"><textarea class="python language-python">// Python
+driver = Graph.Database.driver("bolt://localhost")
+session = driver.session()
+result = session.run("MATCH (u:User) RETURN u.name")</textarea></pre></div></div>
+<div class="listingblock"><div class="content"><pre class="highlight"><textarea class="text/x-java language-text/x-java">// Java
+Driver driver = GraphDatabase.driver( "bolt://localhost" );
+try ( Session session = driver.session() ) {
+    StatementResult result = session.run("MATCH (u:User) RETURN u.name");
+}</textarea></pre></div></div>
+<div class="listingblock"><div class="content"><pre class="highlight"><textarea class="text/x-java language-text/x-java">// .NET
+using (var driver = GraphDatabase.Driver("bolt://localhost"))
+using (var session = driver.Session())
+{
+    var result = session.Run("MATCH (u:User) RETURN u.name");
+}</textarea></pre></div></div></section><section id="slide_les_procédures_stockées" class="split5050"><h2>Les procédures stockées</h2><div class="imageblock" style=""><div class="content"><img src="assets/procedures.png" alt="procedures"></div></div>
+<div class="paragraph"><p>Ecrivez du code personnalisé :</p></div>
+<div class="ulist"><ul><li><p>En Java (compatible JVM)</p></li><li><p>Stocké sur le serveur (un jar à déployer)</p></li><li><p>Accessible en Cypher</p></li></ul></div></section><section id="slide_les_procédures_stockées_built_in"><h2>Les procédures stockées : built-in</h2><div class="listingblock"><div class="content"><pre class="highlight"><textarea class="cypher language-cypher">CALL dbms.procedures() YIELD name
+with split(name,".") AS parts
+WHERE not parts[0] = 'apoc'
+RETURN parts[0..-1] AS package, count(*),collect(parts[-1]) AS procs</textarea></pre></div></div>
+<div class="imageblock" style=""><div class="content"><img src="assets/procedure-built-in.png" alt="procedure built in"></div></div></section><section id="slide_apoc"><h2>APOC</h2><div class="paragraph"><p><a href="https://github.com/neo4j-contrib/neo4j-apoc-procedures" class="bare">https://github.com/neo4j-contrib/neo4j-apoc-procedures</a></p></div>
+<div class="ulist"><ul><li><p><strong>Obtenir le meta-graph :</strong> <code>CALL apoc.meta.graph()</code></p></li><li><p><strong>Charger des données en JDBC :</strong></p><div class="ulist"><ul><li><p><code>CALL apoc.load.driver('com.mysql.jdbc.Driver')</code></p></li><li><p><code>CALL apoc.load.jdbc('jdbc:mysql:localhost/mysql', 'SELECT * FROM user') YIELD row CREATE (:User {name:row.User})</code></p></li></ul></div></li><li><p>Charger des données JSON</p></li><li><p>Des fonctions spatiales</p></li><li><p>&#8230;&#8203;</p></li></ul></div></section><section id="slide_neo4j_browser_sync"><h2>Neo4j Browser Sync</h2><div class="paragraph"><p>Synchronisez vos scripts, configuration, style sur tous vos navigateurs</p></div>
+<div class="imageblock" style=""><div class="content"><img src="assets/neo4j-sync.png" alt="neo4j sync"></div></div></section><section id="slide_cypher"><h2>Cypher</h2><div class="imageblock" style=""><div class="content"><img src="assets/cypher-engine.png" alt="cypher engine" height="100"></div></div>
+<div class="ulist"><ul><li><p><code>ENDS WITH</code> et <code>CONTAINS</code> se basent maintenant sur les indexes (tout comme <code>STARTS WITH</code> en 2.3)</p></li><li><p>Amélioration globale des performances sur les aggregations (ex: count sur les labels)</p></li><li><p>Amélioration des performances d&#8217;écritures / écritures</p><div class="ulist"><ul><li><p>Upgrade de lucene</p></li><li><p>Planneur basé sur les coûts pour les écritures</p></li></ul></div></li></ul></div></section><section id="slide_cypher_planneur_basé_sur_les_coûts"><h2>Cypher : planneur basé sur les coûts</h2><div class="ulist"><ul><li><p>Basé sur la connaissance des données en base (ie. des statistiques)</p></li><li><p>A été introduit en 2.2 pour les requêtes en lecture seule</p></li><li><p>Est disponible à présent aussi pour les requêtes d&#8217;écritures</p></li><li><p>Planneur par défaut</p></li></ul></div>
+<div class="imageblock" style=""><div class="content"><img src="assets/cypher-planner.png" alt="cypher planner"></div></div></section><section id="slide_cypher_example"><h2>Cypher : example</h2><div class="paragraph"><p><code>Cypher version: CYPHER 3.0, planner: RULE. 3060001 total db hits in 7197 ms.</code></p></div>
+<div class="listingblock"><div class="content"><pre class="highlight"><textarea class="cypher language-cypher">cypher planner=rule
+MATCH (p:Product),(c:Category)
+WHERE p.category_id = c.id
+CREATE (c)-[:CONTAINS]-&gt;(p);</textarea></pre></div></div>
+<div class="paragraph"><p><code>Cypher version: CYPHER 3.0, planner: COST. 50003 total db hits in 3280 ms.</code></p></div>
+<div class="listingblock"><div class="content"><pre class="highlight"><textarea class="cypher language-cypher">cypher planner=cost
+MATCH (p:Product),(c:Category)
+WHERE p.category_id = c.id
+CREATE (c)-[:CONTAINS]-&gt;(p);</textarea></pre></div></div></section><section id="slide_cypher_shortestpath"><h2>Cypher : shortestpath</h2><div class="paragraph"><p>Les prédicats utilisés dans la clause <code>WHERE</code> sont maintenant évalués pendant l&#8217;algorithme !</p></div>
+<div class="listingblock"><div class="content"><pre class="highlight"><textarea class="cypher language-cypher">MATCH (a:Loc {name:"Nantes"}),(b:Loc {name:"Paris"})
+MATCH trip = shortestPath((a)-[roads:ROAD*]-&gt;(b))
+WHERE
+  NONE(r in roads WHERE r.closed or r.speed &lt; 30) AND
+  ALL (r in  roads WHERE r.type = 'Autoroute') AND
+  reduce(s=0, r in roads | s + r.distance) &lt; 300
+RETURN trip;</textarea></pre></div></div></section></section>
+<section><section id="slide_comment_upgrader"><h2>Comment upgrader ?</h2></section><section id="slide_upgrader_en_3_x"><h2>Upgrader en 3.X</h2><div class="paragraph"><p><a href="http://neo4j.com/guides/upgrade/#neo4j-3-0" class="bare">http://neo4j.com/guides/upgrade/#neo4j-3-0</a></p></div>
+<div class="ulist"><ul><li><p>Java 8</p></li><li><p>Mise à jour du store : <code>dbms.allow_format_migration=true</code></p></li><li><p>Mise à jour de lucene : reconstruction des indexes</p></li><li><p>Mise à jour de la configuration : <code>java -jar config-migrator.jar path/to/neo4j2.3 path/to/neo4j3.0</code></p></li></ul></div></section></section>
+<section><section id="slide_merci"><h2>Merci</h2></section><section id="slide_des_questions"><h2>Des questions ?</h2><div class="ulist"><ul><li><p><strong>Twitter:</strong> Suivez les comptes @neojFr &amp; @neo4j</p></li><li><p><strong>Google group :</strong>  Avec les groupes Neo4jFr &amp; Neo4j</p></li><li><p><strong>Stackoverflow :</strong>  avec les tags neo4j &amp; cypher</p></li><li><p><strong>Slack :</strong> <a href="http://neo4j-users-slack-invite.herokuapp.com/" class="bare">http://neo4j-users-slack-invite.herokuapp.com/</a></p></li></ul></div>
+<div class="imageblock" style=""><div class="content"><img src="assets/questions.png" alt="questions"></div></div></section></section></div></div><script src="../reveal.js/lib/js/head.min.js"></script><script src="../reveal.js/js/reveal.js"></script><script>// See https://github.com/hakimel/reveal.js#configuration for a full list of configuration options
+Reveal.initialize({
+  // Display controls in the bottom right corner
+  controls: true,
+  // Display a presentation progress bar
+  progress: true,
+  // Display the page number of the current slide
+  slideNumber: false,
+  // Push each slide change to the browser history
+  history: true,
+  // Enable keyboard shortcuts for navigation
+  keyboard: true,
+  // Enable the slide overview mode
+  overview: true,
+  // Vertical centering of slides
+  center: true,
+  // Enables touch navigation on devices with touch input
+  touch: true,
+  // Loop the presentation
+  loop: false,
+  // Change the presentation direction to be RTL
+  rtl: false,
+  // Turns fragments on and off globally
+  fragments: true,
+  // Flags if the presentation is running in an embedded mode,
+  // i.e. contained within a limited portion of the screen
+  embedded: false,
+  // Number of milliseconds between automatically proceeding to the
+  // next slide, disabled when set to 0, this value can be overwritten
+  // by using a data-autoslide attribute on your slides
+  autoSlide: 0,
+  // Stop auto-sliding after user input
+  autoSlideStoppable: true,
+  // Enable slide navigation via mouse wheel
+  mouseWheel: false,
+  // Hides the address bar on mobile devices
+  hideAddressBar: true,
+  // Opens links in an iframe preview overlay
+  previewLinks: false,
+  // Theme (e.g., beige, black, league, night, serif, simple, sky, solarized, white)
+  // NOTE setting the theme in the config no longer works in reveal.js 3.x
+  //theme: Reveal.getQueryHash().theme || 'black',
+  // Transition style (e.g., none, fade, slide, convex, concave, zoom)
+  transition: Reveal.getQueryHash().transition || 'slide',
+  // Transition speed (e.g., default, fast, slow)
+  transitionSpeed: 'default',
+  // Transition style for full page slide backgrounds (e.g., none, fade, slide, convex, concave, zoom)
+  backgroundTransition: 'fade',
+  // Number of slides away from the current that are visible
+  viewDistance: 3,
+  // Parallax background image (e.g., "'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg'")
+  parallaxBackgroundImage: '',
+  // Parallax background size in CSS syntax (e.g., "2100px 900px")
+  parallaxBackgroundSize: '',
+
+  // The "normal" size of the presentation, aspect ratio will be preserved
+  // when the presentation is scaled to fit different resolutions. Can be
+  // specified using percentage units.
+  width: '100%',
+  height: 700,
+
+  // Factor of the display size that should remain empty around the content
+  margin: 0.1,
+
+  // Bounds for smallest/largest possible scale to apply to content
+  minScale: 0.2,
+  maxScale: 1.5,
+
+  // Optional libraries used to extend on reveal.js
+  dependencies: [
+      { src: '../reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+      { src: '../reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: '../reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      
+      { src: '../reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+      { src: '../reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+  ]
+});</script><script src="../themes/neo4j/assets/codemirror/lib/codemirror.js"></script><script src="../themes/neo4j/assets/codemirror/mode/cypher/cypher.js"></script><script src="../themes/neo4j/assets/codemirror/mode/javascript/javascript.js"></script><script src="../themes/neo4j/assets/codemirror/mode/shell/shell.js"></script><script src="../themes/neo4j/assets/codemirror/mode/properties/properties.js"></script><script src="../themes/neo4j/assets/codemirror/mode/xml/xml.js"></script><script src="../themes/neo4j/assets/codemirror/mode/sql/sql.js"></script><script src="../themes/neo4j/assets/codemirror/mode/python/python.js"></script><script src="../themes/neo4j/assets/codemirror/mode/clike/clike.js"></script><script src="../themes/neo4j/assets/codemirror.js"></script></body></html>

@@ -1,5 +1,0 @@
-= Des données et des graphes
-
-Une donnée n'a de valeur, que si on peut la croiser avec d'autres données. Ainsi la valeur n'est plus dans la données elle-même, mais dans ses relations. Je vous propose donc de venir découvrir le monde du linked-data (et des bases graphes) en vous présentant des projets concrets.
-
-

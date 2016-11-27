@@ -1,5 +1,0 @@
-=== Leonhard Euler 1707-1783
-
-Mathématicien Suisse à l'origine de la théorie des graphes.
-
-image::assets/historique/euler.png[]

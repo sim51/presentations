@@ -1,7 +1,0 @@
-== Les bases graphe
-
-include::./01-graph-modeling.adoc[]
-
-include::./02-linked-data.adoc[]
-
-include::./03-neo4j.adoc[]

@@ -1,0 +1,113 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="author" content="Benoit Simard (@logisima)"><title>Neo4j et la BI</title><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui" name="viewport"><link href="../reveal.js/css/reveal.css" rel="stylesheet"><link rel="stylesheet" href="../themes/neo4j/style/main.css" id="theme"><link href="../reveal.js/lib/css/zenburn.css" rel="stylesheet"><script>document.write( '<link rel="stylesheet" href="../reveal.js/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );</script></head><body><div class="reveal"><div class="slides"><section><h1>Neo4j et la BI</h1><p><small>Benoit Simard (@logisima)</small></p></section><section><section id="slide_la_business_intelligence"><h2>La business Intelligence</h2></section><section id="slide_definition"><h2>Definition</h2><div class="paragraph"><p><strong>La BI désigne les moyens, les outils et les méthodes qui permettent de collecter, consolider, modéliser et restituer les données, en vue d&#8217;offrir une aide à la décision</strong></p></div>
+<div class="ulist"><ul><li><p>Donner de la valeur à vos données</p></li><li><p>Mettre en relations les données</p></li></ul></div>
+<div class="paragraph"><p>Nécessite un outil de stockage des données performant permettant de facilement les relier entre elles</p></div></section><section id="slide_linked_data"><h2>Linked data</h2><div class="paragraph"><p><strong>Les relations existant entre les données sont presques plus importantes que les données elles-mêmes</strong></p></div>
+<div class="imageblock" style=""><div class="content"><img src="assets/linked-data.png" alt="linked data" height="500"></div></div></section><section id="slide_compléxité_des_données"><h2>Compléxité des données</h2><div class="paragraph"><p>complexité = f(<strong>volumétrie</strong>, semi-structure, <strong>connectivité</strong>)</p></div>
+<div class="imageblock" style=""><div class="content"><img src="assets/01_data_complexity.png" alt="01 data complexity" height="500"></div></div></section><section id="slide_les_domaines_de_la_bi"><h2>Les domaines de la BI</h2><div class="imageblock" style=""><div class="content"><img src="assets/BI_component.jpg" alt="BI component"></div></div>
+<div class="ulist"><ul><li><p>Collecte, consolidation et modélisation</p></li><li><p>Exploration des données</p></li><li><p>Analyse / Reporting</p></li></ul></div></section></section>
+<section><section id="slide_collecte_consolidation_et_modélisation"><h2>Collecte, consolidation et modélisation</h2></section><section id="slide_datamart"><h2>Datamart</h2><div class="paragraph"><p>Les modèles en  étoile sont  des graphes !</p></div>
+<div class="imageblock" style=""><div class="content"><img src="assets/snowflake.png" alt="snowflake"></div></div></section><section id="slide_les_avantages_de_neo4j"><h2>Les avantages de Neo4j</h2><div class="imageblock" style=""><div class="content"><img src="assets/neo4j.png" alt="neo4j" width="200"></div></div>
+<div class="ulist"><ul><li><p>Facilité de modélisation vos données liées</p><div class="ulist"><ul><li><p>Base de données graphe</p></li><li><p>Sans schema</p></li></ul></div></li><li><p>Performance au niveau des requêtes (jointures)</p></li></ul></div></section><section id="slide_le_modèle_relationnel"><h2>Le modèle relationnel</h2><div class="imageblock" style=""><div class="content"><img src="assets/from_relational_model.png" alt="from relational model" width="900"></div></div></section><section id="slide_le_modèle_en_graphe"><h2>Le modèle en graphe</h2><div class="imageblock" style=""><div class="content"><img src="assets/to_graph_model.png" alt="to graph model" width="800"></div></div></section><section id="slide_importer_vos_données_dans_neo4j"><h2>Importer vos données dans Neo4j</h2><div class="paragraph"><p>Extraire, transformer &amp; charger vos données (ETL)</p></div>
+<div class="imageblock" style=""><div class="content"><img src="assets/talend.jpeg" alt="talend"></div></div>
+<div class="paragraph"><p><a href="http://http://sim51.github.io/neo4j-talend-component" class="bare">http://http://sim51.github.io/neo4j-talend-component</a></p></div></section><section id="slide_exemple"><h2>Exemple</h2><div class="imageblock" style=""><div class="content"><img src="assets/talend-batch.png" alt="talend batch" width="900"></div></div></section><section id="slide_mdm"><h2>MDM</h2><div class="imageblock" style=""><div class="content"><img src="assets/adidas.jpg" alt="adidas" height="100"></div></div>
+<div class="paragraph"><p>Adidas utilise Neo4j pour créer leur référentiel interne, incluant les données sur les produits, les marchés, les médias sociaux, les actifs numériques, &#8230;&#8203;</p></div>
+<div class="imageblock" style=""><div class="content"><img src="assets/Wine-Data-System.jpg" alt="Wine Data System"></div></div>
+<div class="paragraph"><p>Wine Data System utilise Neo4j pour réconcilier les bases de données des négociants afin de construire un référenciel unique.</p></div></section></section>
+<section><section id="slide_explorer_vos_données"><h2>Explorer vos données</h2></section><section id="slide_via_le_browser"><h2>Via le browser</h2><div class="imageblock" style=""><div class="content"><img src="assets/neo4j_browser.png" alt="neo4j browser" width="500"></div></div>
+<div class="ulist"><ul><li><p>Il faut connaitre le langage de requête <strong>Cypher</strong></p></li><li><p>Approche pour les techniques</p></li></ul></div></section><section id="slide_via_des_outils_d_exploration"><h2>Via des outils d&#8217;exploration</h2><div class="imageblock" style=""><div class="content"><img src="assets/linkurious.png" alt="linkurious" width="900"></div></div></section><section id="slide_développez_vos_dataviz"><h2>Développez vos dataviz</h2><div class="imageblock" style=""><div class="content"><img src="assets/dataviz-custom.png" alt="dataviz custom" width="900"></div></div></section></section>
+<section><section id="slide_analyser_les_données"><h2>Analyser les données</h2></section><section id="slide_neo4j_est_interopérable"><h2>Neo4j est interopérable</h2><div class="imageblock" style=""><div class="content"><img src="assets/neo4j.png" alt="neo4j" width="200"></div></div>
+<div class="ulist"><ul><li><p>Accès au données via une API REST/JSON</p></li><li><p>Il existe forcément un driver pour vous</p><div class="ulist"><ul><li><p>JDBC : <a href="https://github.com/neo4j-contrib/neo4j-jdbc" class="bare">https://github.com/neo4j-contrib/neo4j-jdbc</a></p></li><li><p>R : <a href="http://www.rdocumentation.org/packages/RNeo4j" class="bare">http://www.rdocumentation.org/packages/RNeo4j</a></p></li></ul></div></li></ul></div></section><section id="slide_les_outils_du_marché"><h2>Les outils du marché</h2><div class="imageblock" style=""><div class="content"><img src="assets/market-tools.png" alt="market tools"></div></div>
+<div class="paragraph"><p>Ce sont des outils qui fonctionnent <strong>principalement</strong> sur des bases SQL (générateur de requêtes SQL).</p></div></section><section id="slide_sql_est_partout"><h2>SQL est partout</h2><div class="imageblock" style=""><div class="content"><img src="assets/sql.png" alt="sql"></div></div>
+<div class="paragraph"><p>Tous les produits possèdent un connecteur SQL</p></div></section><section id="slide_neo4j_et_le_sql"><h2>Neo4j et le SQL</h2><div class="paragraph"><p>Foreign Data Wrapper est une manière standard de récupérer des objets distants en SQL</p></div>
+<div class="ulist"><ul><li><p>Spécification SQL depuis 2003</p></li><li><p>Dans postgresql dépuis 2011</p></li></ul></div>
+<div class="imageblock" style=""><div class="content"><img src="assets/postgres.png" alt="postgres" width="300"></div></div></section><section id="slide_comment_cela_fonctionne"><h2>Comment cela fonctionne ?</h2><div class="imageblock" style=""><div class="content"><img src="assets/postgres-fdw.png" alt="postgres fdw"></div></div>
+<div class="imageblock" style=""><div class="content"><img src="diag-6f78b28da2c6e0183aaaa0e2a2b5feb0.png" alt="diag 6f78b28da2c6e0183aaaa0e2a2b5feb0" width="632" height="125"></div></div></section><section id="slide_exemple_2"><h2>Exemple</h2><div class="ulist"><ul><li><p>Déclarer une table étrangère correspondante à une requête Cypher</p></li></ul></div>
+<div class="listingblock"><div class="content"><pre class="highlight"><textarea class="sql language-sql">CREATE FOREIGN TABLE neo4j_movie (
+    movie varchar
+  ) SERVER multicorn_neo4j OPTIONS (
+    cypher 'MATCH (n:Movie) RETURN n.title as movie'
+  );</textarea></pre></div></div></section><section id="slide_du_sql_du_sql"><h2>Du SQL, du SQL !</h2><div class="listingblock"><div class="content"><pre class="highlight"><textarea class="sql language-sql">SELECT * FROM neo4j_movie;
+SELECT count(*) FROM neo4j_movie;
+SELECT count(*) FROM neo4j_movie WHERE movie LIKE '%Matrix%';</textarea></pre></div></div></section><section id="slide_intégration_avec_tableau"><h2>Intégration avec Tableau</h2><div class="paragraph"><p>Démonstration : <a href="https://www.youtube.com/watch?v=Pkc748HmH9o" class="bare">https://www.youtube.com/watch?v=Pkc748HmH9o</a></p></div></section></section>
+<section><section id="slide_merci"><h2>Merci !</h2></section><section id="slide_graphconnect_europe"><h2>GraphConnect Europe</h2><div class="paragraph"><p><strong>20% de réduction avec le code NEWS20 !!!</strong></p></div>
+<div class="paragraph"><p>Mardi 26 Avril, 2016, Queen Elizabeth II Centre, Londres</p></div>
+<div class="ulist"><ul><li><p>3 Thématiques + Lightning Talks</p></li><li><p>GraphClinics: Rencontrez nos experts</p></li><li><p>Networking</p></li></ul></div>
+<div class="paragraph"><p>Formation, Lundi 25 Avril 2016, 9h30-17h30 : Fundamentals, Modelling, Neo4j in Production, Creating a Recommendation Engine</p></div>
+<div class="imageblock" style=""><div class="content"><img src="assets/graph-connect.png" alt="graph connect"></div></div></section><section id="slide_des_questions"><h2>Des questions ?</h2><div class="ulist"><ul><li><p><strong>Twitter:</strong> Suivez les comptes @neojFr &amp; @neo4j</p></li><li><p><strong>Google group :</strong>  Avec les groupes Neo4jFr &amp; Neo4j</p></li><li><p><strong>Stackoverflow :</strong>  avec les tags neo4j &amp; cypher</p></li></ul></div>
+<div class="imageblock" style=""><div class="content"><img src="assets/questions.png" alt="questions"></div></div></section></section></div></div><script src="../reveal.js/lib/js/head.min.js"></script><script src="../reveal.js/js/reveal.js"></script><script>// See https://github.com/hakimel/reveal.js#configuration for a full list of configuration options
+Reveal.initialize({
+  // Display controls in the bottom right corner
+  controls: true,
+  // Display a presentation progress bar
+  progress: true,
+  // Display the page number of the current slide
+  slideNumber: false,
+  // Push each slide change to the browser history
+  history: true,
+  // Enable keyboard shortcuts for navigation
+  keyboard: true,
+  // Enable the slide overview mode
+  overview: true,
+  // Vertical centering of slides
+  center: true,
+  // Enables touch navigation on devices with touch input
+  touch: true,
+  // Loop the presentation
+  loop: false,
+  // Change the presentation direction to be RTL
+  rtl: false,
+  // Turns fragments on and off globally
+  fragments: true,
+  // Flags if the presentation is running in an embedded mode,
+  // i.e. contained within a limited portion of the screen
+  embedded: false,
+  // Number of milliseconds between automatically proceeding to the
+  // next slide, disabled when set to 0, this value can be overwritten
+  // by using a data-autoslide attribute on your slides
+  autoSlide: 0,
+  // Stop auto-sliding after user input
+  autoSlideStoppable: true,
+  // Enable slide navigation via mouse wheel
+  mouseWheel: false,
+  // Hides the address bar on mobile devices
+  hideAddressBar: true,
+  // Opens links in an iframe preview overlay
+  previewLinks: false,
+  // Theme (e.g., beige, black, league, night, serif, simple, sky, solarized, white)
+  // NOTE setting the theme in the config no longer works in reveal.js 3.x
+  //theme: Reveal.getQueryHash().theme || 'black',
+  // Transition style (e.g., none, fade, slide, convex, concave, zoom)
+  transition: Reveal.getQueryHash().transition || 'slide',
+  // Transition speed (e.g., default, fast, slow)
+  transitionSpeed: 'default',
+  // Transition style for full page slide backgrounds (e.g., none, fade, slide, convex, concave, zoom)
+  backgroundTransition: 'fade',
+  // Number of slides away from the current that are visible
+  viewDistance: 3,
+  // Parallax background image (e.g., "'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg'")
+  parallaxBackgroundImage: '',
+  // Parallax background size in CSS syntax (e.g., "2100px 900px")
+  parallaxBackgroundSize: '',
+
+  // The "normal" size of the presentation, aspect ratio will be preserved
+  // when the presentation is scaled to fit different resolutions. Can be
+  // specified using percentage units.
+  width: '100%',
+  height: 700,
+
+  // Factor of the display size that should remain empty around the content
+  margin: 0.1,
+
+  // Bounds for smallest/largest possible scale to apply to content
+  minScale: 0.2,
+  maxScale: 1.5,
+
+  // Optional libraries used to extend on reveal.js
+  dependencies: [
+      { src: '../reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+      { src: '../reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: '../reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      
+      { src: '../reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+      { src: '../reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+  ]
+});</script><script src="../themes/neo4j/assets/codemirror/lib/codemirror.js"></script><script src="../themes/neo4j/assets/codemirror/mode/cypher/cypher.js"></script><script src="../themes/neo4j/assets/codemirror/mode/javascript/javascript.js"></script><script src="../themes/neo4j/assets/codemirror/mode/shell/shell.js"></script><script src="../themes/neo4j/assets/codemirror/mode/properties/properties.js"></script><script src="../themes/neo4j/assets/codemirror/mode/xml/xml.js"></script><script src="../themes/neo4j/assets/codemirror/mode/sql/sql.js"></script><script src="../themes/neo4j/assets/codemirror/mode/python/python.js"></script><script src="../themes/neo4j/assets/codemirror/mode/clike/clike.js"></script><script src="../themes/neo4j/assets/codemirror.js"></script></body></html>

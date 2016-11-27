@@ -1,0 +1,115 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="author" content="Benoit Simard (@logisima)"><title>Des datas &amp; des graphes</title><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui" name="viewport"><link href="../reveal.js/css/reveal.css" rel="stylesheet"><link rel="stylesheet" href="../themes/neo4j/style/main.css" id="theme"><link href="../reveal.js/lib/css/zenburn.css" rel="stylesheet"><script>document.write( '<link rel="stylesheet" href="../reveal.js/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );</script></head><body><div class="reveal"><div class="slides"><section><h1>Des datas &amp; des graphes</h1><p><small>Benoit Simard (@logisima)</small></p></section><section><section id="slide_presentation"><h2>Presentation</h2></section><section id="slide_benoit_simard" class="split5050"><h2>Benoit Simard</h2><div class="imageblock" style=""><div class="content"><img src="assets/me.JPG" alt="me" height="500"></div></div>
+<div class="ulist"><ul><li><p>Ancien de l&#8217;IMA</p></li><li><p><strong>Graphe addicte</strong></p></li><li><p>Libérateur de données</p></li><li><p><a href="mailto:benoit.simard@neotechnology.com">benoit.simard@neotechnology.com</a></p></li><li><p>@logisima</p></li></ul></div></section></section>
+<section><section id="slide_la_data"><h2>La data</h2></section><section id="slide_une_question_de_taille"><h2>Une question de taille ?</h2><div class="paragraph"><p>Tous les deux ans, on double la quantité de données produites</p></div>
+<div class="imageblock" style=""><div class="content"><img src="assets/data-growth.jpg" alt="data growth" height="500"></div></div></section><section id="slide_le_big_data"><h2>Le Big Data</h2><div class="imageblock" style=""><div class="content"><img src="assets/big-data.png" alt="big data" height="500"></div></div></section><section id="slide_linked_data"><h2>Linked data</h2><div class="paragraph"><p><strong>La valeur n&#8217;est pas dans la donnée, mais dans ses relations</strong></p></div>
+<div class="imageblock" style=""><div class="content"><img src="assets/linked-data.png" alt="linked data" height="700"></div></div></section><section id="slide_le_processing"><h2>Le processing</h2><div class="paragraph"><p>complexity = f(size, <strong>connectivité</strong>)</p></div>
+<div class="imageblock" style=""><div class="content"><img src="assets/processing-time.png" alt="processing time" height="500"></div></div>
+<div class="paragraph"><p><em>A quand les ordinateurs quantiques ?</em></p></div></section></section>
+<section><section id="slide_les_bases_de_données"><h2>Les bases de données</h2></section><section id="slide_les_bases_relationnelles"><h2>Les bases relationnelles</h2><div class="ulist"><ul><li><p>Existent depuis les années 80</p></li><li><p>Base ACID</p></li><li><p>Gèrent les relations</p></li><li><p>Données très structurées</p></li><li><p>Peux stocker de grosse volumétrie (plusieurs To)</p></li></ul></div>
+<div class="paragraph"><p><a href="http://www.postgresqlfr.org/temoignages:le_bon_coin" class="bare">http://www.postgresqlfr.org/temoignages:le_bon_coin</a></p></div>
+<div class="paragraph"><p>(3To de données - 1To RAM - 160 cores)</p></div></section><section id="slide_acid"><h2>ACID</h2><div class="imageblock" style=""><div class="content"><img src="assets/acid.png" alt="acid" height="500"></div></div>
+<div class="paragraph"><p><em>Opposé à eventuellement consistant, mais distribué (BASE &amp; CAP théorème)</em></p></div></section><section id="slide_la_mouvance_nosql"><h2>La mouvance NoSQL</h2><div class="imageblock" style=""><div class="content"><img src="assets/nosql-graph.png" alt="nosql graph" height="500"></div></div></section><section id="slide_le_monde_ensembliste"><h2>Le monde ensembliste</h2><div class="imageblock" style=""><div class="content"><img src="assets/sql-joins.jpg" alt="sql joins" height="500"></div></div></section><section id="slide_rdbms"><h2>RDBMS</h2><div class="paragraph"><p><strong>Les relations sont calculés &#8658; dans le pire des cas cela revient à faire un produit cartésian des tables</strong></p></div>
+<div class="imageblock" style=""><div class="content"><img src="assets/rdbms.png" alt="rdbms" height="500"></div></div></section><section id="slide_les_bases_graphes"><h2>Les bases graphes</h2><div class="paragraph"><p><strong>Les relations sont persistés sur le disque, le travail est local</strong></p></div>
+<div class="imageblock" style=""><div class="content"><img src="assets/graph-model.png" alt="graph model" height="500"></div></div></section><section id="slide_performance"><h2>Performance</h2><div class="ulist"><ul><li><p>les données/requêtes connectées</p></li><li><p>le temps-réel</p></li></ul></div>
+<div class="imageblock" style=""><div class="content"><img src="assets/graph-vs-sql-time.jpg" alt="graph vs sql time"></div></div></section></section>
+<section><section id="slide_qui_s_en_sert"><h2>Qui s&#8217;en sert ?</h2></section><section><div class="imageblock" style=""><div class="content"><img src="assets/google.png" alt="google"></div></div>
+<div class="paragraph"><p>Google est devenu le premier moteur de recherche grâce à son algorithme basé sur les graphes :<br>
+<strong>le page rank</strong></p></div></section><section><div class="imageblock" style=""><div class="content"><img src="assets/search-engines.jpg" alt="search engines" height="500"></div></div></section><section id="slide_tf_idf"><h2>TF / IDF</h2><div class="paragraph"><p><strong>Terme frequency :</strong>  Nombre de fois que le mot apparaît dans un document<br>
+<strong>Inverse Document Frequency :</strong> Nombre de fois que le mot apparait dans un ensemble de document</p></div>
+<div class="imageblock" style=""><div class="content"><img src="assets/tf-idf.jpg" alt="tf idf" height="500"></div></div></section><section id="slide_invisible_touch"><h2>Invisible touch</h2><div class="imageblock" style=""><div class="content"><img src="assets/seo-invisible-text.jpg" alt="seo invisible text" height="500"></div></div></section><section id="slide_page_rank"><h2>Page Rank</h2><div class="paragraph"><p><strong>Cartographie thématique du web</strong></p></div>
+<div class="imageblock" style=""><div class="content"><img src="assets/PageRank.png" alt="PageRank" height="500"></div></div></section></section>
+<section><section id="slide_recommendation"><h2>Recommendation</h2></section><section id="slide_moteur_de_recommandation_en_temps_réel"><h2>Moteur de recommandation en temps réel</h2><div class="paragraph"><p>Des réseaux sociaux, à la vente au détail, de service ou dans le secteur des médias, la recommandation est partout !</p></div>
+<div class="paragraph"><p><strong>Objectif :</strong> offrir une recommandation en temps réel, hautement ciblés et contextuelles afin quelle soit pertinentes pour l&#8217;utilisateur</p></div>
+<div class="imageblock" style=""><div class="content"><img src="assets/recommandation.png" alt="recommandation"></div></div></section><section id="slide_filtrage_collaboratif"><h2>Filtrage collaboratif</h2><div class="paragraph"><p>Le système est simple : trouver des personnes qui me ressemblent, et voir ce qu&#8217;elles ont fait et que je n&#8217;ai pas fait</p></div>
+<div class="paragraph"><p><strong>Les amis de mes amis avec lesquels je ne suis pas ami</strong></p></div></section><section id="slide_meetic"><h2>Meetic</h2><div class="imageblock" style=""><div class="content"><img src="assets/meetic-graph.png" alt="meetic graph"></div></div></section></section>
+<section><section id="slide_la_detection_de_fraude"><h2>La detection de fraude</h2></section><section id="slide_les_panama_papers"><h2>Les panama papers</h2><div class="paragraph"><p>C&#8217;est la plus large fuite de données de l&#8217;histoire, et de loin !</p></div>
+<div class="imageblock" style=""><div class="content"><img src="assets/amount_of_data.png" alt="amount of data" width="800"></div></div></section><section id="slide_l_opacité"><h2>L&#8217;opacité</h2><div class="paragraph"><p>Ajouter un maximum d&#8217;intermédiaire pour rendre le plus opaque possible (holding + offshore).</p></div>
+<div class="imageblock" style=""><div class="content"><img src="assets/offshore.jpg" alt="offshore" width="800"></div></div></section><section id="slide_c_est_du_graph"><h2>C&#8217;est du graph !</h2><div class="imageblock" style=""><div class="content"><img src="assets/linkurious.png" alt="linkurious" width="800"></div></div>
+<div class="paragraph"><p><em>Il faut suivre les petits cailloux</em></p></div></section></section>
+<section><section id="slide_le_routing"><h2>Le routing</h2></section><section id="slide_ebay_now"><h2>Ebay Now !</h2><div class="paragraph"><p><strong>La livraison en moins de deux heures !</strong></p></div>
+<div class="imageblock" style=""><div class="content"><img src="assets/ebay2.png" alt="ebay2" width="800"></div></div>
+<div class="paragraph"><p><a href="https://vimeo.com/110675062" class="bare">https://vimeo.com/110675062</a></p></div>
+<div class="paragraph"><p><em>Même principe qu&#8217;Uber pool</em></p></div></section></section>
+<section><section id="slide_l_analyse_des_réseaux"><h2>L&#8217;analyse des réseaux</h2></section><section id="slide_sfr" class="split5050"><h2>SFR</h2><div class="imageblock" style=""><div class="content"><img src="assets/sfr.png" alt="sfr" height="600"></div></div>
+<div class="paragraph"><p><strong>Etudes d&#8217;impactes</strong></p></div>
+<div class="ulist"><ul><li><p>Pouvoir plannifier une maintenance rapidement</p></li><li><p>Identifier les clients impactés par une maintenance ou une panne.</p></li><li><p>Identifier les faiblesses du réseau</p></li></ul></div></section></section>
+<section><section id="slide_graphs_are_everywhere"><h2>Graphs are everywhere !</h2></section><section id="slide_les_cas_d_utilisation"><h2>Les cas d&#8217;utilisation</h2><div class="imageblock" style=""><div class="content"><img src="assets/customer.jpg" alt="customer" height="800"></div></div></section><section id="slide_un_est_tout_tout_est_un"><h2>un est tout, tout est un</h2><div class="paragraph"><p><strong>Le monde est connecté</strong></p></div>
+<div class="imageblock" style=""><div class="content"><img src="assets/world-graph.png" alt="world graph" height="600"></div></div></section></section>
+<section><section id="slide_merci"><h2>Merci</h2></section><section id="slide_des_questions"><h2>Des questions ?</h2><div class="imageblock" style=""><div class="content"><img src="assets/questions.png" alt="questions"></div></div></section></section></div></div><script src="../reveal.js/lib/js/head.min.js"></script><script src="../reveal.js/js/reveal.js"></script><script>// See https://github.com/hakimel/reveal.js#configuration for a full list of configuration options
+Reveal.initialize({
+  // Display controls in the bottom right corner
+  controls: true,
+  // Display a presentation progress bar
+  progress: true,
+  // Display the page number of the current slide
+  slideNumber: false,
+  // Push each slide change to the browser history
+  history: true,
+  // Enable keyboard shortcuts for navigation
+  keyboard: true,
+  // Enable the slide overview mode
+  overview: true,
+  // Vertical centering of slides
+  center: true,
+  // Enables touch navigation on devices with touch input
+  touch: true,
+  // Loop the presentation
+  loop: false,
+  // Change the presentation direction to be RTL
+  rtl: false,
+  // Turns fragments on and off globally
+  fragments: true,
+  // Flags if the presentation is running in an embedded mode,
+  // i.e. contained within a limited portion of the screen
+  embedded: false,
+  // Number of milliseconds between automatically proceeding to the
+  // next slide, disabled when set to 0, this value can be overwritten
+  // by using a data-autoslide attribute on your slides
+  autoSlide: 0,
+  // Stop auto-sliding after user input
+  autoSlideStoppable: true,
+  // Enable slide navigation via mouse wheel
+  mouseWheel: false,
+  // Hides the address bar on mobile devices
+  hideAddressBar: true,
+  // Opens links in an iframe preview overlay
+  previewLinks: false,
+  // Theme (e.g., beige, black, league, night, serif, simple, sky, solarized, white)
+  // NOTE setting the theme in the config no longer works in reveal.js 3.x
+  //theme: Reveal.getQueryHash().theme || 'black',
+  // Transition style (e.g., none, fade, slide, convex, concave, zoom)
+  transition: Reveal.getQueryHash().transition || 'slide',
+  // Transition speed (e.g., default, fast, slow)
+  transitionSpeed: 'default',
+  // Transition style for full page slide backgrounds (e.g., none, fade, slide, convex, concave, zoom)
+  backgroundTransition: 'fade',
+  // Number of slides away from the current that are visible
+  viewDistance: 3,
+  // Parallax background image (e.g., "'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg'")
+  parallaxBackgroundImage: '',
+  // Parallax background size in CSS syntax (e.g., "2100px 900px")
+  parallaxBackgroundSize: '',
+
+  // The "normal" size of the presentation, aspect ratio will be preserved
+  // when the presentation is scaled to fit different resolutions. Can be
+  // specified using percentage units.
+  width: '100%',
+  height: 700,
+
+  // Factor of the display size that should remain empty around the content
+  margin: 0.1,
+
+  // Bounds for smallest/largest possible scale to apply to content
+  minScale: 0.2,
+  maxScale: 1.5,
+
+  // Optional libraries used to extend on reveal.js
+  dependencies: [
+      { src: '../reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+      { src: '../reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: '../reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      
+      { src: '../reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+      { src: '../reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+  ]
+});</script><script src="../themes/neo4j/assets/codemirror/lib/codemirror.js"></script><script src="../themes/neo4j/assets/codemirror/mode/cypher/cypher.js"></script><script src="../themes/neo4j/assets/codemirror/mode/javascript/javascript.js"></script><script src="../themes/neo4j/assets/codemirror/mode/shell/shell.js"></script><script src="../themes/neo4j/assets/codemirror/mode/properties/properties.js"></script><script src="../themes/neo4j/assets/codemirror/mode/xml/xml.js"></script><script src="../themes/neo4j/assets/codemirror/mode/sql/sql.js"></script><script src="../themes/neo4j/assets/codemirror/mode/python/python.js"></script><script src="../themes/neo4j/assets/codemirror/mode/clike/clike.js"></script><script src="../themes/neo4j/assets/codemirror.js"></script></body></html>

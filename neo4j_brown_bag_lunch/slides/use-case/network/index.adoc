@@ -1,7 +1,0 @@
-== Les réseaux informatiques
-
-=== Analyse d'impact chez SFR
-
-Modélisation de leur reseau physique dans Neo4j.
-
-image::assets/use-case/network/sfr.png[height="600"]
