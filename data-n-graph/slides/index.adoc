@@ -14,7 +14,7 @@ image::assets/me.JPG[height=500]
 * Ancien de l'IMA
 * **Graphe addicte**
 * Libérateur de données
-* contact@bsimard .com
+* benoit.simard@neotechnology.com
 * @logisima
 
 == La data
@@ -61,7 +61,7 @@ http://www.postgresqlfr.org/temoignages:le_bon_coin
 
 image::assets/acid.png[height=500]
 
-__Opposé à eventuellement consitant, mais distribué (BASE & CAP théorème) 
+__Opposé à eventuellement consistant, mais distribué (BASE & CAP théorème)__ 
 
 === La mouvance NoSQL
 
@@ -69,13 +69,13 @@ image::assets/nosql-graph.png[height=500]
 
 === Le monde ensembliste
 
-**Les relations sont calculés => dans le pire des cas cela revient à faire un produit cartésian des tables**
-
 image::assets/sql-joins.jpg[height=500]
 
-=== ! 
+=== RDBMS
 
-image::assets/rdbms.jpg[height=500]
+**Les relations sont calculés => dans le pire des cas cela revient à faire un produit cartésian des tables**
+
+image::assets/rdbms.png[height=500]
 
 === Les bases graphes
 
@@ -173,11 +173,14 @@ https://vimeo.com/110675062
 
 __Même principe qu'Uber pool__
 
-== L'analyse de réseaux
+== L'analyse des réseaux
 
+[class=split5050]
 === SFR
 
 image::assets/sfr.png[height="600"]
+
+**Etudes d'impactes**
 
 * Pouvoir plannifier une maintenance rapidement
 * Identifier les clients impactés par une maintenance ou une panne.
@@ -188,7 +191,6 @@ image::assets/sfr.png[height="600"]
 === Les cas d'utilisation
 
 image::assets/customer.jpg[height=800]
-
 
 === un est tout, tout est un
 

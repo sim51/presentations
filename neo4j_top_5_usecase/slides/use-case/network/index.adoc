@@ -13,7 +13,7 @@ image::assets/use-case/network/usecase-network-it.png[]
 * Permet de réaliser des analyses d'impacts en cas de panne
 * A l'inverse, voir les redondances du réseau
 
-=== Les défis lées aux réseaux
+=== Les défis liées aux réseaux
 
 **Résolution des problèmes sur un réseau**
 

@@ -16,7 +16,7 @@ Faire des recommandations efficaces repose sur une base qui comprend les relatio
 
 image::assets/use-case/recommandation/usecase-recommendation.png[]
 
-=== Les défis lées à la recommandation
+=== Les défis liées à la recommandation
 
 **Traiter de gros volumes de données et de relations pour comprendre le contexte**
 

@@ -14,7 +14,7 @@ image::assets/me.JPG[height=500]
 * Ancien de l'IMA
 * Graphe addicte
 * **Libérateur de données**
-* contact@bsimard.com
+* benoit.simard@association-libertic.org
 * @logisima
 
 === !

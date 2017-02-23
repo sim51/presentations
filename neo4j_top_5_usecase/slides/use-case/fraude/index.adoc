@@ -16,7 +16,7 @@ Bien qu’aucune mesure de détection de fraudes ne soit parfaite, il est possib
 
 image::assets/use-case/fraude/graph-database-fraud-detection.png[]
 
-=== Les défis lées à la détection de fraudes
+=== Les défis liées à la détection de fraudes
 
 **Effectuer une analyse complexe des liens pour découvrir les schémas de fraude**
 

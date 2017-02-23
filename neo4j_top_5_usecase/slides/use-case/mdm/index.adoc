@@ -22,7 +22,7 @@ Ces données sont :
 
 image::assets/use-case/mdm/usecase-master-data-management1.png[]
 
-=== Les défis lées au MDM
+=== Les défis liées au MDM
 
 **Jeux de données complexes et hiérarchiques**
 

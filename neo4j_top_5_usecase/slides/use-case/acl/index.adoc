@@ -10,7 +10,7 @@ image::assets/use-case/acl/ACL.png[]
 
 image::assets/use-case/acl/usecase-identity-access.png[]
 
-=== Les défis lées à la gestion des identités / accès
+=== Les défis liées à la gestion des identités / accès
 
 **Autorisations d’identité et d’accès hautement interconnectées**
 
