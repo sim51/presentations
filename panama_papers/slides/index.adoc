@@ -1,144 +1,128 @@
 :revealjs_width: '100%'
 :revealjs_customtheme: ../themes/neo4j/style/main.css
-:author: Benoit Simard (@logisima)
+:author: Breizh Camp 2017
 
-= Plongez dans les panama papers avec Neo4j
+= Les panama papers
 
-== Introduction
+== Bonjour a tous !
 
 [class="split5050"]
 === Benoit Simard
 
 image::assets/me.JPG[height=500]
 
-* Consultant Neo4j
-* benoit.simard@neotechnology.com
-* @logisima
 * Addicte aux graphes
-* Formateur
-
-=== Les sources de données
-
-Les sources de données de cette présentation proviennent des endroits suivants 
-
-* Les présentations de l'ICIJ 
-** Graph Connect Londre
-** Sud-web
-* https://www.reddit.com/r/IAmA/comments/4fi6ck/we_are_the_investigative_journalists_who_worked/[Reddit]
-* https://panamapapers.icij.org/
+* Libérateur de données
+* Consultant Neo4j
+* @logisima
+* benoit.simard@neotechnology.com
 
 == L'histoire
 
 === L'origine
 
+En **2015**, Un lanceur d'alerte partage des données avec le journal allemand **Süddeutsche Zeitung**
+
 image::assets/source.jpg[]
 
-=== La volumétrie
+=== La volumetrie
 
-C'est la plus large fuite de données de l'histoire, et de loin !
+C'est la plus grosse fuite de données de l'histoire, et de loin !
+
+**11,5 millions de documents** représentant **2,6To**
 
 image::assets/amount_of_data.png[width=800]
 
 === ICIJ
 
-**~190 journalistes dans plus de 65 pays**
+**International Consortium of Investigative Journalists**
 
 image::assets/icij.png[]
+**~200 journalistes** dans plus de **65 pays**
 
-Equipe de 12 personnes à temps plein (USA, Costa Rica, Venezuela, Germany, France, Spain) dont 50% travaillent sur l'analyse des données.
+Equipe de **12 personnes à temps plein** (USA, Costa Rica, Venezuela, Germany, France, Spain)
 
-== Les outils
+50% travaillent sur l'analyse des données
 
+=== Avril 2016
+
+Révélation de l'affaire des Panama Papers, et ouverture des données en mai.
+
+image::assets/panama-papers.gif[height=600]
+
+https://offshoreleaks.icij.org/pages/database
+
+=== Le bilan
+
+Un impact mondial, et qui continue toujours, avec l'implication de
+
+* **12** chefs d'etats
+* **128** dirigeants politiques ou hauts fonctionnaires
+* **14 000** societés, banques ou cabinets d'avocats
+* **511** banques liées directement
+* **150** procedures judiciaires dans **18** pays
+
+Les fondateurs de **Monsack Fonseca** ont été arrêtés en Février pour blanchiment d'argent.
+
+=== Prix Pulitzer
+
+**10 Avril 2017**
+
+Les panama papers ont gagné le prix Pulitzer pour leur invistigation et l'utilisation d'outils novateurs avec la collaboration de plus 300 journalistes repartis sur 6 continents.
+
+image::assets/Pulitzer.jpg[]
+
+== Comment ils ont fait ?
+
+[class="split5050"]
 === Le processus
 
-[graphviz]
-----
-digraph finite_state_machine {
-  rankdir=TB;
-  node [ fontsize=20, shape = Mrecord];
-  edge [ fontsize=20 ];
-
-    "Fichier brut";
-    "Texte brut";
-    "Métadonnées";
-    "Base de données";
-    "Explorer / Analyser";
-
-    "Fichier brut" -> "Texte brut";
-    "Fichier brut" -> "Métadonnées";
-    "Texte brut" -> "Base de données";
-    "Métadonnées" -> "Base de données";
-    "Base de données" -> "Explorer / Analyser";
-}
-----
-
-=== Le cloud à la rescousse
-
-Utilisation de Niux OCR pour récupérer le texte des documents, ainsi que d'autres outils pour établir des références croisées entre des millions de documents sur le nom des clients de Mossack Fonseca.
-
-image::assets/processing-time.png[height=400]
-
-* 3 millions de fichiers x 10 secondes/fichier => **1 année**
-* 1 année / 35 serveurs => **1,5 semaine**
-
-=== Blacklight
-
-Projet open-source de gestion des catalogues de bibliothèque, permettant de réaliser des **requêtes solr**
-
-image::assets/blacklight.png[]
-
-=== La stack technique
-
-* **Extraction des données non structurées :** Nuix OCR, ICIJ Extract (open source, Java: https://github.com/ICIJ/extract), leverages Apache Tika, Tesseract OCR and JBIG2-ImageIO.
-
-* **Extraction des données structurées :**  un peu de Python
-
-* **Base de données :** Apache Solr (open source, Java), Redis (open source, C), Neo4j (open source, Java)
-
-* **Application :** Blacklight (open source, Rails), Linkurious (closed source, JS)
-
-=== Linkurious
-
-image::assets/linkurious.png[]
-
-== Comment lier les données ?
-
-=== Des documents déconnectées
+image::assets/process.png[]
 
 image::assets/disconnected.png[width=1000]
 
-=== Des données connectées ?
 
-image::assets/graph.png[width=1000]
+=== OCR et Cloud
 
-=== C'est une histoire de contexte
+*3 millions* de fichiers x *10 secondes*/fichier = **1 année**
 
-image::assets/graph1.png[width=1000]
+1 année / 35 serveurs = **1,5 semaine**
 
-[class="split5050"]
-=== (graph)-[:ARE]->(everywhere)
+image::assets/processing-time.png[height=600]
 
-**Le monde est un graph, tout est connecté !**
+=== La stack technique
 
-image::assets/world-graph.png[]
+image::assets/technical-stack.png[]
 
-* les personnes, les lieux, les évènements
-* Les entreprises, le marché, les clients
-* les pays, l'histoire, les politiques
-* technologie, les réseaux, les machines, les utilisateurs
-* les applications, le code, les dépendances, l'architecture, le déploiement
-* ...
+=== La recherche des documents
 
-== Stocker & requêter
+Projet open-source de gestion des catalogues de bibliothèque, permettant de réaliser des **requêtes solr**
+http://projectblacklight.org/
 
-=== Le graphe
+image::assets/blacklight.png[]
+
+=== Le graph
+
+L'exploration et l'analyse des données connectées
+
+image::assets/linkurious.png[]
+
+== Neo4j
+
+=== Présentation
+
+* Existe depuis 2010
+* Base de données NoSql native graphe
+* Respecte les critères de l'ACID
+* Il n'y a pas schéma
+* Open-source
 
 image::assets/neo4j.png[]
 
 [class="split5050"]
-=== Modélisation en graphe
+=== Les graphes de propriétés
 
-image::assets/graph-model.png[]
+image::assets/graph1.png[]
 
 **Les noeuds**
 
@@ -152,93 +136,149 @@ image::assets/graph-model.png[]
 * Relient des noeuds avec un type et une direction
 * Peuvent avoir des propriétés
 
-=== Tout est pattern
+[class="split5050"]
+=== La gestion des relations
 
-image::assets/cypher-pattern.png[]
-
-=== Les étapes à l'analyse des données
-
-. Obtenir les documents
-. Classifier les documents (Scan, OCR, métadonnées)
-. Etablir une modélisation avec les entités, leurs relations et les propriétés
-. Développer des analyseurs, des parseurs, des règles permettant de récupérer les noms des entités
-. Parser les documents et stocker les données trouvées ainsi que les méta-données
-. Déduire les relations entre les entités (grace au contexte)
-. Calculer les similitudes, trouver les realtions transitivités, triangulaire
-. Analyser (cypher) et explorer (Linkurious)
-
-== Les Panama Papers
+image::assets/whiteboard.png[]
+image::assets/rdbms.png[]
 
 [class="split5050"]
-=== Le modèle
+=== Les requêtes connectés
+
+image::assets/query-time.jpg[]
+image::assets/sql-joins.jpg[]
+
+[class="split5050"]
+=== Exemple
+
+image::assets/graph-picture.png[]
+
+image::assets/graph1.png[]
+
+[class="split5050"]
+=== Cypher
+
+* Langage déclaratif de pattern-matching
+* SQL-like syntaxe
+* Fait pour les graphes
+
+image::assets/cypher.jpg[]
+
+=== Une histoire de pattern
+
+image::assets/pattern.png[width=800]
+
+=== Cypher
+
+image::assets/cypher-pattern.png[width=800]
+
+== Revenons au Panama Papers
+
+[class="split5050"]
+=== Le modèle
 
 image::assets/panama-model.png[]
 
-* Modèle simpliste (4 entités et 5 relations)
-* On ne connait que le modèle publié
-* Il manque : les documents, les metadatas, les relations familliales
-* Les connections aux données publiques (opendata)
-* Contient des doublons
-* Les informations de relation sont stockées sur les entités
+* **Entity** : L'entité offshore
+* **Officer** : Une personne (morale ou physique) ayant un lien avec l'entité offshore
+* **Intermediary** : Un intermédiaire, généralement un cabinet d'avocat
+* **Address** : Une addresse
 
-=== Exemple : Président Azerbaijan - Ilham Aliyev
+=== Quelques stats
 
-image::assets/azerbaijan.jpg[]
+[source,cypher]
+----
+MATCH (n:Entity) RETURN count(*);
+MATCH (n:Officer) RETURN count(*);
+MATCH (n:Intermediary) RETURN count(*);
+MATCH (n:Address) RETURN count(*);
+----
+
+=== Le top 20 des intermédiaires
+
+[source,cypher]
+----
+MATCH (i:Intermediary) WHERE size( (i)--() ) > 100
+MATCH (i)-[:INTERMEDIARY_OF]->(entity:Entity)
+RETURN i.name as intermediary, count(*) as count
+ORDER BY count DESC LIMIT 20
+----
+
+=== Mossack Fonseca
+
+Regardons les entreprises offshores créées par Mossack Fonseca
+
+[source,cypher]
+----
+MATCH (i:Intermediary)-[r:INTERMEDIARY_OF]->(e:Entity)
+WHERE i.name CONTAINS "MOSSACK FONSECA"
+RETURN i, r, e LIMIT 100
+----
+
+=== Les paradis fiscaux populaires en France
+
+[source,cypher]
+----
+MATCH (o:Officer)-->(e:Entity)<-[:INTERMEDIARY_OF]-(i:Intermediary)
+WHERE o.country_codes CONTAINS 'FRA'
+RETURN e.jurisdiction_description AS jurisdiction, count(*) AS number
+ORDER BY number DESC LIMIT 10
+----
+
+=== Les couples gagnants
+
+En investigation, il est important d'identifier les gens qui opèrent ensemble
+
+[source,cypher]
+----
+MATCH (o1:Officer)-[r1]->(e:Entity)<-[r2]-(o2:Officer)
+WHERE id(o1) < id(o2)
+AND size( (o1)-->() ) > 2 AND size( (o2)-->() ) > 2
+WITH o1,o2, count(*) as freq, collect(e.name)[0..10] as entities
+WHERE freq > 2
+RETURN o1.name, o2.name, freq, entities
+ORDER BY freq DESC
+LIMIT 10
+----
+
+=== Ces petits chemins ...
+
+Mais aussi de voir les liens possible entre deux personnes
+
+[source,cypher]
+----
+MATCH (a:Officer),(b:Officer)
+WHERE a.name CONTAINS 'Smith'
+  AND b.name CONTAINS 'Grant'
+MATCH p=allShortestPaths((a)-[:OFFICER_OF|:INTERMEDIARY_OF|:REGISTERED_ADDRESS*..10]-(b))
+RETURN p
+LIMIT 50
+----
 
 == Pour aller plus loin
 
-=== Suivez le guide
+=== Panama sandbox
 
-**A taper dans le browser Neo4j**
+https://neo4j.com/sandbox-v2
 
-[source,shell]
-----
-:play http://guides.neo4j.com/graphgist/panama_papers.html
-----
+image::assets/sandbox.png[]
 
-=== Chargez les données !
+=== Graph Connect Londres
 
-https://offshoreleaks.icij.org/pages/database
+Code promo **FRIEND50** ou **BOGOFGCE**
 
-[source, shell]
-----
-./neo4j-community-3.0.1/bin/neo4j-import --into graph.db \
-  --nodes:Address ${data_dir}/Addresses.csv \
-  --nodes:Entity ${data_dir}/Entities.csv \
-  --nodes:Intermediary ${data_dir}/Intermediaries.csv \
-  --nodes:Officer ${data_dir}/Officers.csv \
-  --relationships ${data_dir}/all_edges_header.csv,${data_dir}/all_edges.csv \
-  --ignore-empty-strings true \
-  --skip-duplicate-nodes true \
-  --skip-bad-relationships true \
-  --bad-tolerance  1500 \
-  --multiline-fields=true
-----
-
-=== En savoir plus
-
-* **Neo4j Blog**
-** http://neo4j.com/blog/panama-papers/
-** http://neo4j.com/blog/analyzing-panama-papers-neo4j/
-
-* **ICIJ**
-** https://panamapapers.icij.org/
-** https://panamapapers.icij.org/the_power_players/
-** https://panamapapers.icij.org/graphs/
-
-* **SZ**
-** http://panamapapers.sueddeutsche.de/en/
-
-* **Guardian**
-** http://www.theguardian.com/news/series/panama-papers
+image::assets/graph-connect.png[]
+image::assets/graph-connect-agenda.png[]
 
 == Merci
 
 === Des questions ?
 
-* **Twitter:** Suivez les comptes @neojFr & @neo4j
-* **Google group :**  Avec les groupes Neo4jFr & Neo4j
-* **Stackoverflow :**  avec les tags neo4j & cypher
-* **Slack :** http://neo4j-users-slack-invite.herokuapp.com/
-
 image::assets/questions.png[]
+
+=== En savoir plus
+
+** http://neo4j.com/blog/panama-papers/
+** https://panamapapers.icij.org/
+** http://panamapapers.sueddeutsche.de/en/
+** http://www.theguardian.com/news/series/panama-papers
