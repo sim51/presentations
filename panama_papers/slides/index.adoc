@@ -2,7 +2,7 @@
 :revealjs_customtheme: ../themes/neo4j/style/main.css
 :author: Breizh Camp 2017
 
-= Les panama papers
+= Les Panama Papers
 
 == Bonjour a tous !
 
@@ -11,13 +11,13 @@
 
 image::assets/me.JPG[height=500]
 
+* Consultant Neo4j
 * Addicte aux graphes
 * Libérateur de données
-* Consultant Neo4j
 * @logisima
 * benoit.simard@neotechnology.com
 
-== L'histoire
+== Revenons 2 ans en arrière
 
 === L'origine
 
@@ -46,9 +46,9 @@ Equipe de **12 personnes à temps plein** (USA, Costa Rica, Venezuela, Germany, 
 
 === Avril 2016
 
-Révélation de l'affaire des Panama Papers, et ouverture des données en mai.
+Révélation des Panama Papers, et ouverture des données en mai.
 
-image::assets/panama-papers.gif[height=600]
+image::assets/people.png[height=600]
 
 https://offshoreleaks.icij.org/pages/database
 
@@ -145,11 +145,11 @@ image::assets/rdbms.png[]
 [class="split5050"]
 === Les requêtes connectés
 
-image::assets/query-time.jpg[]
+image::assets/query-time.jpg[height=600]
 image::assets/sql-joins.jpg[]
 
 [class="split5050"]
-=== Exemple
+=== Local vs Global
 
 image::assets/graph-picture.png[]
 
@@ -215,13 +215,24 @@ WHERE i.name CONTAINS "MOSSACK FONSECA"
 RETURN i, r, e LIMIT 100
 ----
 
-=== Les paradis fiscaux populaires en France
+=== Les paradis fiscaux populaires des francais
 
 [source,cypher]
 ----
 MATCH (o:Officer)-->(e:Entity)<-[:INTERMEDIARY_OF]-(i:Intermediary)
 WHERE o.country_codes CONTAINS 'FRA'
 RETURN e.jurisdiction_description AS jurisdiction, count(*) AS number
+ORDER BY number DESC LIMIT 10
+----
+
+=== Les intermédiaire populaire a Paris
+
+[source,cypher]
+----
+MATCH (a:Address)<-[:REGISTERED_ADDRESS]-(o:Officer),
+(o)-->(e:Entity)<-[:INTERMEDIARY_OF]-(i:Intermediary)
+WHERE a.address CONTAINS 'Paris' AND a.address CONTAINS 'France'
+RETURN i.name AS intermediary, count(DISTINCT e) AS number
 ORDER BY number DESC LIMIT 10
 ----
 
