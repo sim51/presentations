@@ -1,6 +1,6 @@
 :revealjs_width: '100%'
 :revealjs_customtheme: ../themes/neo4j/style/main.css
-:author: Breizh Camp 2017
+:author: PHP Tour 2017
 
 = Les Panama Papers
 
@@ -44,15 +44,9 @@ Equipe de **12 personnes à temps plein** (USA, Costa Rica, Venezuela, Germany, 
 
 50% travaillent sur l'analyse des données
 
-=== Avril 2016
-
-Révélation des Panama Papers, et ouverture des données en mai.
-
-image::assets/people.png[height=600]
-
-https://offshoreleaks.icij.org/pages/database
-
 === Le bilan
+
+Révélation des Panama Papers en Avril 2016, et ouverture des données en mai.
 
 Un impact mondial, et qui continue toujours, avec l'implication de
 
@@ -94,30 +88,7 @@ image::assets/processing-time.png[height=600]
 
 image::assets/technical-stack.png[]
 
-=== La recherche des documents
-
-Projet open-source de gestion des catalogues de bibliothèque, permettant de réaliser des **requêtes solr**
-http://projectblacklight.org/
-
-image::assets/blacklight.png[]
-
-=== Le graph
-
-L'exploration et l'analyse des données connectées
-
-image::assets/linkurious.png[]
-
 == Neo4j
-
-=== Présentation
-
-* Existe depuis 2010
-* Base de données NoSql native graphe
-* Respecte les critères de l'ACID
-* Il n'y a pas schéma
-* Open-source
-
-image::assets/neo4j.png[]
 
 [class="split5050"]
 === Les graphes de propriétés
@@ -137,40 +108,16 @@ image::assets/graph1.png[]
 * Peuvent avoir des propriétés
 
 [class="split5050"]
-=== La gestion des relations
+=== Des relations locales
 
 image::assets/whiteboard.png[]
 image::assets/rdbms.png[]
 
 [class="split5050"]
-=== Les requêtes connectés
-
-image::assets/query-time.jpg[height=600]
-image::assets/sql-joins.jpg[]
-
-[class="split5050"]
-=== Local vs Global
-
-image::assets/graph-picture.png[]
-
-image::assets/graph1.png[]
-
-[class="split5050"]
-=== Cypher
-
-* Langage déclaratif de pattern-matching
-* SQL-like syntaxe
-* Fait pour les graphes
-
-image::assets/cypher.jpg[]
-
-=== Une histoire de pattern
-
-image::assets/pattern.png[width=800]
-
 === Cypher
 
 image::assets/cypher-pattern.png[width=800]
+image::assets/pattern.png[width=800]
 
 == Revenons au Panama Papers
 
@@ -273,13 +220,6 @@ LIMIT 50
 https://neo4j.com/sandbox-v2
 
 image::assets/sandbox.png[]
-
-=== Graph Connect Londres
-
-Code promo **FRIEND50** ou **BOGOFGCE**
-
-image::assets/graph-connect.png[]
-image::assets/graph-connect-agenda.png[]
 
 == Merci
 
