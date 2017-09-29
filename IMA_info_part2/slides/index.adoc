@@ -1,0 +1,186 @@
+:revealjs_width: '100%'
+:revealjs_customtheme: ../themes/neo4j/style/main.css
+:author: Benoit Simard
+
+= Algorithme et programmation
+
+Cours 2
+
+== Pré-Histoire
+
+=== 2500 AV JV 
+
+Le boulier
+
+image::assets/boulier.jpg[]
+
+=== 1645 - Processeur
+
+Invention de la **pascaline** par Pascal
+
+__le permettait d’additionner et de soustraire deux nombres d'une façon directe et de faire des multiplications et des divisions par répétitions.__
+
+image::assets/pascaline.jpg[height=500]
+
+=== 1725 - mémoire & programme
+
+Bouchon invente le **ruban perforé** pour le métier à tisser
+
+image::assets/ruban.jpg[]
+
+=== 1802 
+
+La carte perforé
+
+image::assets/carte_perfore.jpg[]
+
+=== 1822 - Concept ordinateur
+
+Projet de **machine analytique** par Babbage
+
+image::assets/babbage.jpg[]
+
+== Histoire
+
+=== 1940-45
+
+Les ordinateurs à lampes
+
+__MarkI, ENIAC__
+
+image::assets/ordi_lampe.jpg[height=500]
+
+=== 1950-60 : Industrialisation
+
+Le transistors circuits imprimés
+
+image::assets/transistor.jpg[height=500]
+
+=== 1970 : Miniaturisation
+
+Les premiers micro-ordinateurs
+
+image::assets/Apple_I.jpg[height=500]
+
+=== 1980 : Démocratisation 
+
+Interfaces graphiques
+
+image::assets/Apple_lisa.jpg[]
+
+=== 1990 : Internet
+
+image::assets/modem.jpg[height=500]
+
+== Aujourdh'hui
+
+=== Ordinateur, laptop
+
+image::assets/computer.jpg[height=500]
+
+=== Console
+
+image::assets/console.jpg[]
+
+=== Smartphone, tablette
+
+image::assets/smartphone.jpg[]
+
+=== Objets connectés
+
+image::assets/nabaztag.gif[]
+
+=== Big Data
+
+image::assets/matrix.gif[]
+
+=== Deux cochons qui discutent
+
+image::assets/cochon.jpg[height=500]
+
+=== Finissent ...
+
+image::assets/saucisson.jpg[]
+
+== Et demain
+
+=== Les robots
+
+image::assets/amazon-drone.jpg[height=500]
+
+=== L'homme augmenté
+
+image::assets/ghots-in-the-shell.jpg[]
+
+=== Et les problèmes ...
+
+...qui viennent avec 
+
+image::assets/pacemaker.png[]
+
+== L'ordinateur
+
+=== Hardware
+
+image::assets/ordi.png[]
+
+=== Carte mère
+
+image::assets/motherboard.jpeg[]
+
+=== Software
+
+image::assets/logiciel.png[]
+
+=== Fonctionnement
+
+* un ordinateur est une machine numérique qui traite les informations à partir d'un **système physique bi-stable** (0-1 : le binaire)
+
+* Toutes les données et instruction stockées dans un ordinateur correspondent a des **motifs binaires**
+
+=== Un bit et un octet
+
+* Un **bit** est l'unité la plus simple en informatique, il ne peut prendre que deux valeurs : 0 ou 1
+
+* Un octet correspond a 8 bits, ce qui permet de représenter 2 puissance 8 nombres, soit 256 valeurs
+
+=== binaire
+
+image::assets/binaire.jpg[]
+
+=== Stockage
+
+* 1 octet = 8 bits
+* 1 Ko = 1000 octets
+* 1 Mo = 1000 Ko
+* 1 Go = 1000 Mo
+* 1 To = 1000 Go
+* 1 Po = 1000 To
+
+=== ASCII
+
+image::assets/ascii.png[]
+
+=== UTF-16
+
+* Codage des caractères sur **16 bits**.
+* Utilisez par Java
+* Permet d'avoir l'alphabet grec, les emoji, les kanji , ...
+
+=== Processeur
+
+* Le traitement et la manipulation des informations sont assurés par les microprocesseurs
+
+* on appelle cycle de base la vitesse d'exécution d'une instruction élémentaire. (10^-10 seconde)
+
+* L'horlge est l'instrument qui donne les impulsions nécessaires àl'éxecution d'un clycle de base
+
+La vitesse du processeur est exprimée en Hertz
+
+=== La programmation
+
+image::assets/programmation.png[]
+
+=== Démarche de la programmation 
+
+image::assets/cycle_programmation.png[]

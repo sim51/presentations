@@ -1,0 +1,74 @@
+:revealjs_width: '100%'
+:revealjs_customtheme: ../themes/neo4j/style/main.css
+:author: Benoit Simard (@logisima)
+
+= Graph Meetup Paris
+
+Septembre 2017
+
+== Graph Meetup Paris
+
+=== Bienvenue
+
+Et merci d'etre venu malgré les grêves.
+
+image::assets/greve.jpg[]
+
+=== Sponsor
+
+Merci a Devoteam pour la salle !
+
+image::assets/devoteam.png[]
+
+=== 9 octobre 2017
+
+**InterActor** 
+
+Du graphe aux tableaux de bord, il n'y a qu'un pas !
+
+image::assets/interactor.jpeg[]
+
+=== We need you !
+
+**Soumettez une présentation ou une idée**
+
+__via meetup.com ou par email benoit@neo4j.com__
+
+image::assets/you.jpg[]
+
+=== Plus de 2000 Membres
+
+image::assets/users.jpg[]
+
+=== 45 Evènements
+
+**45 évènements depuis sa création**
+
+image::assets/calendar.png[]
+
+=== Septembre 2012
+
+**Happy Birthday**
+
+image::assets/cake.png[height=400]
+
+[class=split5050]
+=== Agenda
+
+**RDF vs Graphe de propriété** +
+Jésus Barrasa +
+__45min__
+
+image::assets/Jesus.png[]
+
+**Efficient Graph Algorithms in Neo4j** +
+Michael Hunger +
+45min
+
+image::assets/michael.jpg[]
+
+
+
+
+
+

@@ -1,0 +1,324 @@
+:revealjs_width: '100%'
+:revealjs_customtheme: ../themes/neo4j/style/main.css
+:author: Benoit Simard
+
+= Java
+
+Cours 4
+
+== Les conditions
+
+=== if / else
+
+La condition doit renvoyer un **boolean** `true` / `false`
+
+[source,java]
+---
+if( condition ) {
+    // Exécution du code si condition remplie
+}
+else {
+// Exécution du code si la condition n'est pas remplie
+}
+---
+
+=== Les opérateurs logiques
+
+* `==` : permet de tester l'égalité.
+* `!=` : permet de tester l’inégalité.
+* `<` : strictement inférieur.
+* `<=` : inférieur ou égal.
+* `>` : strictement supérieur.
+* `>=` : supérieur ou égal.
+* `&&` : l'opérateur ET.
+* `||` : le OU. Même combat que le précédent.
+
+=== L'algèbre de Boole
+
+**La conjonction**
+
+* 1 ^ 1 = 1
+* 0 ^ 0 = 0
+* 1 ^ 0 = 0
+* 0 ^ 1 = 0
+
+=== L'algèbre de Boole
+
+**La disjonction**
+
+* 1 v 1 = 1
+* 0 v 0 = 0
+* 1 v 0 = 1
+* 0 v 1 = 1
+
+=== L'algèbre de Boole
+
+**La négation**
+
+* ~(A ^ B) = ~A v ~B
+* ~(A V B) = ~A ^ ~B
+
+=== Exemple 
+
+[source,java]
+----
+int i = 58;
+
+if(i < 100 && i > 50) {
+  System.out.println("Le nombre est dans l'intervalle.");
+}
+else{
+  System.out.println("Le nombre n'est pas dans l'intervalle.");
+}
+----
+
+=== For
+
+[source,java]
+----
+for(int i = 1; i <= 10; i++) {
+
+  System.out.println("Voici la ligne "+i);
+  
+}
+----
+
+=== Switch
+
+[source,java]
+----
+switch (/*Variable*/) {
+
+  case /*Argument*/:
+    /*Action*/;
+    break;        
+    
+  default:
+    /*Action*/;         
+    break;
+}
+----
+
+=== Example
+
+[source,java]
+----
+int note = 10; //On imagine que la note maximale est 20
+
+switch (note) {
+  case 0:
+    System.out.println("Ouch !");
+    break;
+  case 10:
+    System.out.println("Vous avez juste la moyenne.");
+    break;
+  case 20:
+    System.out.println("Parfait !");
+    break;
+  default:
+    System.out.println("Il faut davantage travailler.");
+}
+----
+
+=== While
+
+[source,java]
+----
+while (/* Condition */) {
+
+  //Instructions à répéter
+  
+}
+----
+
+=== Example
+
+[source,java]
+----
+int a = 1, b = 15;
+while (a < b) {
+
+  System.out.println("coucou " + a + " fois !!");
+  a++;
+  
+}
+----
+
+=== Do while
+
+[source,java]
+----
+do {
+
+  //Instructions
+  
+} while(a < b);
+----
+
+=== Exemple
+
+[source,java]
+----
+int a = 1, b = 15;
+do {
+
+  System.out.println("coucou " + a + " fois !!");
+  a++;
+  
+} while(a < b);
+----
+
+=== Java - programmation orienté objet
+
+Tout en java commence par une **classe**, qui représente la définition d'un objet.
+
+[source,java]
+----
+public class MaClasse {
+
+    // corps de la classe
+    
+}
+----
+
+=== L'instance - l'objet
+
+**Instancier** une classe, permet de créer un objet correspond à la définition de la classe.
+
+[source,java]
+----
+MaClasse obj = new MaClasse();
+----
+
+
+=== Exemple
+
+[source,java]
+----
+public class Point{
+
+   //Variable de l'objet
+   private double x ;
+   private double y ;
+
+   /*
+    * Constructeur par défaut
+    */
+   public Point(double x , double y){
+      this.setX(x) ;
+      this.setY(y) ;
+   }
+
+
+   //Accesseurs correspondant à la variable x.
+   public double getX(){
+      return this.x ;
+   }
+   
+   public void setX(double x){
+      this.x = x ;
+   }
+
+   //Accesseurs correspondant à la variable y.
+   public double getY(){
+      return this.y ;
+   }
+   
+   public void setY(double y){
+      this.y = y ;
+   }
+
+   public void symetrieSelonX(){
+      this.getY() = -this.getY() ;
+   }
+
+   public void symetrieSelonY(){
+      this.getX() = -this.getX() ;
+   }
+
+}
+----
+
+=== Le constructeur
+
+C'est la méthode qui sert à créer une instance (ie un objet). Sa déclaration est particulière puisqu’un constructeur ne retourne rien.
+
+**Une classe peut avoir plusieurs constructeu**
+
+[source,java]
+----
+public class Point{
+
+   //Variable de l'objet
+   private double x ;
+   private double y ;
+
+   /*
+    * Constructeur 1
+    */
+   public Point(double x , double y){
+      this.setX(x) ;
+      this.setY(y) ;
+   }
+   
+   /*
+    * Constructeur 2
+    */
+   public Point(){
+      this.setX(0) ;
+      this.setY(0) ;
+   }
+}
+----
+
+=== Le mot this
+
+ Le `this` n’est pas des plus simples à comprendre. 
+ 
+ Ce terme représente la future l'objet.  Ainsi `this` pointe déjà vers un'objet. La première utilisation que l’on peut remarquer, est celle qui en est faite dans le constructeur avec argument, où les arguments portent le même nom que les variables d'instance mais ces dernières sont différenciées par l'apparition de this devant.
+
+
+=== Private, Public & protected
+
+** *Public:** accessible par toutes les classes ;
+* **Protected:** accessibles par toutes les classes héritées et les classes du même paquetage, inaccessibles par les autres ;
+* **Private :** inaccessible par toute autre classes.
+* **static :** permet  de spécifier des variables ou des méthodes de classe, directement accessible sans construction d'objet.
+
+=== Exemple de programme
+
+[source,java]
+----
+import java.util.Scanner;
+
+public class MonProgramme {
+
+    public static void main() {
+
+        String prenom;
+        char reponse = 'O';
+        Scanner sc = new Scanner(System.in);
+        while (reponse == 'O') {
+
+            System.out.println("Donnez un prénom : ");
+            prenom = sc.nextLine();
+            System.out.println("Bonjour " +prenom+ ", comment vas-tu ?");                        
+            //Sans ça, nous n'entrerions pas dans la deuxième boucle
+            reponse = ' ';
+                                    
+            //Tant que la réponse n'est pas O ou N, on repose la question
+            while(reponse != 'O' && reponse != 'N') {
+                //On demande si la personne veut faire un autre essai
+                System.out.println("Voulez-vous réessayer ? (O/N)");
+                reponse = sc.nextLine().charAt(0);
+            }
+        }
+        System.out.println("Au revoir…");
+    }
+}
+----
+
+=== A voir
+
+* Héritage
+* Création de méthode

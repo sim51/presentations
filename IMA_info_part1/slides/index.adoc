@@ -1,0 +1,163 @@
+:revealjs_width: '100%'
+:revealjs_customtheme: ../themes/neo4j/style/main.css
+:author: Benoit Simard
+
+= Algorithme et programmation
+
+Cours 1
+
+== Présentation
+
+[class="split5050"]
+=== Benoit Simard
+
+image::assets/me.JPG[height=500]
+
+* IMA XV
+* Graphe addicte
+* Libérateur de données et de code
+* Vacataire depuis 2010
+* logisima@google.com
+* @logisima
+
+=== Et vous ?
+
+* Nom, Prénom
+* Vous étiez où l'année dernière 
+* Pourquoi l'IMA ?
+* Vos projets pour l'avenir ?
+
+
+=== C'est quoi ce cours ?
+
+**Algorithme et Programmation**
+
+* Devenir autonome en algorithmique
+* Savoir traduire un algorithme en Java
+* Commencer la programmation Objet
+
+=== Le plan
+
+**34h de folie :)**
+
+* Découverte de l'algorithmique
+* Traduction en Java
+* Les tableaux
+* Les objets et classes
+
+=== Comment réussir 
+
+**Etre attentif ...**
+
+image::assets/focus.gif[]
+
+=== Comment réussir (2)
+
+**S'entraider !**
+
+Vous allez souvent travailler en binome
+
+image::assets/entraide.gif[]
+
+=== Comment réussir (3)
+
+**Faire par soi-même**
+
+image::assets/entraide.gif[]
+
+=== Comment réussir (4)
+
+**Ne pas hésiter a poser des questions !**
+
+image::assets/DIY.gif[]  
+
+=== Comment réussir (5)
+
+**Savoir chercher de l'aide sur le net**
+
+* developpez.com 
+* openclassroom.com
+
+
+== L'algorithmique
+
+=== Définitions
+
+**algorithmique**
+
+__L'algorithmique est l'étude et la production de règles et techniques qui sont impliquées dans la définition et la conception d'algorithmes, c'est-à-dire de processus systématiques de résolution d'un problème permettant de décrire précisément des étapes pour résoudre un problème algorithmique.__
+
+**algorithme**
+
+__Un algorithme est une suite finie et non ambiguë d’opérations ou d'instructions permettant de résoudre un problème ou d'obtenir un résultat__
+
+__Merci wikipédia__
+
+=== Savoir lire, écrire, compoter et coder !
+
+Apprendre à lire et écrire du code est **incontournable** pour la compréhension le monde qui nous entoure.
+
+image::assets/matrix.gif[]
+
+Ne laisser pas la technologie vous échapper.
+
+
+=== Algo 1
+
+image::assets/algo1.png[]
+
+=== Algo 2
+
+image::assets/algo2.png[]
+
+=== Algo 3
+
+image::assets/algo3.png[]
+
+=== Algo 4
+
+image::assets/algo4.png[]
+
+=== Algo 5
+
+image::assets/algo5.png[]
+
+=== Algo 6
+
+image::assets/algo6.png[]
+
+=== Fizz Buzz
+
+Etant donnée un nombre, si c'est un multiple de 3 on affiche fizz, si c'est un multiple de 5 on affiche buzz, et sinon j'affiche le chiffre
+
+__1, 2, Fizz, 4, Buzz, Fizz, 7, 8, Fizz, Buzz, 11, Fizz, 13__
+
+=== Algo 7
+
+image::assets/algo7.png[]
+
+=== Algo 8
+
+image::assets/algo8.png[]
+
+=== Algo 9
+
+Ecrire un programme qui demande l'année de naissance de l'tulisateur et répond "vous êtes mineur" ou "vous êtes majeur" suivant le cas.
+
+=== Algo 10
+
+Ecrire un algorithme qui, à partir de la donnée de la longueur de chacun des trois cotés d’un triangle, teste si le triangle est rectangle.
+
+=== Algo 11
+
+Ecrire un algorithme qui calcule la somme des 20 premiers nombres impairs
+
+=== Algo 12
+
+Ecrire un algorithme permettant le calcul du PGCD (plus grand diviseur commun) de deux nombres entrées par l’utilisateur
+
+== Merci
+ 
+=== Des questions ?
+
+image::assets/questions.png[]

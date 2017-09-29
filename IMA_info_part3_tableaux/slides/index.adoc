@@ -1,0 +1,76 @@
+:revealjs_width: '100%'
+:revealjs_customtheme: ../themes/neo4j/style/main.css
+:author: Benoit Simard
+
+= Les tableaux
+
+Cours 3
+
+== Les tableaux
+
+=== Preambule
+
+* On a parfois besoin de définir et de manipuler un **grand nombre de variables de même type** au sein d'un algorithme
+
+* De même, on peut vouloir **appliquer un traitement uniforme** à cet ensemble de variables
+
+** Les tableaux permettre de répondre simplement à ce type de problème **
+
+=== Définition
+
+Un **tableau** est un **ensemble de variables de même type**, désignées par un **nom unique**.
+
+Chaque élément étant repéré par un (ou plusieurs) **indice(s)** précisant sa position au sein de l'ensemble.
+
+image::assets/tableau.png[]
+
+=== Exemple pseudocode
+
+image::assets/tableau_code.png[]
+
+=== Tableau à une dimension
+
+* **Déclaration :** __nomTableau__:tableau de __typeElement__
+
+* **Utilisation:** `nomTableau[i]`
+
+=== Tableau à une dimension en java
+
+* **Déclaration :** `Type[] nomTableau`
+
+* **Création : ** `Type[] nomTableau = new Type[10]`
+** `new` permet de créer le tableau
+** Il faut impérativement définir la taille du tableau
+
+* **Utilisation :** `nomTableau[i]`
+
+=== Exemple en Java
+
+**En java les cases du tableau sont indicées entre 0 et (nombre de cases -1)**
+
+image::assets/tableau_java.png[]
+
+=== Compléments Java
+
+* On peut obtenir la **longueur** d'un tableau via la méthode `length`.
+
+* On peut **créer** et **initialiser** un tableau en même temps : `int[] monTableau = {1,2,3,4};`
+
+=== Tableau à N dimension
+
+* **Déclaration :** __nomTableau__:tableau à __x__ diemsions de __typeElement__
+
+* **Utilisation:** `nomTableau[i][j][k]..[z]`
+
+=== Tableau à N dimension en java
+
+* **Déclaration :** `Type[][][]..[] nomTableau`
+
+* **Création : ** On crér le tableau sur la première dimension, puis chaque sous tableau, ...
+
+* **Utilisation :** `nomTableau[i][j][k]..[z]`
+
+=== Exemple en java
+
+image::assets/tableau_java_2.png[]
+
