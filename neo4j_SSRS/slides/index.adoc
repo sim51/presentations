@@ -1,0 +1,81 @@
+:revealjs_width: '100%'
+:revealjs_customtheme: ../themes/neo4j/style/main.css
+:author: Benoit Simard (@logisima)
+
+= Neo4j et MS BI
+
+== Neo4j et MS BI
+
+=== Microsoft BI
+
+ * **SSRS :** l'outil permettant de générer les rapports
+ * **SSIS :** l'ETL pour injecter des données dans SQL Server
+ * **SSAS :** l'outil permettant de générér ds cube OLAP
+ 
+
+== Intégration a SSIS
+ 
+=== ODBC - JDBC
+
+image::assets/odbc-jdbc.png[]
+
+* **Neo4j** dispose d'un driver **JDBC** : https://github.com/neo4j-contrib/neo4j-jdbc
+* **SSIS** dispose de connecteur **ODBC**
+* **Easysoft** a développé un pont **ODBC-JDBC** (http://www.bsimard.com/2015/06/04/neo4j-odbc.html)
+
+=== HTTP
+
+* **Neo4j** dispose d'une **API REST**
+* La société **zappysys** a réalisé un connecteur HTTP (http://zappysys.com/products/ssis-powerpack/ssis-rest-api-web-service-task)
+
+== Intégration a SSRS
+
+=== API XML
+
+**SSRS** dispose d'un connecteur **XML** qui permet de récupérer un fichier XML en HTTP
+
+=== Plugin Neo4j XML
+
+https://github.com/sim51/neo4j-plugin-xml
+
+Un jar a déployer dans le répertoire `plugins` de Neo4j.
+
+* Création d'un nouveau `endpoint`
+* Gère le `POST` avec un paramêtre `query`
+* Exécute la requête et renvoie un fichier `XML`
+
+
+=== Exemple 
+
+[source,shell]
+----
+$>curl -u neo4j:admin  http://localhost:7474/xml/cypher -d 'query=MATCH (n:Person) RETURN n.name LIMIT 10'
+<?xml version="1.0" encoding="utf-8"?>
+<result><row><n.name>Keanu Reeves</n.name></row><row><n.name>Carrie-Anne Moss</n.name></row><row><n.name>Laurence Fishburne</n.name></row><row><n.name>Hugo Weaving</n.name></row><row><n.name>Andy Wachowski</n.name></row><row><n.name>Lana Wachowski</n.name></row><row><n.name>Joel Silver</n.name></row><row><n.name>Emil Eifrem</n.name></row><row><n.name>Charlize Theron</n.name></row><row><n.name>Al Pacino</n.name></row></result>
+----
+
+=== Configuration SSRS - 1
+
+Créer une datasource de type `XML` avec comme chaine de connection, l'url du endpoint XML
+
+image::assets/datasource-1.PNG[]
+
+=== Configuration SSRS - 2
+
+Une fois la datasource enregistrer, on peut créer un dataset.
+
+image::assets/dataset-1.PNG[]
+
+=== Configuration SSRS - 3
+
+Ajouter le paramètre `query` correspondant à la requête Cypher. Celle-ci doit être renseignée selon le format `="MATCH (n) RETURN n LIMIT 10"`
+
+image::assets/dataset-2.PNG[]
+
+=== Configuration SSRS - 4
+
+renseigner les champs du dataset
+
+image::assets/dataset-3.PNG[]
+
+
