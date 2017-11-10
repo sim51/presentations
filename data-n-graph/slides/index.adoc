@@ -6,10 +6,13 @@
 
 == Presentation
 
-[class="split5050"]
 === Benoit Simard
 
+==== !
+
 image::assets/me.JPG[height=500]
+
+==== !
 
 * Ancien de l'IMA
 * **Graphe addicte**
@@ -53,15 +56,15 @@ __A quand les ordinateurs quantiques ?__
 * Données très structurées
 * Peux stocker de grosse volumétrie (plusieurs To)
 
-http://www.postgresqlfr.org/temoignages:le_bon_coin 
- 
+http://www.postgresqlfr.org/temoignages:le_bon_coin
+
 (3To de données - 1To RAM - 160 cores)
 
 === ACID
 
 image::assets/acid.png[height=500]
 
-__Opposé à eventuellement consistant, mais distribué (BASE & CAP théorème)__ 
+__Opposé à eventuellement consistant, mais distribué (BASE & CAP théorème)__
 
 === La mouvance NoSQL
 
@@ -90,13 +93,13 @@ image::assets/graph-model.png[height=500]
 
 image::assets/graph-vs-sql-time.jpg[]
 
-== Qui s'en sert ?  
+== Qui s'en sert ?
 
 === !
 
 image::assets/google.png[]
 
-Google est devenu le premier moteur de recherche grâce à son algorithme basé sur les graphes : + 
+Google est devenu le premier moteur de recherche grâce à son algorithme basé sur les graphes : +
 *le page rank*
 
 === !
@@ -175,12 +178,13 @@ __Même principe qu'Uber pool__
 
 == L'analyse des réseaux
 
-[class=split5050]
 === SFR
+
+==== !
 
 image::assets/sfr.png[height="600"]
 
-**Etudes d'impactes**
+==== Etudes d'impactes
 
 * Pouvoir plannifier une maintenance rapidement
 * Identifier les clients impactés par une maintenance ou une panne.

@@ -6,10 +6,13 @@
 
 == introduction
 
-[class="split5050"]
 === Benoit Simard, consultant
 
+==== !
+
 image::assets/me.JPG[height=500]
+
+==== !
 
 * benoit.simard@neotechnology.com
 * @logisima
@@ -27,29 +30,38 @@ image::assets/calendar.png[height=200]
 
 == L'histoire de Neo4j
 
-[class="split5050"]
 === Neo4j 0.X - 2000 à 2010
+
+==== !
 
 image::assets/voiture-1.png[]
 
+==== !
+
 * *API Java*
-* JAR de petite taille 
+* JAR de petite taille
 * Indexation basique
 
-[class="split5050"]
 === Neo4j 1.X - 2010 à 2014
 
+==== !
+
 image::assets/voiture-2.png[]
+
+==== !
 
 * *API REST*
 * Serveur Neo4j
 * Mode cluster
 * Cypher dans la 1.4
 
-[class="split5050"]
 === Neo4j 2.X - 2014 à 2016
 
+==== !
+
 image::assets/voiture-3.jpg[height=500]
+
+==== !
 
 * *Cypher par defaut (ajout de l'écriture)*
 * Ajout des Labels
@@ -59,10 +71,13 @@ image::assets/voiture-3.jpg[height=500]
 
 == Neo4j 3.0
 
-[class="split7030"]
 === Les fondements
 
+==== !
+
 image::assets/daft-punk.jpg[]
+
+==== !
 
 Permettre à tout le monde de développer des applications graphes
 
@@ -78,14 +93,17 @@ image::assets/fondements.png[]
 
 === Jusqu'au bout de l'extrême limite !
 
-*EE :* Un nouveau moteur de stockage qui abolit les limites de Neo4j (> 1 quadrillion) ! 
+*EE :* Un nouveau moteur de stockage qui abolit les limites de Neo4j (> 1 quadrillion) !
 
 image::assets/big-graph.png[]
 
-[class="split8020"]
 === Les indexes, c'est majeur
 
+==== !
+
 image::assets/lucene.png[]
+
+==== !
 
 * Mise à jour de lucene en version 5
 * Indexation en parallèle (meilleure performance en écriture)
@@ -93,17 +111,20 @@ image::assets/lucene.png[]
 
 == Pour les ops !
 
-[class="split8020"]
 === Cloud , virtualisation, containers
+
+==== !
 
  * Amélioration des performances sur les environnements virtualisés (Optimisation du page-cache)
  * Image docker officielle
- 
+
+==== !
+
 image::assets/docker.png[height=400]
 
 === Refactoring : la structure
 
-Modification de la structure 
+Modification de la structure
 
 [source, shell]
 ----
@@ -154,10 +175,13 @@ logs/
 
 == Le coin des développeurs
 
-[class="split5050"]
 === Bolt
 
+==== !
+
 image::assets/bolt.png[]
+
+==== !
 
 * *Protocole binaire*
 * *Transport :* TCP & Websocket
@@ -206,10 +230,13 @@ using (var session = driver.Session())
 }
 ----
 
-[class="split5050"]
 === Les procédures stockées
 
+==== !
+
 image::assets/procedures.png[]
+
+==== !
 
 Ecrivez du code personnalisé :
 
@@ -221,7 +248,7 @@ Ecrivez du code personnalisé :
 
 [source, cypher]
 ----
-CALL dbms.procedures() YIELD name 
+CALL dbms.procedures() YIELD name
 with split(name,".") AS parts
 WHERE not parts[0] = 'apoc'
 RETURN parts[0..-1] AS package, count(*),collect(parts[-1]) AS procs
@@ -253,8 +280,8 @@ image::assets/cypher-engine.png[height=100]
 
 * `ENDS WITH` et `CONTAINS` se basent maintenant sur les indexes (tout comme `STARTS WITH` en 2.3)
 * Amélioration globale des performances sur les aggregations (ex: count sur les labels)
-* Amélioration des performances d'écritures / écritures 
-** Upgrade de lucene 
+* Amélioration des performances d'écritures / écritures
+** Upgrade de lucene
 ** Planneur basé sur les coûts pour les écritures
 
 === Cypher : planneur basé sur les coûts
@@ -266,7 +293,7 @@ image::assets/cypher-engine.png[height=100]
 
 image::assets/cypher-planner.png[]
 
-=== Cypher : example 
+=== Cypher : example
 
 `Cypher version: CYPHER 3.0, planner: RULE. 3060001 total db hits in 7197 ms.`
 
@@ -296,8 +323,8 @@ Les prédicats utilisés dans la clause `WHERE` sont maintenant évalués pendan
 ----
 MATCH (a:Loc {name:"Nantes"}),(b:Loc {name:"Paris"})
 MATCH trip = shortestPath((a)-[roads:ROAD*]->(b))
-WHERE 
-  NONE(r in roads WHERE r.closed or r.speed < 30) AND 
+WHERE
+  NONE(r in roads WHERE r.closed or r.speed < 30) AND
   ALL (r in  roads WHERE r.type = 'Autoroute') AND
   reduce(s=0, r in roads | s + r.distance) < 300
 RETURN trip;
@@ -314,7 +341,7 @@ http://neo4j.com/guides/upgrade/#neo4j-3-0
 * Mise à jour de lucene : reconstruction des indexes
 * Mise à jour de la configuration : `java -jar config-migrator.jar path/to/neo4j2.3 path/to/neo4j3.0`
 
-== Merci 
+== Merci
 
 === Des questions ?
 

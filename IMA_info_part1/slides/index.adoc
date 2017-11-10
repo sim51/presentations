@@ -1,6 +1,6 @@
 :revealjs_width: '100%'
 :revealjs_customtheme: ../themes/neo4j/style/main.css
-:author: Benoit Simard
+:author: Benoit Simard (@logisima)
 
 = Algorithme et programmation
 
@@ -8,10 +8,13 @@ Cours 1
 
 == Présentation
 
-[class="split5050"]
 === Benoit Simard
 
+==== !
+
 image::assets/me.JPG[height=500]
+
+==== !
 
 * IMA XV
 * Graphe addicte
@@ -23,7 +26,7 @@ image::assets/me.JPG[height=500]
 === Et vous ?
 
 * Nom, Prénom
-* Vous étiez où l'année dernière 
+* Vous étiez où l'année dernière
 * Pourquoi l'IMA ?
 * Vos projets pour l'avenir ?
 
@@ -45,7 +48,7 @@ image::assets/me.JPG[height=500]
 * Les tableaux
 * Les objets et classes
 
-=== Comment réussir 
+=== Comment réussir
 
 **Etre attentif ...**
 
@@ -69,13 +72,13 @@ image::assets/entraide.gif[]
 
 **Ne pas hésiter a poser des questions !**
 
-image::assets/DIY.gif[]  
+image::assets/DIY.gif[]
 
 === Comment réussir (5)
 
 **Savoir chercher de l'aide sur le net**
 
-* developpez.com 
+* developpez.com
 * openclassroom.com
 
 
@@ -157,7 +160,7 @@ Ecrire un algorithme qui calcule la somme des 20 premiers nombres impairs
 Ecrire un algorithme permettant le calcul du PGCD (plus grand diviseur commun) de deux nombres entrées par l’utilisateur
 
 == Merci
- 
+
 === Des questions ?
 
 image::assets/questions.png[]

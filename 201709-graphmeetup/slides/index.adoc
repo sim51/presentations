@@ -22,7 +22,7 @@ image::assets/devoteam.png[]
 
 === 9 octobre 2017
 
-**InterActor** 
+**InterActor**
 
 Du graphe aux tableaux de bord, il n'y a qu'un pas !
 
@@ -52,18 +52,18 @@ image::assets/calendar.png[]
 
 image::assets/cake.png[height=400]
 
-[class=split5050]
 === Agenda
 
-**RDF vs Graphe de propriété** +
+==== RDF vs Graphe de propriété
 Jésus Barrasa +
 __45min__
 
 image::assets/Jesus.png[]
 
-**Efficient Graph Algorithms in Neo4j** +
+==== Efficient Graph Algorithms in Neo4j
+
 Michael Hunger +
-45min
+__45min__
 
 image::assets/michael.jpg[]
 

@@ -6,10 +6,13 @@
 
 == Presentation
 
-[class="split5050"]
 === Benoit Simard
 
+==== !
+
 image::assets/me.JPG[height=500]
+
+==== !
 
 * Ancien de l'IMA
 * Graphe addicte
@@ -43,10 +46,13 @@ image::assets/opendata-answer.png[height=600]
 
 image::assets/opendata.png[height=600]
 
-[class="split5050"]
 === Des criteres specifiques
 
+==== !
+
 image::assets/criteres.png[height=600]
+
+==== !
 
 * toutes mises à disposition (metadata)
 * collecté à la sources
@@ -55,7 +61,7 @@ image::assets/criteres.png[height=600]
 * exploitables par des machines (pas de pdf)
 * accessibles sans discrémination
 * dans des formats libre
-* avec une licence libre 
+* avec une licence libre
 
 === Et des licences
 
@@ -71,14 +77,18 @@ __**Author**, **share alike (copy-left)**, 'no derivatives', 'no commercial'__
 
 === C'est l'opensource de la données
 
-image::assets/partage.png[height=600] 
+image::assets/partage.png[height=600]
 
 == Quelques exemples
 
-[class="split5050"]
 === Wikipedia
 
+
+==== !
+
 image::assets/wikidata.png[height=400]
+
+==== !
 
 image::assets/wikipedia.png[]
 
@@ -105,7 +115,7 @@ image::assets/mapillary-car.jpg[height=600]
 
 == Les données publiques
 
-=== C'est quoi  
+=== C'est quoi
 
 image::assets/opendata-public.png[]
 
@@ -120,9 +130,9 @@ image::assets/data-excluded.png[]
 
 **Loi NOTRe (15):** Impose l'ouverture pour les collectivités de plus de 3500 habitants. +
 
-**Loi Macron (16) :** Impose l'ouverture des données des transports (horaires théoriques, arrêts, horaires constatés et tarifs). + 
+**Loi Macron (16) :** Impose l'ouverture des données des transports (horaires théoriques, arrêts, horaires constatés et tarifs). +
 
-**Loi Lemaire (16):** Elargit l'ouverture aux missions de services publics dont le personnel > 250. + 
+**Loi Lemaire (16):** Elargit l'ouverture aux missions de services publics dont le personnel > 250. +
 
 === Les organismes
 
@@ -151,7 +161,7 @@ image::assets/plateformes.png[height=700]
 === Un mouvement mondiale
 
 image::assets/monde.png[height=700]
- 
+
 == Les enjeux
 
 === 3 objectfis
@@ -206,7 +216,7 @@ image::assets/egov.png[height=600]
 
 
 == Merci
- 
+
 === Des questions ?
 
 image::assets/questions.png[]

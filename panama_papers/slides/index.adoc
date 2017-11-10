@@ -6,16 +6,19 @@
 
 == Bonjour a tous !
 
-[class="split5050"]
 === Benoit Simard
 
+==== !
+
 image::assets/me.JPG[height=500]
+
+==== !
 
 * Consultant Neo4j
 * Addicte aux graphes
 * Libérateur de données
 * @logisima
-* benoit.simard@neotechnology.com
+* benoit@neo4j.com
 
 == Revenons 2 ans en arrière
 
@@ -68,13 +71,15 @@ image::assets/Pulitzer.jpg[]
 
 == Comment ils ont fait ?
 
-[class="split5050"]
 === Le processus
 
-image::assets/process.png[]
+==== !
 
 image::assets/disconnected.png[width=1000]
 
+==== !
+
+image::assets/process.png[]
 
 === OCR et Cloud
 
@@ -90,10 +95,13 @@ image::assets/technical-stack.png[]
 
 == Neo4j
 
-[class="split5050"]
 === Les graphes de propriétés
 
+==== !
+
 image::assets/graph1.png[]
+
+==== !
 
 **Les noeuds**
 
@@ -107,24 +115,35 @@ image::assets/graph1.png[]
 * Relient des noeuds avec un type et une direction
 * Peuvent avoir des propriétés
 
-[class="split5050"]
 === Des relations locales
 
+==== !
+
 image::assets/whiteboard.png[]
+
+==== !
+
 image::assets/rdbms.png[]
 
-[class="split5050"]
 === Cypher
 
+==== !
+
 image::assets/cypher-pattern.png[width=800]
+
+==== !
+
 image::assets/pattern.png[width=800]
 
 == Revenons au Panama Papers
 
-[class="split5050"]
 === Le modèle
 
+==== !
+
 image::assets/panama-model.png[]
+
+==== !
 
 * **Entity** : L'entité offshore
 * **Officer** : Une personne (morale ou physique) ayant un lien avec l'entité offshore
