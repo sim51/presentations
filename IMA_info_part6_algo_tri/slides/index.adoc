@@ -1,0 +1,266 @@
+:revealjs_width: '100%'
+:revealjs_customtheme: ../themes/neo4j/style/main.css
+:author: Benoit Simard
+
+= Algo et prog
+cour 6
+
+== Interrogation
+
+=== Agenda
+
+* 5 exercices
+* 10 min par exercie
+* **~50 minutes**
+
+=== Ennoncé
+
+* Ecrire un algo permettant à un utilisateur de saisir les notes d'une classe (la taille d'une classe peut varier ^^), et afficher la moyenne des notes.
+* Demander a l'utilisateur de saisir 5 nombres, et afficher tous les nombres supérieurs a la moyenne.
+* Ecire l'algo qui permet d'obtenir le résultat suivant : `1, 12, 123, ..., 1234567`
+
+=== Ennoncé 2
+
+Que fait le code suivant 
+
+[source,java]
+----
+Variables
+    m,n: Entier
+Début
+    Afficher("Entrez deux nombres")
+    Lire(a)
+    Lire(b)
+    Si a=0 ou b=0 Alors
+        Afficher("Vrai")
+    Sinon
+        Afficher("Faux")
+    Fin de si
+Fin
+----
+
+=== Enoncé 3
+
+Que fait l'algo ? Bref, c'est quoi A et B ?
+
+[source,java]
+----
+Variables
+    i, j, n, a, b : Entier
+    Tableau T() : réel;
+Début
+    b ← 0;
+    a ← 0;
+    Pour i allant de 1 à taille(T) faire
+        Si T(i) < a alors
+            a ← T(i);
+        Sinon
+            Si T(i) > b alors
+                b ← T(i);
+            Fin de si
+        Fin de si
+    Fin de pour
+    Afficher(" B vaut : " + max + " A vaut :" + a);
+----
+
+== Exercice sur les tableaux
+
+=== Exercice tab 1
+
+Etant donné deux tableaux, trouver leurs éléments communs
+
+Pour mémoire `int[] tab = { 1, 2, 3 , 4}`
+
+=== Exercice tab 2
+
+Idem, mais permettre a l'utilisateur de saisir les tableaux
+
+=== Exercice tab 3
+
+Etant donné deux tableaux, créer un tableau contenant tous les éléments unique des tableaux (sans répétition).
+
+`[1, 2, 3, 4] + [3, 4, 5] = [1, 2, 3, 4, 5]`
+
+=== Exercice tab 4
+
+Ecrire un algo qui permet de donner le nombre median d'un tableau (de taille impaire).
+
+=== Exercice tab 5
+
+Ecrire un algo qui permet de trier un tableau par order croissant.
+
+== Complexité
+
+=== Définition
+
+C'est le cout d'un algorithme, c'est a dire une mesure de sa rapidité d'éxécution.
+
+Cela permet de comparer la performance de deux algos résolvant le même problème.
+
+=== Exemple 1
+
+**Cout de 2 x n additions**
+
+[source,java]
+----
+Variables
+  n : entier naturel
+Début
+  somme=0
+  i=1
+  tant que i<=n faire
+    somme=somme+i
+    i=i+1
+  Fin de tant que
+  Afficher somme
+Fin
+----
+
+=== Exemple 2
+
+**Cout de n² opérations**
+
+[source,java]
+----
+Variables
+  n : entier naturel
+Début
+  resultat = 0
+  Pour i allant de 0 a n
+    Pour j allant de n a 0
+      resultat = resultat + i * j
+    Fin de pour
+  Fin de pour
+  Afficher resultat
+Fin
+----
+
+=== Exemple 2 bis
+
+**Cout de n opération**
+
+[source,java]
+----
+Variables
+  n : entier naturel
+Début
+  resultat = 0
+  Pour i allant de 0 a n
+    somme = somme + (i * (n-i)) *2
+  Fin de pour
+  Afficher resultat
+Fin
+----
+
+=== Evaluation
+
+Pour évaluer la complexité d'un algo, il faut déterminer le nombre d'opérations effectué en fonction de la taille n des entrées
+
+Il n'existe pas un ensemble standardisé pour évaluer la complexité d'un algo
+
+=== La notation
+
+* O(1) : temps constant
+* O(log(n)) : temps proportionnel mais logarithmique a la taille de l'entrée
+* O(n) : temps proportionnel a la taille de l'entrée
+* O(n²) : temps proportionnel mais exponentiel a la taille de l'entrée
+
+== Les algos de tri de tableaux
+
+=== Principe
+
+Etant donné un tableau de taille, trier ses éléments par ordre croissant.
+
+=== tri sort
+
+Il consiste en effet à parcourir 'bêtement' le tableau à la recherche du plus petit élément. Lorsque celui-ci est trouvé, il est placé en première position. A nouveau, l'algorithme recherche le plus petit élément dans le reste du tableau et le place en seconde position. Cette procédure est répétée jusqu'à ce que le tableau soit trié. 
+
+=== Exemple
+
+image::assets/Selection-Sort-Animation.gif[]
+
+=== Speudo-code
+
+[source,java]
+----
+procédure tri_selection(tableau t, entier n)
+      pour i de 1 à n - 1
+          min ← i
+          pour j de i + 1 à n
+              si t[j] < t[min], alors min ← j
+          fin pour
+          si min ≠ i, alors échanger t[i] et t[min]
+      fin pour
+fin procédure
+----
+
+=== Pour le fun 
+
+https://www.youtube.com/watch?v=Ns4TPTC8whw
+
+=== Bubble sort
+
+Le principe du tri à bulles (bubble sort ou sinking sort) est de comparer deux à deux les éléments e1 et e2 consécutifs d'un tableau et d'effecteur une permutation si e1 > e2. On continue de trier jusqu'à ce qu'il n'y ait plus de permutation.
+
+=== Exemple
+
+image::asset/Sorting_bubblesort_anim.gif[]
+
+=== Complexité
+
+Dans le pire des cas **O(n²)**
+
+=== Speudo-code
+
+[source,java]
+----
+tri_à_bulles(Tableau T)
+   pour i allant de taille de T - 1 à 1
+       pour j allant de 0 à i - 1
+           si T[j+1] < T[j]
+               échanger(T[j+1], T[j])
+----
+
+=== Speudo-code optimisé
+
+[source,java]
+----
+tri_à_bulles_optimisé(Tableau T)
+    pour i allant de taille de T - 1 à 1
+        tableau_trié := vrai
+        pour j allant de 0 à i - 1
+            si T[j+1] < T[j]
+                échanger(T[j+1], T[j])
+                tableau_trié := faux
+        si tableau_trié
+            fin tri_à_bulles_optimisé
+----
+
+=== Pour le fun 
+
+https://www.youtube.com/watch?v=lyZQPjUT5B4
+
+=== Bien d'autres algo ...
+
+https://www.youtube.com/watch?v=BeoCbJPuvSE
+
+== les structures de données
+
+=== Les tableaux
+
+Déjà vu !!
+D'autres exo : https://fr.scribd.com/doc/214641203/algorithme-exercices-corriges
+
+=== La File
+
+**FIFO :** First In First Out
+
+=== La pile
+
+**LIFO :** Last In First Out
+
+=== Les arbres
+
+Haa
+
+

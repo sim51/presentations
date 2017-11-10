@@ -1,0 +1,54 @@
+:revealjs_width: '100%'
+:revealjs_customtheme: ../themes/neo4j/style/main.css
+:author: Benoit Simard (@logisima)
+
+= Graph Meetup Paris
+
+Octobre 2017
+
+== Graph Meetup Paris
+
+=== Sponsor
+
+Merci a Zenika !
+
+image::assets/zenika.png[]
+
+=== Les prochains évènemets
+
+ * **22 & 23 Octobre :** Graph Connect New-York - la grande messe des graphes
+ * **21 Novembre :** Graph Talk Paris - En quoi les graphes peuvent aider a les réseaux de télécommunication
+ * **23 Novembre :** Atelier - Modélisation avec Neo4j (eventbrite)
+ * ...
+ * **1 Février 2018 :** Meetups sur les chatbots
+ * **3/4 Février 2018 :** Graph Room au FSDEM
+ 
+
+=== We need you !
+
+**Soumettez une présentation ou une idée**
+
+__via meetup.com ou par email benoit@neo4j.com__
+
+image::assets/you.jpg[]
+
+=== Agenda
+
+* **19:00 :** Début du meetup
+* **19:15 :** Introduction
+* **19:30 :** Présentation d'InterActor
+* **20:30 :** Pizza et création de relations
+
+=== InterActor
+
+Du graphe aux tableaux de bord, il n'y a qu'un pas !
+
+image::assets/interactor.jpeg[]
+
+
+=== Bon meetup 
+
+
+
+
+

@@ -1,0 +1,44 @@
+= Algo et prog
+cour 6
+
+== Interrogation
+
+=== Agenda
+
+* 5 exercices
+* 10 min par exercie
+* **~50 minutes**
+
+=== Enoncé
+
+* Ecrire un algo permettant à un utilisateur de saisir les notes d'une classe (la taille d'une classe peut varier ^^), et afficher la moyenne des notes.
+* Demander a l'utilisateur de saisir 5 nombres, et afficher tous les nombres supérieurs a la moyenne.
+* Ecire l'algo qui permet d'obtenir le résultat suivant :
+1
+12
+123
+....
+1234567
+
+== Complexité
+
+
+
+== Les algos de tri
+
+=== Quick sort
+
+=== Bubble sort
+
+== les structures de données
+
+=== Les tableaux
+
+=== Le tas
+
+=== La pile
+
+=== Les arbres
+
+
+
