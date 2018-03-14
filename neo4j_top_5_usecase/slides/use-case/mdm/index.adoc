@@ -2,62 +2,41 @@
 
 === La gestion de données de référence
 
-Les données de référence constituent le pilier de votre entreprise et incluent des
+Les données de référence constituent le **pilier de votre entreprise** et incluent des
 données telles que les utilisateurs, les clients, les produits, les comptes, les partenaires, les sites, les unités commerciales, ...
 
 
-Ces données sont :
-
- * stockées à différents emplacements
- * avec des chevauchements et des redondances
- * dans divers formats
- * avec des qualités variables
-
+ * stockées à différents emplacements (**effet silo)**
+ * avec des **chevauchements** et des **redondances**
+ * et des **qualités variables**
 
 === Pourquoi du graphe ?
 
-* Les données sont hautements connectées et partagées
-* Les systèmes de gestion ne sont pas flexibles
-* L'interconnexion des données de références permettent d'obtenir un avantage concurentiel
+==== !
 
 image::assets/use-case/mdm/usecase-master-data-management1.png[]
 
-=== Les défis liées au MDM
+==== !
 
-**Jeux de données complexes et hiérarchiques**
+* Les données sont **hautements connectées**
+* Les systèmes de gestion traditionnels ne sont pas **flexibles**
+* L'**interconnexion des données** de références permettent d'obtenir un **avantage concurrentiel**
 
-Gérer les hiérarchies descendantes des données de référence avec une base de données relationnelle se traduit par un code complexe lent à exécuter, cher à concevoir et long à maintenir.
-
-
-**Performances de stockage et de requête en temps réel**
-
-Le magasin de données de référence doit s’intégrer à une multitude d’applications au sein de l’entreprise et fournir des données à ces applications.
-Fournir des informations en temps réel sur des jeux de données complexes et hautement interconnectés est un véritable challenge.
-
-
-**Structure dynamique**
-
-Les données de référence étant dynamiques par nature, il est plus difficile pour les développeurs de concevoir des systèmes qui prennent en compte leur évolution.
-
-
-=== Etude de cas : Reconciliation des données
-
-Réconcialiation des données par degré de similitude
-
-image::assets/use-case/mdm/mdm-explose.png[]
-
-=== Etude de cas : La modélisation RH d'une entreprise
-
-Hiérarchie de données de référence illustrant des structures de rapport et de supervision d’employé.
-
-image::assets/use-case/mdm/master-data-management-hierarchy.png[height="600"]
-
-
-=== Etude de cas : La modélisation RH d'une entreprise
+=== La modélisation RH d'une entreprise
 
 Réseau de données de référence détaillant les relations de rapport et de supervision d’employé, ici avec une plus grande complexité du **monde réel**.
 
+==== !
+
+image::assets/use-case/mdm/master-data-management-hierarchy.png[height=500]
+
+==== !
+
 image::assets/use-case/mdm/master-data-management-network.jpg[]
+
+=== L'entreprise connectée
+
+image::assets/use-case/mdm/connected-enterprise.png[height=600]
 
 === Client
 
@@ -67,4 +46,4 @@ Adidas utilise Neo4j pour créer leur référentiel interne, incluant les donné
 
 image::assets/use-case/mdm/Wine-Data-System.jpg[]
 
-Wine Data System utilise Neo4j pour réconcilier les bases de données des négociants afin de construire un référenciel unique.
+Wine Data System utilise Neo4j pour réconcilier les bases de données des négociants afin de construire un référentiel unique.

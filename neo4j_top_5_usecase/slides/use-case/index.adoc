@@ -1,3 +1,30 @@
+== Quels sont les cas d'utilisations ?
+
+=== Les cas d'utilisations
+
+==== En interne
+
+Master Data Management
+
+Analyse des réseaux
+
+Détection de fraude
+
+image::assets/use-case/use-case-internal.png[]
+
+
+==== Orienté client
+
+Recommandation
+
+Graph-Based Search
+
+Gestion des accès
+
+image::assets/use-case/use-case-external.png[]
+
+
+
 include::./recommandation/index.adoc[]
 
 include::./fraude/index.adoc[]
@@ -8,4 +35,4 @@ include::./acl/index.adoc[]
 
 include::./network/index.adoc[]
 
-== Graphe are everywhere !
+== Graphs are everywhere !

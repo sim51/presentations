@@ -1,7 +1,0 @@
-== Un bref historique
-
-include::./01-cavalier.adoc[]
-
-include::./02-euler.adoc[]
-
-include::./03-Konigsbergs.adoc[]

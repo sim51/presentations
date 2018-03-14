@@ -1,9 +1,15 @@
 === Des questions ?
 
-* **Twitter:** Suivez les comptes @neojFr & @neo4j
-* **Google group :**  Avec les groupes Neo4jFr & Neo4j
-* **Stackoverflow :**  avec les tags neo4j & cypher
+==== !
 
 image::assets/questions.png[]
+
+==== !
+
+Suivez nous sur __twitter__ **@neojfr** & **@neo4j**
+
+Posez vos questions par email sur les __google groups__ **Neo4jfr** & **Neo4j**, ou sur **stackoverflow**  avec les tags **neo4j** & **cypher**
+
+Parlez avec nous sur **Slack**
 
 

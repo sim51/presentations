@@ -1,0 +1,557 @@
+:revealjs_width: '100%'
+:revealjs_customtheme: ../themes/neo4j/style/main.css
+:author: Benoit Simard (@logisima)
+
+= GRAND Stack
+
+== Introduction
+
+=== Benoit Simard
+
+==== !
+
+image::assets/me.JPG[height=500]
+
+==== !
+
+* **Graph addict**
+* Data liberator
+* Web developer
+* Works at http://www.neo4j.com[Neo4j]
+* benoit@neo4j.com
+* https://twitter.com/logisima[@logisima]
+
+=== Agenda
+
+* What is this Stack ?
+* Why a new stack?
+* How to use it ?
+
+=== La stack
+
+http://grandstack.io
+
+==== GRAND
+
+image::assets/grand.png[]
+
+==== GATAND
+
+image::assets/gatand.png[]
+
+=== GraphQL
+
+image::assets/graphql.png[]
+
+==== !
+
+image::assets/graphiql.png[]
+
+==== !
+
+* A new paradigm for **building APIs**
+* **Schema** definition
+* Query language for APIs
+* Community of tools
+
+=== Angular
+
+image::assets/angular.svg[height=150]
+
+==== !
+
+* JavaScript library for building user interfaces
+* Component based
+** Reusable
+** Composable 
+* Written in Typescript (type matters !)
+
+==== !
+
+image::assets/angular-code.png[height=550]
+
+=== Apollo
+
+image::assets/apollo.png[]
+
+“A set of tools designed to leverage GraphQL and work together to create a great workflow”
+
+==== Client-side tooling
+
+* Frontend framework integrations
+* Caching
+* Code generation
+
+
+==== Server-side tooling
+
+* Schema creation
+* Mocking
+* Schema stitching
+* Performance monitoring
+
+=== Neo4j
+
+image::assets/neo4j.png[height=150]
+
+==== !
+
+* Is a graph **database** (ACID compliant)
+* Is a **graph** database (Native)
+* Schema less
+* Exists since 2010
+
+==== !
+
+image::assets/neo4j-browser.png[]
+
+=== Example : a movie application
+
+TODO: Screenshot
+
+== Focus on Neo4j
+
+=== A graph of properties
+
+==== !
+
+image::assets/graph1.png[]
+
+==== !
+
+**Nodes**
+
+* The entity of your model
+* Can have labels
+* Can have properties
+
+
+**Relationships**
+
+* Links two nodes, with a **direction** and a **type**
+* Can have properties
+
+=== A local approach
+
+==== !
+
+image::assets/whiteboard.png[]
+
+==== !
+
+image::assets/rdbms.png[]
+
+=== Cypher
+
+==== !
+
+image::assets/cypher-pattern.png[width=800]
+
+==== !
+
+image::assets/pattern.png[width=800]
+
+=== The movie dataset
+
+==== !
+
+image::assets/imdb.png[height=100]
+
+https://neo4j.com/sandbox-v2/
+
+image::assets/sandbox-imdb.png[]
+
+==== !
+
+image::assets/movie-graph.svg[height=800]
+
+=== Recommendation
+
+[source,cypher]
+----
+MATCH (m:Movie {title:'Matrix, The'})-[:IN_GENRE]->(g:Genre)<-[:IN_GENRE]-(movie:Movie)
+WITH m, movie, COUNT(*) AS genreOverlap
+  MATCH (m)<-[:RATED]-(:User)-[:RATED]->(movie)
+  WITH movie, genreOverlap, COUNT(*) AS userRatedScore
+  RETURN movie 
+  ORDER BY (0.9 * genreOverlap) + (0.1 * userRatedScore)  DESC 
+  LIMIT 3
+----
+
+== Focus on GraphQL
+
+=== A large adoption
+
+image::assets/graphql-adoption.png[]
+
+=== GraphQL
+
+==== !
+
+“A query language for your API, and a server-side runtime for executing queries by using a type system you define for your data”
+
+“GraphQL isn't tied to any specific database or storage engine” 
+
+“A GraphQL service is created by defining types and fields on those types, then providing resolver functions for each field on each type”
+
+==== !
+
+image::assets/graphql-model.png[]
+
+=== Your application model is a Graph !
+
+==== !
+
+[source,javascript]
+----
+query($id:ID = 2571) {
+  Movie(movieId:$id) {
+    movieId
+    title
+    plot
+    poster
+    imdbRating
+    genres{
+      name
+    }
+    directors {
+      name
+    }
+    actors {
+      name
+      actedIn {
+        title
+      }
+    }
+  }
+}
+----
+
+==== !
+
+image::assets/movie-graphql.svg[height=600]
+
+=== Your application model is a Graph !
+
+==== !
+
+[source,javascript]
+----
+query($id:ID = 2571) {
+  Movie(movieId:$id) {
+    movieId
+    title
+    plot
+    poster
+    imdbRating
+    genres{
+      name
+    }
+    directors {
+      name
+    }
+    actors {
+      name
+      actedIn {
+        title
+      }
+    }
+  }
+}
+----
+
+==== !
+
+[source,javascript]
+----
+{
+  "Movie": {
+    "movieId": "2571",
+    "title": "Matrix, The",
+    "plot": "A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.",
+    "poster": "http://ia.media-imdb.com/images/M/MV5BMTkxNDYxOTA4M15BMl5BanBnXkFtZTgwNTk0NzQxMTE@._V1_SX300.jpg",
+    "imdbRating": 8.7,
+    "genres": [ { "name": "Thriller" }, { "name": "Sci-Fi" }, { "name": "Action" } ],
+    "directors": [ { "name": " Lana Wachowski" }, { "name": "Andy Wachowski" } ],
+    "actors": [
+      {
+        "name": "Keanu Reeves",
+        "actedIn": [ { "title": "John Wick" }, { "title": "47 Ronin" }, ...]
+      },
+      ...
+    ]
+  }
+}
+----
+
+=== Schema Definition Language
+
+https://wehavefaces.net/graphql-shorthand-notation-cheatsheet-17cd715861b6[GraphQL Cheat Sheet]
+
+* **Type :** The graph model definition
+* **Resolvers :** How to fetch data from datasource
+* **Query :** What queries you can do 
+* **Mutations :** What changes you can do 
+
+=== Type
+
+==== Movie
+
+[source,javascript]
+----
+type Movie {
+  movieId: ID!
+  title: String
+  released: Date
+  plot: String
+  poster: String
+  imdbRating: Float
+  actors: [Actor]
+  recommendations(skip: Int = 0, limit: Int = 5): [Movie]
+}
+----
+
+==== Actor
+
+[source,javascript]
+----
+interface Person {
+  name: ID!
+}
+
+type Actor implements Person {
+  name: ID!
+  actedIn(skip: Int = 0, limit: Int = 5): [Movie]
+}
+----
+
+=== Queries / Mutation
+
+==== Movie
+
+[source,javascript]
+----
+type Query {
+  Movie(movieId: ID!): Movie
+  MovieSearch(search: String = "", skip: Int = 0, limit: Int = 10): [Movie]
+}
+
+type Mutation {
+  MovieMutation(movieId: ID, title: String!, actors:[String], ...): Movie
+}
+----
+
+==== Actor
+
+[source,javascript]
+----
+type Query {
+  Actor(id: ID!): Actor
+  ActorSearch(search:String!): [Actor]
+}
+
+type Mutation {
+  ActorMutation(name:String!): Actor
+}
+----
+
+=== Resolvers
+
+[source,javascript]
+----
+Movie {
+
+  recommendations: async ( current, _, context ) => {
+    let result = await Neo4j.run( context.driver.session(), queries.RECO, current, Neo4j.mappingNodeN );
+    return result;
+  }
+  
+},
+
+Query: {
+
+  Movie( root, params, context, resolveInfo ) {
+    let result = await Neo4j.run( context.driver.session(), queries.GET, params, Neo4j.mappingNodeN );
+    return result;
+  },
+
+  MovieSearch: async ( root, params, context, resolveInfo  ) => {
+    let result = await Neo4j.run( context.driver.session(), queries.SEARCH, params, Neo4j.mappingNodeN );
+    return result;
+  },
+
+}
+----
+
+=== Use The Schema, Luke
+
+http://github.com/neo4j-graphql/neo4j-graphql-js[neo4j-graphql-js]
+
+Translate your schema directly in Cypher, thanks to annotation.
+
+image::assets/graphql-to-cypher.png[]
+
+image::assets/neo4j-graphql-js.png[]
+
+== Focus on Apollo
+
+=== GraphQL tool box
+
+==== !
+
+* **Server :** Apollo server helps you to create GraphQL server
+* **Client:** Apollo client helps you to communicate with a GraphQL server
+
+==== !
+
+image::assets/lifecycle.png[]
+
+
+=== Server
+
+Just an express.js server with some custom endpoints.
+
+[source,javascript]
+----
+import express from 'express';
+import { graphqlExpress, graphiqlExpress } from 'apollo-server-express';
+import bodyParser from 'body-parser';
+
+const PORT = 3000;
+const server = express();
+
+/**
+ * GraphQL endpoint
+ */ 
+server.use( '/graphql', bodyParser.json(), graphqlExpress( async ( request ) => {  return {
+  // your graphql schema
+  schema: schema, 
+  // some context for the endpoint (here the Neo4j driver)
+  context: Neo4j.context( request.headers, process.env )
+}}));
+
+/**
+ * Create the graphiql endpoint.
+ */
+server.use( '/graphiql', graphiqlExpress( { endpointURL: '/graphql', query:'' }));
+
+/**
+ * Run the server.
+ */
+server.listen( PORT, () => { console.log( `GraphQL Server is now running on http://localhost:${PORT}/graphql` ) } );
+----
+
+=== Server - II
+
+[source,javascript]
+----
+/**
+ * This part is usefull for angular.
+ * It enable CORS + OPTIONS request for the graphql endpoint.
+ */
+server.use(
+  '/graphql',
+  ( req, res, next ) => {
+    res.header( 'Access-Control-Allow-Credentials', true );
+    res.header( 'Access-Control-Allow-Headers', 'content-type, authorization, content-length, x-requested-with, accept, origin' );
+    res.header( 'Access-Control-Allow-Methods', 'POST, GET, OPTIONS' );
+    res.header( 'Allow', 'POST, GET, OPTIONS' );
+    res.header( 'Access-Control-Allow-Origin', '*' );
+
+    if ( req.method === 'OPTIONS' ) {
+      res.sendStatus( 200 );
+    } else {
+      next();
+    }
+  }
+);
+----
+
+
+=== Client - Angular - I
+
+In your application module :
+
+[source,javascript]
+----
+// Apollo & GraphQl
+import { HttpModule } from '@angular/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { ApolloModule, Apollo } from 'apollo-angular';
+import { HttpLinkModule, HttpLink } from 'apollo-angular-link-http';
+import { InMemoryCache } from 'apollo-cache-inmemory';
+
+
+@NgModule({
+  declarations: [ AppComponent ],
+  imports: [ ...,  HttpClientModule, ApolloModule, HttpLinkModule, ... ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+
+export class AppModule {
+
+  constructor( apollo: Apollo, httpLink: HttpLink ) {
+    apollo.create({
+      // By default, this client will send queries to the
+      // `/graphql` endpoint on the same host
+      cache: new InMemoryCache()
+    });
+  }
+
+}
+----
+
+=== Client - Angular - II
+
+In your components :
+
+[source,javascript]
+----
+import { Apollo } from 'apollo-angular';
+
+export class MovieSearchComponent implements OnInit {
+
+  // GraphQL query
+  query :any;
+  
+  // Graphql result
+  movies :[Movie];
+  
+  // search fields
+  search :string = '';
+  limit :number = 20;
+  offset :number = 0;
+
+  /**
+   * Default constructor.
+   * @param  {Apollo} apollo - Apollo service
+   */
+  constructor(private apollo :Apollo) {
+    // Nothing
+  }
+  
+  ngOnInit() {
+    this.query = this.apollo.watchQuery(
+      {
+        query: QUERY_SEARCH_CLAIM,
+        variables: { search: this.search, limit: this.limit, offset: this.offset, }
+      }
+    );
+
+    this.query.valueChanges.subscribe(   ({ data, loading }) => {
+      this.loading = loading;
+      this.movies = data.movies;
+    });
+  }
+  
+}
+----
+
+== Demo time
+
+== Thanks !
+
+=== Any questions ?
+
+image::assets/questions.png[]

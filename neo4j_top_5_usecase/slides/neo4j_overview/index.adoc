@@ -1,7 +1,31 @@
-== Les bases graphe
+== Pourquoi du graphe ?
 
-include::./01-graph-modeling.adoc[]
+=== Le monde est un graphe !
 
-include::./02-linked-data.adoc[]
+==== !
 
-include::./03-neo4j.adoc[]
+image:assets/neo4j_overview/everything_connected.jpg[]
+
+==== !
+
+* les gens, les lieux et les évènements
+* Les entreprises, les marchés et les clients
+* la technologie, les réseaux, les machines, les applications et les utilisateurs
+* les applications, le code, les dépendances, les architectures ...
+* les criminels, les fraudeurs et leurs comportements
+
+=== Un langage naturel
+
+image:assets/neo4j_overview/triptych-logistics.png[height="300"]
+
+=== Un modèle unique
+
+La modélisation fonctionnelle et technique sont identiques
+
+image:assets/neo4j_overview/whiteboard.png[]
+
+=== Croisez vos données
+
+Les relations entre les données sont plus importantes que la donnée en elle-même.
+
+image::assets/neo4j_overview/linked-data.png[height=500]

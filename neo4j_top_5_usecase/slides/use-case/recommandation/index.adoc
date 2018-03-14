@@ -1,53 +1,45 @@
-== Moteur de recommandation en temps réel
+== La recommandation
 
 === La recommandation
 
-Des réseaux sociaux, à la vente au détail, de service ou dans le secteur des médias, la recommandation est partout !
+Offrir une recommandation en **temps réel**, **hautement ciblé** et contextuelle
 
-**Objectif :** offrir une recommandation en temps réel, hautement ciblés et contextuelles afin quelle soit pertinentes pour l'utilisateur
+afin quelle soit **pertinente** pour l'utilisateur
 
 image::assets/use-case/recommandation/recommandation.png[]
 
 === Pourquoi du graphe ?
 
-Faire des recommandations efficaces repose sur une base qui comprend les relations existants entre les entités, ainsi que la qualité et la solidité de ces connexions.
-
-**C'est un graphe !**
+Faire des recommandations **efficaces** repose sur une base qui **comprend les relations** existants entre les entités, ainsi que la **qualité et la solidité** de ces connexions.
 
 image::assets/use-case/recommandation/usecase-recommendation.png[]
 
-=== Les défis liées à la recommandation
+=== Les défis
 
-**Traiter de gros volumes de données et de relations pour comprendre le contexte**
+==== !
 
+image::assets/use-case/recommandation/reco.png[]
+
+==== !
+
+Traiter de **gros volumes** de données et de **relations** pour comprendre le **contexte**
+
+Offrir des recommandations **pertinentes** en **temps réel**, sur des **faits immédiats**
+
+Prendre en compte **continuellement** des **données et relations nouvelles**
+
+[NOTE.speaker]
+--
 Les algorithmes standard de recommandations s’appuient sur des données hautement connectées en expansion rapide.
-
-**Offrir des recommandations pertinentes en temps réel, basé sur des faits immédiats**
-
 La puissance d’un système de suggestion repose sur sa capacité à faire des recommandations en temps réel à l’aide de faits immédiats.
-
-**Prendre continuellement en compte des données et relations nouvelles**
-
 Du fait de la croissance rapide dans la taille et le volume des données, le système doit prendre en compte à la fois les besoins actuels et futurs.
+--
 
-=== Etude de cas : Meetic
+=== Meetic
+
+L'algorithme du **filtrage collaboratif**
 
 image::assets/use-case/recommandation/meetic-graph.png[]
-
-=== Etude de cas : Meetic
-
-**Problème**
-
-* Recommandations temps-réel afin de fidéliser les utilisateurs et attirer de nouveaux membres.
-* Isoler et traiter les cas des super-dragueurs et super-dragués
-* A l’origine réalisé par un traitement batch écrit avec MS SQL Server
-* La volumétrie : 10 millions de noeuds (ie. de membres) | 100 millions de relations (ie. d'intéractions)
-
-**Solution**
-
-* Expérience temps réel pour les utilisateurs de Meetic
-* Solution scalable.
-* Faible coût de maintenance et architecture fiable
 
 === Autres clients
 

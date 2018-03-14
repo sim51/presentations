@@ -1,52 +1,56 @@
 == La gestion des identités et des accès
 
-=== La gestion des identités et des accès
+=== C'est un graphe !
+
+==== !
 
 image::assets/use-case/acl/ACL.png[]
 
-=== Pourquoi du graphe ?
+==== !
 
-**C'est un graphe !**
+Des **personnes** qui appartiennent a des **groupes**, qui eux-mêmes peuvent appartennir à des **groupes**.
 
-image::assets/use-case/acl/usecase-identity-access.png[]
+Les groupes et utilisateurs possèdent des **rôles**.
 
-=== Les défis liées à la gestion des identités / accès
+__Est-ce que l'utilisateur **Benoit** a accès en écriture au répertoire **\\samba\clients** ?__
 
-**Autorisations d’identité et d’accès hautement interconnectées**
+=== Les défis
 
+==== !
+
+image::assets/use-case/acl/acl-.png[]
+
+==== !
+
+Les identités et autorisations d’accès sont **hautement interconnectées**
+
+Garder la **cohérence des données** et faciliter sa **compréhension**
+
+Retrouver un accès en **quelques millisecondes** pour satisfaire les clients
+
+
+[NOTE.speaker]
+--
 Pour vérifier une identité précise et ses autorisations d’accès,
 le système doit traverser un jeu de données hautement interconnectées dont le volume et la complexité augmentent en permanence.
 
-
-**Productivité et satisfaction du client**
-
 À mesure que le volume d’utilisateurs, de produits et d’autorisations augmente, les systèmes traditionnels n’assurent plus de réponses réactives, ce qui se traduit par une frustration chez les utilisateurs.
 
-
-**Structure et environnement dynamiques**
-
 Avec l’augmentation rapide de la taille des utilisateurs et de leurs métadonnées associées, votre application doit prendre en compte les besoins de gestion des identités à la fois actuels et futurs.
+--
 
 
-=== Etude de cas : Telenor
+=== Telenor
 
-Telenor permet à ses clients entreprises d’utiliser leurs comptes pour ajouter ou supprimer des services à leurs employés.
+==== !
 
-Ainsi il faut grarantir que les utilisateurs et les administrateurs ne voient et ne modifient que les parties de l’entreprise et les
-services qu’ils ont le droit de gérer.
+image::assets/use-case/acl/identity-access-management-telenor.jpg[height="700"]
 
-image::assets/use-case/acl/identity-access-management-telenor.jpg[height="500"]
+==== !
 
-=== Etude de cas : Telenor
+Telenor permet à ses clients de gérer les services de leurs employés.
 
-**Définition du problème**
+Les administrateurs ne voient que les parties de l’entreprise et les services qu’ils ont le droit de gérer.
 
- * Besoin d’un contrôle d’accès fiable pour 5 millions de clients, souscriptions et accords.
- * Dépendances complexes entre les groupes, sociétés, individus, comptes, produits, souscriptions, services et accords
-
-**Bénéfices**
-
- * Architecture flexible et dynamique.
- * Performance exceptionnelle.
- * Bas coût comparé aux autres alternatives.
- * Modèle de données extensible supportant l’ajout de nouvelles applications et fonctionnalités.
+* **5 millions** de clients, souscriptions et accords
+* **dépendances complexes** entre les groupes, sociétés, individus, comptes, produits, souscriptions, services et accords
