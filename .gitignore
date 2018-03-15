@@ -1,6 +1,4 @@
-2016-bilan/
 .idea
 .tmp/
 .publish
-dist/
 node_modules/

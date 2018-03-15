@@ -1,0 +1,166 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="author" content="Benoit Simard"><title>Algo et prog</title><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui" name="viewport"><link href="../reveal.js/css/reveal.css" rel="stylesheet"><link rel="stylesheet" href="../themes/neo4j/style/main.css" id="theme"><link href="../reveal.js/lib/css/zenburn.css" rel="stylesheet"></head><body><div class="reveal"><div class="slides"><section class="title" data-state="title"><h1>Algo et prog</h1><p class="author"><small>Benoit Simard</small></p></section><section><section id="slide_interrogation"><h2>Interrogation</h2></section><section id="slide_agenda"><h2>Agenda</h2><div class="ulist"><ul><li><p>5 exercices</p></li><li><p>10 min par exercie</p></li><li><p><strong>~50 minutes</strong></p></li></ul></div></section><section id="slide_ennonc"><h2>Ennoncé</h2><div class="ulist"><ul><li><p>Ecrire un algo permettant à un utilisateur de saisir les notes d&#8217;une classe (la taille d&#8217;une classe peut varier ^^), et afficher la moyenne des notes.</p></li><li><p>Demander a l&#8217;utilisateur de saisir 5 nombres, et afficher tous les nombres supérieurs a la moyenne.</p></li><li><p>Ecire l&#8217;algo qui permet d&#8217;obtenir le résultat suivant : <code>1, 12, 123, &#8230;&#8203;, 1234567</code></p></li></ul></div></section><section id="slide_ennonc_2"><h2>Ennoncé 2</h2><div class="paragraph"><p>Que fait le code suivant</p></div>
+<div class="listingblock"><div class="content"><pre class="highlight"><textarea class="java language-java">Variables
+    m,n: Entier
+Début
+    Afficher("Entrez deux nombres")
+    Lire(a)
+    Lire(b)
+    Si a=0 ou b=0 Alors
+        Afficher("Vrai")
+    Sinon
+        Afficher("Faux")
+    Fin de si
+Fin</textarea></pre></div></div></section><section id="slide_enonc_3"><h2>Enoncé 3</h2><div class="paragraph"><p>Que fait l&#8217;algo ? Bref, c&#8217;est quoi A et B ?</p></div>
+<div class="listingblock"><div class="content"><pre class="highlight"><textarea class="java language-java">Variables
+    i, j, n, a, b : Entier
+    Tableau T() : réel;
+Début
+    b ← 0;
+    a ← 0;
+    Pour i allant de 1 à taille(T) faire
+        Si T(i) &lt; a alors
+            a ← T(i);
+        Sinon
+            Si T(i) &gt; b alors
+                b ← T(i);
+            Fin de si
+        Fin de si
+    Fin de pour
+    Afficher(" B vaut : " + max + " A vaut :" + a);</textarea></pre></div></div></section></section>
+<section><section id="slide_exercice_sur_les_tableaux"><h2>Exercice sur les tableaux</h2></section><section id="slide_exercice_tab_1"><h2>Exercice tab 1</h2><div class="paragraph"><p>Etant donné deux tableaux, trouver leurs éléments communs</p></div>
+<div class="paragraph"><p>Pour mémoire <code>int[] tab = { 1, 2, 3 , 4}</code></p></div></section><section id="slide_exercice_tab_2"><h2>Exercice tab 2</h2><div class="paragraph"><p>Idem, mais permettre a l&#8217;utilisateur de saisir les tableaux</p></div></section><section id="slide_exercice_tab_3"><h2>Exercice tab 3</h2><div class="paragraph"><p>Etant donné deux tableaux, créer un tableau contenant tous les éléments unique des tableaux (sans répétition).</p></div>
+<div class="paragraph"><p><code>[1, 2, 3, 4] + [3, 4, 5] = [1, 2, 3, 4, 5]</code></p></div></section><section id="slide_exercice_tab_4"><h2>Exercice tab 4</h2><div class="paragraph"><p>Ecrire un algo qui permet de donner le nombre median d&#8217;un tableau (de taille impaire).</p></div></section><section id="slide_exercice_tab_5"><h2>Exercice tab 5</h2><div class="paragraph"><p>Ecrire un algo qui permet de trier un tableau par order croissant.</p></div></section></section>
+<section><section id="slide_complexit"><h2>Complexité</h2></section><section id="slide_dfinition"><h2>Définition</h2><div class="paragraph"><p>C&#8217;est le cout d&#8217;un algorithme, c&#8217;est a dire une mesure de sa rapidité d&#8217;éxécution.</p></div>
+<div class="paragraph"><p>Cela permet de comparer la performance de deux algos résolvant le même problème.</p></div></section><section id="slide_exemple_1"><h2>Exemple 1</h2><div class="paragraph"><p><strong>Cout de 2 x n additions</strong></p></div>
+<div class="listingblock"><div class="content"><pre class="highlight"><textarea class="java language-java">Variables
+  n : entier naturel
+Début
+  somme=0
+  i=1
+  tant que i&lt;=n faire
+    somme=somme+i
+    i=i+1
+  Fin de tant que
+  Afficher somme
+Fin</textarea></pre></div></div></section><section id="slide_exemple_2"><h2>Exemple 2</h2><div class="paragraph"><p><strong>Cout de n² opérations</strong></p></div>
+<div class="listingblock"><div class="content"><pre class="highlight"><textarea class="java language-java">Variables
+  n : entier naturel
+Début
+  resultat = 0
+  Pour i allant de 0 a n
+    Pour j allant de n a 0
+      resultat = resultat + i * j
+    Fin de pour
+  Fin de pour
+  Afficher resultat
+Fin</textarea></pre></div></div></section><section id="slide_exemple_2_bis"><h2>Exemple 2 bis</h2><div class="paragraph"><p><strong>Cout de n opération</strong></p></div>
+<div class="listingblock"><div class="content"><pre class="highlight"><textarea class="java language-java">Variables
+  n : entier naturel
+Début
+  resultat = 0
+  Pour i allant de 0 a n
+    somme = somme + (i * (n-i)) *2
+  Fin de pour
+  Afficher resultat
+Fin</textarea></pre></div></div></section><section id="slide_evaluation"><h2>Evaluation</h2><div class="paragraph"><p>Pour évaluer la complexité d&#8217;un algo, il faut déterminer le nombre d&#8217;opérations effectué en fonction de la taille n des entrées</p></div>
+<div class="paragraph"><p>Il n&#8217;existe pas un ensemble standardisé pour évaluer la complexité d&#8217;un algo</p></div></section><section id="slide_la_notation"><h2>La notation</h2><div class="ulist"><ul><li><p>O(1) : temps constant</p></li><li><p>O(log(n)) : temps proportionnel mais logarithmique a la taille de l&#8217;entrée</p></li><li><p>O(n) : temps proportionnel a la taille de l&#8217;entrée</p></li><li><p>O(n²) : temps proportionnel mais exponentiel a la taille de l&#8217;entrée</p></li></ul></div></section></section>
+<section><section id="slide_les_algos_de_tri_de_tableaux"><h2>Les algos de tri de tableaux</h2></section><section id="slide_principe"><h2>Principe</h2><div class="paragraph"><p>Etant donné un tableau de taille, trier ses éléments par ordre croissant.</p></div></section><section id="slide_tri_sort"><h2>tri sort</h2><div class="paragraph"><p>Il consiste en effet à parcourir 'bêtement' le tableau à la recherche du plus petit élément. Lorsque celui-ci est trouvé, il est placé en première position. A nouveau, l&#8217;algorithme recherche le plus petit élément dans le reste du tableau et le place en seconde position. Cette procédure est répétée jusqu&#8217;à ce que le tableau soit trié.</p></div></section><section id="slide_exemple"><h2>Exemple</h2><div class="imageblock" style=""><img src="assets/Selection-Sort-Animation.gif" alt="Selection Sort Animation"></div></section><section id="slide_speudo_code"><h2>Speudo-code</h2><div class="listingblock"><div class="content"><pre class="highlight"><textarea class="java language-java">procédure tri_selection(tableau t, entier n)
+      pour i de 1 à n - 1
+          min ← i
+          pour j de i + 1 à n
+              si t[j] &lt; t[min], alors min ← j
+          fin pour
+          si min ≠ i, alors échanger t[i] et t[min]
+      fin pour
+fin procédure</textarea></pre></div></div></section><section id="slide_pour_le_fun"><h2>Pour le fun</h2><div class="paragraph"><p><a href="https://www.youtube.com/watch?v=Ns4TPTC8whw" class="bare">https://www.youtube.com/watch?v=Ns4TPTC8whw</a></p></div></section><section id="slide_bubble_sort"><h2>Bubble sort</h2><div class="paragraph"><p>Le principe du tri à bulles (bubble sort ou sinking sort) est de comparer deux à deux les éléments e1 et e2 consécutifs d&#8217;un tableau et d&#8217;effecteur une permutation si e1 &gt; e2. On continue de trier jusqu&#8217;à ce qu&#8217;il n&#8217;y ait plus de permutation.</p></div></section><section id="slide_exemple_3"><h2>Exemple</h2><div class="imageblock" style=""><img src="asset/Sorting_bubblesort_anim.gif" alt="Sorting bubblesort anim"></div></section><section id="slide_complexit_2"><h2>Complexité</h2><div class="paragraph"><p>Dans le pire des cas <strong>O(n²)</strong></p></div></section><section id="slide_speudo_code_2"><h2>Speudo-code</h2><div class="listingblock"><div class="content"><pre class="highlight"><textarea class="java language-java">tri_à_bulles(Tableau T)
+   pour i allant de taille de T - 1 à 1
+       pour j allant de 0 à i - 1
+           si T[j+1] &lt; T[j]
+               échanger(T[j+1], T[j])</textarea></pre></div></div></section><section id="slide_speudo_code_optimis"><h2>Speudo-code optimisé</h2><div class="listingblock"><div class="content"><pre class="highlight"><textarea class="java language-java">tri_à_bulles_optimisé(Tableau T)
+    pour i allant de taille de T - 1 à 1
+        tableau_trié := vrai
+        pour j allant de 0 à i - 1
+            si T[j+1] &lt; T[j]
+                échanger(T[j+1], T[j])
+                tableau_trié := faux
+        si tableau_trié
+            fin tri_à_bulles_optimisé</textarea></pre></div></div></section><section id="slide_pour_le_fun_2"><h2>Pour le fun</h2><div class="paragraph"><p><a href="https://www.youtube.com/watch?v=lyZQPjUT5B4" class="bare">https://www.youtube.com/watch?v=lyZQPjUT5B4</a></p></div></section><section id="slide_bien_d_autres_algo"><h2>Bien d&#8217;autres algo &#8230;&#8203;</h2><div class="paragraph"><p><a href="https://www.youtube.com/watch?v=BeoCbJPuvSE" class="bare">https://www.youtube.com/watch?v=BeoCbJPuvSE</a></p></div></section></section>
+<section><section id="slide_les_structures_de_donnes"><h2>les structures de données</h2></section><section id="slide_les_tableaux"><h2>Les tableaux</h2><div class="paragraph"><p>Déjà vu !!
+D&#8217;autres exo : <a href="https://fr.scribd.com/doc/214641203/algorithme-exercices-corriges" class="bare">https://fr.scribd.com/doc/214641203/algorithme-exercices-corriges</a></p></div></section><section id="slide_la_file"><h2>La File</h2><div class="paragraph"><p><strong>FIFO :</strong> First In First Out</p></div></section><section id="slide_la_pile"><h2>La pile</h2><div class="paragraph"><p><strong>LIFO :</strong> Last In First Out</p></div></section><section id="slide_les_arbres"><h2>Les arbres</h2><div class="paragraph"><p>Haa</p></div></section></section></div></div><script src="../reveal.js/lib/js/head.min.js"></script><script src="../reveal.js/js/reveal.js"></script><script>// See https://github.com/hakimel/reveal.js#configuration for a full list of configuration options
+Reveal.initialize({
+  // Display controls in the bottom right corner
+  controls: true,
+  // Display a presentation progress bar
+  progress: true,
+  // Display the page number of the current slide
+  slideNumber: false,
+  // Push each slide change to the browser history
+  history: true,
+  // Enable keyboard shortcuts for navigation
+  keyboard: true,
+  // Enable the slide overview mode
+  overview: true,
+  // Vertical centering of slides
+  center: true,
+  // Enables touch navigation on devices with touch input
+  touch: true,
+  // Loop the presentation
+  loop: false,
+  // Change the presentation direction to be RTL
+  rtl: false,
+  // Turns fragments on and off globally
+  fragments: true,
+  // Flags if the presentation is running in an embedded mode,
+  // i.e. contained within a limited portion of the screen
+  embedded: false,
+  // Number of milliseconds between automatically proceeding to the
+  // next slide, disabled when set to 0, this value can be overwritten
+  // by using a data-autoslide attribute on your slides
+  autoSlide: 0,
+  // Stop auto-sliding after user input
+  autoSlideStoppable: true,
+  // Enable slide navigation via mouse wheel
+  mouseWheel: false,
+  // Hides the address bar on mobile devices
+  hideAddressBar: true,
+  // Opens links in an iframe preview overlay
+  previewLinks: false,
+  // Theme (e.g., beige, black, league, night, serif, simple, sky, solarized, white)
+  // NOTE setting the theme in the config no longer works in reveal.js 3.x
+  //theme: Reveal.getQueryHash().theme || 'black',
+  // Transition style (e.g., none, fade, slide, convex, concave, zoom)
+  transition: Reveal.getQueryHash().transition || 'slide',
+  // Transition speed (e.g., default, fast, slow)
+  transitionSpeed: 'default',
+  // Transition style for full page slide backgrounds (e.g., none, fade, slide, convex, concave, zoom)
+  backgroundTransition: 'fade',
+  // Number of slides away from the current that are visible
+  viewDistance: 3,
+  // Parallax background image (e.g., "'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg'")
+  parallaxBackgroundImage: '',
+  // Parallax background size in CSS syntax (e.g., "2100px 900px")
+  parallaxBackgroundSize: '',
+
+  // The "normal" size of the presentation, aspect ratio will be preserved
+  // when the presentation is scaled to fit different resolutions. Can be
+  // specified using percentage units.
+  width: '100%',
+  height: 700,
+
+  // Factor of the display size that should remain empty around the content
+  margin: 0.1,
+
+  // Bounds for smallest/largest possible scale to apply to content
+  minScale: 0.2,
+  maxScale: 1.5,
+
+  // Optional libraries used to extend on reveal.js
+  dependencies: [
+      { src: '../reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+      { src: '../reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: '../reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      
+      { src: '../reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+      { src: '../reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+  ]
+});</script><script src="../themes/neo4j/assets/codemirror/lib/codemirror.js"></script><script src="../themes/neo4j/assets/codemirror/mode/cypher/cypher.js"></script><script src="../themes/neo4j/assets/codemirror/mode/javascript/javascript.js"></script><script src="../themes/neo4j/assets/codemirror/mode/shell/shell.js"></script><script src="../themes/neo4j/assets/codemirror/mode/properties/properties.js"></script><script src="../themes/neo4j/assets/codemirror/mode/xml/xml.js"></script><script src="../themes/neo4j/assets/codemirror/mode/sql/sql.js"></script><script src="../themes/neo4j/assets/codemirror/mode/python/python.js"></script><script src="../themes/neo4j/assets/codemirror/mode/clike/clike.js"></script><script src="../themes/neo4j/assets/codemirror.js"></script></body></html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="author" content="Benoit Simard (@logisima)"><title>How to import data in Neo4j</title><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui" name="viewport"><link href="../reveal.js/css/reveal.css" rel="stylesheet"><link rel="stylesheet" href="../themes/neo4j/style/main.css" id="theme"><link href="../reveal.js/lib/css/zenburn.css" rel="stylesheet"></head><body><div class="reveal"><div class="slides"><section class="title" data-state="title"><h1>How to import data in Neo4j</h1><p class="author"><small>Benoit Simard (@logisima)</small></p></section><section><section id="slide_who_i_am"><h2>Who I am</h2></section><section id="slide_benoit_simard"><h2>Benoit Simard</h2><div class="split"><div class="imageblock" style=""><img src="assets/me.JPG" alt="me" height="500"></div></div>
+<div class="split"><div class="ulist"><ul><li><p>Neo4j consultant for 3 years</p></li><li><p>Mainly on the french territory</p></li><li><p>Web developper, addict to graph &amp; open data</p></li><li><p><strong>Mail :</strong> <a href="mailto:benoit@neo4j.com">benoit@neo4j.com</a></p></li><li><p><strong>Twitter :</strong> @logisima</p></li></ul></div></div></section></section>
+<section><section id="slide_some_reminders"><h2>Some Reminders</h2></section><section id="slide_acid_database"><h2>ACID Database</h2><div class="split"><div class="imageblock" style=""><img src="assets/acid.png" alt="acid"></div></div>
+<div class="split"><div class="ulist"><ul><li><p>Transaction are <strong>all</strong> or <strong>nothing</strong></p><div class="ulist"><ul><li><p><em>Retry mechanism</em></p></li></ul></div></li><li><p><strong>Lock manager</strong> : locks nodes and relationships during a transaction</p><div class="ulist"><ul><li><p><em>You can spend a lot of time to wait a lock or even worse to have a dead lock.</em></p></li></ul></div></li><li><p>Everything is sequentially written into the <strong>transaction log</strong></p><div class="ulist"><ul><li><p><em>You need a good hard drive</em></p></li></ul></div></li></ul></div></div></section><section id="slide_cypher_query_plan"><h2>Cypher / Query plan</h2><div class="ulist"><ul><li><p>Cypher is a declarative language, like SQL</p></li><li><p>Need to be parsed (AST)</p></li><li><p>Interpreted by an optimizer to create its query plan</p></li><li><p>Query plan is then executed</p></li></ul></div>
+<div class="imageblock" style=""><img src="assets/cypher-planner.png" alt="cypher planner"></div>
+<div class="paragraph"><p><em>All those operations take times, so you have to parameterized your queries</em></p></div>
+<div class="paragraph"><p><em>Neo4j will be able to reuse a query plan from its cache.</em></p></div></section><section id="slide_neo4j_configuration_hints"><h2>Neo4j configuration hints</h2><div class="paragraph"><p><a href="https://neo4j.com/docs/operations-manual/current/reference/configuration-settings" class="bare">https://neo4j.com/docs/operations-manual/current/reference/configuration-settings</a></p></div>
+<div class="ulist"><ul><li><p><strong>cypher.min_replan_interval :</strong> The minimum time between possible cypher query replanning events (<em>10s</em>).</p></li><li><p><strong>cypher.statistics_divergence_threshold :</strong> The threshold when a plan is considered stale (<em>0.75</em>).</p></li><li><p><strong>dbms.query_cache_size :</strong> The number of Cypher query execution plans that are cached (<em>1000</em>).</p></li></ul></div></section></section>
+<section><section id="slide_overview_of_import_methods"><h2>Overview of import methods</h2></section><section id="slide_method_1_cypher_load_csv"><h2>Method 1 : Cypher LOAD CSV</h2><div class="paragraph"><p><a href="http://neo4j.com/docs/developer-manual/current/cypher/clauses/load-csv/" class="bare">http://neo4j.com/docs/developer-manual/current/cypher/clauses/load-csv/</a></p></div>
+<div class="imageblock" style=""><img src="assets/cypher-load-csv.png" alt="cypher load csv"></div>
+<div class="listingblock"><div class="content"><pre class="highlight"><textarea class="cypher language-cypher">USING PERIODIC COMMIT 500
+LOAD CSV WITH HEADERS FROM "file:///my-file.csv" AS row
+  MERGE (pm1:PM {id: row.from})
+  MERGE (pm2:PM {id: row.to})
+  CREATE (pm1)-[:LINK { id:row.id} ]-&gt;(pm2)</textarea></pre></div></div></section><section id="slide_methode_1_resume"><h2>Methode 1 : Resume</h2><div class="split"><h3>Most</h3><div class="ulist"><ul><li><p>Plain Cypher</p></li><li><p>Transactionnal</p></li><li><p>Really easy to put in place</p></li><li><p>Batch your transaction for you</p></li><li><p>Fast for up to 10 Million of entities</p></li><li><p>Based on CSV files : no flux with the IS, easy to generate</p></li></ul></div></div>
+<div class="split"><h3>Least</h3><div class="ulist"><ul><li><p>You can <strong>NOT</strong> do a lot of extract / transformation (just what cypher can do)</p></li><li><p>Slow for an initial import with a lot of data.</p></li></ul></div></div></section><section id="slide_method_2_plain_cypher_like_in_sql"><h2>Method 2 : Plain Cypher (like in SQL)</h2><div class="ulist"><ul><li><p>Again, use <strong>Parameterized queries</strong></p></li><li><p><strong>Batch</strong> your transactions</p></li><li><p>Use the <strong><code>WITH &#8230;&#8203; UNWIND</code> pattern</strong> : less network traffic and can be usefull to refactor some queries in one (so reused of the query plan).</p></li></ul></div>
+<div class="split"><div class="listingblock"><div class="content"><pre class="highlight"><textarea class="cypher language-cypher">MERGE (:Node { value: $param1})
+MERGE (:Node { value: $param2})
+MERGE (:Node { value: $param3})
+...
+MERGE (:Node { value: $paramX})</textarea></pre></div></div></div>
+<div class="split"><div class="listingblock"><div class="content"><pre class="highlight"><textarea class="cypher language-cypher">WITH $params AS items
+UNWIND items AS item
+  MERGE (:Node { value: item })</textarea></pre></div></div></div></section><section id="slide_method_2_resume"><h2>Method 2 : Resume</h2><div class="split"><h3>Most</h3><div class="ulist"><ul><li><p>Plain Cypher</p></li><li><p>Transactionnal</p></li><li><p>A lot of freedom</p></li></ul></div></div>
+<div class="split"><h3>Least</h3><div class="ulist"><ul><li><p>You have to write a lot of code</p></li><li><p>Slow for an initial import with a lot of data.</p></li></ul></div></div></section><section id="slide_method_3_neo4j_import_tool"><h2>Method 3 : Neo4j import tool</h2><div class="paragraph"><p><a href="https://neo4j.com/docs/operations-manual/current/tools/import/" class="bare">https://neo4j.com/docs/operations-manual/current/tools/import/</a></p></div>
+<div class="paragraph"><p>You can import really fast a huge amount of data with this tool.
+It bypass some Neo4j internal mechanisms (like transaction) to be super fast.</p></div>
+<div class="split"><h3>Most</h3><div class="ulist"><ul><li><p>Really really fast</p></li><li><p>Perfect to initiate a database</p></li><li><p>Easy to use (just one command line)</p></li></ul></div></div>
+<div class="split"><h3>Least</h3><div class="ulist"><ul><li><p>Can only intialize a database (offline and empty database)</p></li><li><p>No transaction</p></li><li><p>Strict format for the CSV files</p></li></ul></div></div></section><section id="slide_method_4_batch_inserter"><h2>Method 4 : Batch Inserter</h2><div class="paragraph"><p><a href="https://neo4j.com/docs/operations-manual/current/tools/import/" class="bare">https://neo4j.com/docs/operations-manual/current/tools/import/</a></p></div>
+<div class="paragraph"><p>You can import/update a lot of data into a Neo4j database.</p></div>
+<div class="split"><h3>Most</h3><div class="ulist"><ul><li><p>Fast</p></li><li><p>Can initiate and update a database</p></li></ul></div></div>
+<div class="split"><h3>Least</h3><div class="ulist"><ul><li><p>Mono-threading</p></li><li><p>Nedd to write some java code</p></li><li><p>No transaction</p></li><li><p>Database must be offline</p></li></ul></div></div></section><section id="slide_to_resume"><h2>To resume</h2><table class="tableblock frame-all grid-all" style="width:100%"><colgroup><col style="width:16.6666%"><col style="width:16.6666%"><col style="width:16.6666%"><col style="width:16.6666%"><col style="width:16.6666%"><col style="width:16.667%"></colgroup><thead><tr><th class="tableblock halign-left valign-top">Method</th><th class="tableblock halign-left valign-top">For init/ update</th><th class="tableblock halign-left valign-top">Transactionnal</th><th class="tableblock halign-left valign-top">Size</th><th class="tableblock halign-left valign-top">Rapidity</th><th class="tableblock halign-left valign-top">Easy of use</th></tr><tbody><tr><td class="tableblock halign-left valign-top"><p class="tableblock">LOAD CSV</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">BOTH</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">TRUE</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">&lt; 10M</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">* * *</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">* * * * *</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">Cypher queries</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">BOTH</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">TRUE</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">No limit</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">* * * *</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">* * *</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">Import tool</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">INIT</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">FALSE</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">No limit</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">* * * * *</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">* * * *</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">Batch Inserter</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">BOTH</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">FALSE</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">10M - 50M</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">* * *</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">* *</p></td></tr></table></section></section>
+<section><section id="slide_talend"><h2>Talend</h2></section><section id="slide_neo4j_components"><h2>Neo4j components</h2><div class="split"><h3>Project</h3><div class="paragraph"><p><a href="http://sim51.github.io/neo4j-talend-component/" class="bare">http://sim51.github.io/neo4j-talend-component/</a></p></div>
+<div class="paragraph"><p>Will be part of the next version of Talend studio</p></div></div>
+<div class="split"><h3>Focus on</h3><div class="ulist"><ul><li><p>Neo4j import tool</p></li><li><p>Batch Inserter mode</p></li></ul></div></div></section><section id="slide_jdbc_component"><h2>JDBC Component</h2><div class="paragraph"><p>Talend has some JDBC components and Neo4j has an official JDBC Driver : <a href="http://neo4j-contrib.github.io/neo4j-jdbc/" class="bare">http://neo4j-contrib.github.io/neo4j-jdbc/</a></p></div>
+<div class="paragraph"><p>You can use the component <code>tRow</code> to insert data into Neo4j, but there is one lack : you can&#8217;t specify the batch size &#8658; autocommit or one big transaction.</p></div>
+<div class="imageblock" style=""><img src="assets/talend-jdbc.png" alt="talend jdbc" height="500"></div></section></section>
+<section><section id="slide_questions_to_ask"><h2>Questions to ask</h2></section><section id="slide_questions"><h2>Questions</h2><div class="ulist"><ul><li><p>Where the data come from ?</p></li><li><p>Is there more than one data sources ?</p></li><li><p>Do you need to enhance some data with an other datasource ?</p></li><li><p>Do you have some security restrictions in your IS (firewall, DMZ, &#8230;&#8203;) ?</p></li><li><p>What is the amount of data you want to import at once ?</p></li><li><p>How long should take an import ?</p></li><li><p>Do you only need to initiate the database ?</p></li><li><p>All the writes to Neo4j come from the ETL ?</p></li><li><p>How many process do you want to do ?</p></li></ul></div></section></section></div></div><script src="../reveal.js/lib/js/head.min.js"></script><script src="../reveal.js/js/reveal.js"></script><script>// See https://github.com/hakimel/reveal.js#configuration for a full list of configuration options
+Reveal.initialize({
+  // Display controls in the bottom right corner
+  controls: true,
+  // Display a presentation progress bar
+  progress: true,
+  // Display the page number of the current slide
+  slideNumber: false,
+  // Push each slide change to the browser history
+  history: true,
+  // Enable keyboard shortcuts for navigation
+  keyboard: true,
+  // Enable the slide overview mode
+  overview: true,
+  // Vertical centering of slides
+  center: true,
+  // Enables touch navigation on devices with touch input
+  touch: true,
+  // Loop the presentation
+  loop: false,
+  // Change the presentation direction to be RTL
+  rtl: false,
+  // Turns fragments on and off globally
+  fragments: true,
+  // Flags if the presentation is running in an embedded mode,
+  // i.e. contained within a limited portion of the screen
+  embedded: false,
+  // Number of milliseconds between automatically proceeding to the
+  // next slide, disabled when set to 0, this value can be overwritten
+  // by using a data-autoslide attribute on your slides
+  autoSlide: 0,
+  // Stop auto-sliding after user input
+  autoSlideStoppable: true,
+  // Enable slide navigation via mouse wheel
+  mouseWheel: false,
+  // Hides the address bar on mobile devices
+  hideAddressBar: true,
+  // Opens links in an iframe preview overlay
+  previewLinks: false,
+  // Theme (e.g., beige, black, league, night, serif, simple, sky, solarized, white)
+  // NOTE setting the theme in the config no longer works in reveal.js 3.x
+  //theme: Reveal.getQueryHash().theme || 'black',
+  // Transition style (e.g., none, fade, slide, convex, concave, zoom)
+  transition: Reveal.getQueryHash().transition || 'slide',
+  // Transition speed (e.g., default, fast, slow)
+  transitionSpeed: 'default',
+  // Transition style for full page slide backgrounds (e.g., none, fade, slide, convex, concave, zoom)
+  backgroundTransition: 'fade',
+  // Number of slides away from the current that are visible
+  viewDistance: 3,
+  // Parallax background image (e.g., "'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg'")
+  parallaxBackgroundImage: '',
+  // Parallax background size in CSS syntax (e.g., "2100px 900px")
+  parallaxBackgroundSize: '',
+
+  // The "normal" size of the presentation, aspect ratio will be preserved
+  // when the presentation is scaled to fit different resolutions. Can be
+  // specified using percentage units.
+  width: '100%',
+  height: 700,
+
+  // Factor of the display size that should remain empty around the content
+  margin: 0.1,
+
+  // Bounds for smallest/largest possible scale to apply to content
+  minScale: 0.2,
+  maxScale: 1.5,
+
+  // Optional libraries used to extend on reveal.js
+  dependencies: [
+      { src: '../reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+      { src: '../reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: '../reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      
+      { src: '../reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+      { src: '../reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+  ]
+});</script><script src="../themes/neo4j/assets/codemirror/lib/codemirror.js"></script><script src="../themes/neo4j/assets/codemirror/mode/cypher/cypher.js"></script><script src="../themes/neo4j/assets/codemirror/mode/javascript/javascript.js"></script><script src="../themes/neo4j/assets/codemirror/mode/shell/shell.js"></script><script src="../themes/neo4j/assets/codemirror/mode/properties/properties.js"></script><script src="../themes/neo4j/assets/codemirror/mode/xml/xml.js"></script><script src="../themes/neo4j/assets/codemirror/mode/sql/sql.js"></script><script src="../themes/neo4j/assets/codemirror/mode/python/python.js"></script><script src="../themes/neo4j/assets/codemirror/mode/clike/clike.js"></script><script src="../themes/neo4j/assets/codemirror.js"></script></body></html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="author" content="Benoit Simard (@logisima)"><title>Neo4j overview</title><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui" name="viewport"><link href="../reveal.js/css/reveal.css" rel="stylesheet"><link rel="stylesheet" href="../themes/neo4j/style/main.css" id="theme"><link href="../reveal.js/lib/css/zenburn.css" rel="stylesheet"></head><body><div class="reveal"><div class="slides"><section class="title" data-state="title"><h1>Neo4j overview</h1><p class="author"><small>Benoit Simard (@logisima)</small></p></section><section><section id="slide_history"><h2>History</h2></section><section id="slide_leonhard_euler_1707_1783"><h2>Leonhard Euler 1707-1783</h2><div class="imageblock" style=""><img src="assets/euler.png" alt="euler"></div></section><section id="slide_konigsbergs"><h2>Konigsbergs</h2><div class="imageblock" style=""><img src="assets/konigsberg3.png" alt="konigsberg3"></div></section></section>
+<section><section id="slide_why_graph_database"><h2>Why Graph database ?</h2></section><section id="slide_data_complexity"><h2>Data complexity</h2><div class="imageblock" style=""><img src="assets/nosql-graph.png" alt="nosql graph"></div></section><section id="slide_linked_data"><h2>Linked Data</h2><div class="imageblock" style=""><img src="assets/linked-data.png" alt="linked data"></div></section><section id="slide_relation_in_rdbms"><h2>Relation in RDBMS</h2><div class="imageblock" style=""><img src="assets/rdbms.png" alt="rdbms"></div>
+<div class="ulist"><ul><li><p>schema not flexible</p></li><li><p>poor performances on linked data (@see snowflake schema)</p></li><li><p>complexe queries</p></li></ul></div></section><section id="slide_relation_in_no_sql"><h2>Relation in No-SQL</h2><div class="imageblock" style=""><img src="assets/nosql.png" alt="nosql"></div></section><section id="slide_graph_database"><h2>Graph database</h2><div class="imageblock" style=""><img src="assets/whiteboard.png" alt="whiteboard"></div></section><section id="slide_when_to_use_it"><h2>When to use it ?</h2><div class="ulist"><ul><li><p>Do you need a flexible schema ?</p></li><li><p>Do your data are  highly connected ?</p></li><li><p>Do you need near real time ?</p></li></ul></div>
+<div class="paragraph"><p><strong>Recommendation, fraud detection, MDM, network analysis, impact analysis, ACL, &#8230;&#8203;</strong></p></div></section></section>
+<section><section id="slide_what_is_a_graph_database"><h2>What is a Graph database ?</h2></section><section id="slide_neo4j"><h2>Neo4j</h2><div class="ulist"><ul><li><p>Since 2010</p></li><li><p>License under GPLv3</p></li><li><p>Full ACID</p></li><li><p>HA</p></li><li><p>Schemaless</p></li></ul></div></section><section id="slide_concept"><h2>Concept</h2><div class="imageblock" style=""><img src="diag-9b031c82eecfec98999fc94e92e78975.png" alt="diag 9b031c82eecfec98999fc94e92e78975" width="327" height="412"></div></section><section id="slide_nodes"><h2>Nodes</h2><div class="imageblock" style=""><img src="diag-329726a4525f5c637a59245339d3fd14.png" alt="diag 329726a4525f5c637a59245339d3fd14" width="319" height="133"></div>
+<div class="imageblock" style=""><img src="diag-a91ded22bad3613a190b1d6e307eac97.png" alt="diag a91ded22bad3613a190b1d6e307eac97" width="209" height="93"></div></section><section id="slide_relationships"><h2>Relationships</h2><div class="imageblock" style=""><img src="diag-a91a128f2734b91d07e2a9b7fe6711b4.png" alt="diag a91a128f2734b91d07e2a9b7fe6711b4" width="331" height="280"></div>
+<div class="imageblock" style=""><img src="diag-171bf3c580c824ff6d0949320081f78b.png" alt="diag 171bf3c580c824ff6d0949320081f78b" width="600" height="93"></div></section><section id="slide_index_constraint"><h2>Index &amp; constraint</h2><div class="paragraph"><p><strong>Indexes</strong></p></div>
+<div class="ulist"><ul><li><p>on a property for all nodes that have a label</p></li></ul></div>
+<div class="paragraph"><p><strong>Constraint</strong></p></div>
+<div class="ulist"><ul><li><p>for the uniqueness of a property</p></li><li><p>for the existence of a property</p></li></ul></div></section></section>
+<section><section id="slide_top_use_cases"><h2>Top use-cases</h2></section><section id="slide_yeah"><h2>Yeah !</h2><div class="paragraph"><p><strong>(Graph)-[:ARE]&#8594;(Everywhere)</strong></p></div></section></section>
+<section><section id="slide_moteur_de_recommandation_en_temps_rel"><h2>Moteur de recommandation en temps réel</h2></section><section id="slide_la_recommandation"><h2>La recommandation</h2><div class="paragraph"><p>Des réseaux sociaux, à la vente au détail, de service ou dans le secteur des médias, la recommandation est partout !</p></div>
+<div class="paragraph"><p><strong>Objectif :</strong> offrir une recommandation en temps réel, hautement ciblés et contextuelles afin quelle soit pertinentes pour l&#8217;utilisateur</p></div>
+<div class="imageblock" style=""><img src="assets/use-case/recommandation/recommandation.png" alt="recommandation"></div></section><section id="slide_etude_de_cas_meetic"><h2>Etude de cas : Meetic</h2><div class="imageblock" style=""><img src="assets/use-case/recommandation/meetic-graph.png" alt="meetic graph"></div></section></section>
+<section><section id="slide_la_dtection_de_fraudes"><h2>La détection de fraudes</h2></section><section id="slide_pourquoi_du_graphe"><h2>Pourquoi du graphe ?</h2><div class="paragraph"><p>Bien qu’aucune mesure de détection de fraudes ne soit parfaite, il est possible d’introduire des améliorations considérables si l’on se penche sur les connexions qui relient les points de données individuels.</p></div>
+<div class="paragraph"><p><strong>Il faut étudier l&#8217;interconnexion des données</strong></p></div>
+<div class="imageblock" style=""><img src="assets/use-case/fraude/graph-database-fraud-detection.png" alt="graph database fraud detection"></div></section><section id="slide_etude_de_cas_fraude_dans_le_e_commerce"><h2>Etude de cas : Fraude dans le e-commerce</h2><div class="paragraph"><p>Graphe d’une série de transactions effectuée avec fraude probable se produisant à l’adresse IP1.</p></div>
+<div class="paragraph"><p>( IP : Adresse IP, CC : carte de crédit, ID : Identifiant de l&#8217;utilisateur, CK : Adresse de livraison)</p></div>
+<div class="imageblock" style=""><img src="assets/use-case/fraude/fraud-detection-use-case-with-graph-databases.jpg" alt="fraud detection use case with graph databases"></div></section><section id="slide_etude_de_cas_la_dtection_d_anneau"><h2>Etude de cas : La détection d&#8217;anneau</h2><div class="paragraph"><p>Constituer un ensemble de fausses identités à partir d&#8217;identités volées, dans l&#8217;objectif de commettre un acte frauduleux</p></div>
+<div class="imageblock" style=""><img src="assets/use-case/fraude/graphgist-fraud-detection.png" alt="graphgist fraud detection" height="600"></div></section></section>
+<section><section id="slide_la_gestion_de_donnes_de_rfrence"><h2>La gestion de données de référence</h2></section><section id="slide_reconciliation_des_donnes"><h2>Reconciliation des données</h2><div class="paragraph"><p>Réconcialiation des données par degré de similitude</p></div>
+<div class="imageblock" style=""><img src="assets/use-case/mdm/mdm-explose.png" alt="mdm explose"></div></section><section id="slide_la_modlisation_rh_d_une_entreprise"><h2>La modélisation RH d&#8217;une entreprise</h2><div class="paragraph"><p>Hiérarchie de données de référence illustrant des structures de rapport et de supervision d’employé.</p></div>
+<div class="imageblock" style=""><img src="assets/use-case/mdm/master-data-management-hierarchy.png" alt="master data management hierarchy" height="600"></div></section><section id="slide_la_modlisation_rh_d_une_entreprise_2"><h2>La modélisation RH d&#8217;une entreprise</h2><div class="paragraph"><p>Réseau de données de référence détaillant les relations de rapport et de supervision d’employé, ici avec une plus grande complexité du <strong>monde réel</strong>.</p></div>
+<div class="imageblock" style=""><img src="assets/use-case/mdm/master-data-management-network.jpg" alt="master data management network"></div></section></section>
+<section><section id="slide_la_gestion_des_identits_et_des_accs"><h2>La gestion des identités et des accès</h2></section><section id="slide_la_gestion_des_identits_et_des_accs_2"><h2>La gestion des identités et des accès</h2><div class="imageblock" style=""><img src="assets/use-case/acl/ACL.png" alt="ACL"></div></section><section id="slide_pourquoi_du_graphe_2"><h2>Pourquoi du graphe ?</h2><div class="paragraph"><p><strong>C&#8217;est un graphe !</strong></p></div>
+<div class="imageblock" style=""><img src="assets/use-case/acl/usecase-identity-access.png" alt="usecase identity access"></div></section></section>
+<section><section id="slide_les_rseaux_informatiques"><h2>Les réseaux informatiques</h2></section><section id="slide_analyse_d_impact_chez_sfr"><h2>Analyse d&#8217;impact chez SFR</h2><div class="paragraph"><p>Modélisation de leur reseau physique dans Neo4j.</p></div>
+<div class="imageblock" style=""><img src="assets/use-case/network/sfr.png" alt="sfr" height="600"></div></section></section>
+<section><section id="slide_how_to_query"><h2>How to query ?</h2></section><section id="slide_cypher"><h2>Cypher</h2><div class="paragraph"><p>Cypher is Neo4j’s graph query language</p></div>
+<div class="ulist"><ul><li><p>Declarative Pattern-Matching language</p></li><li><p>SQL-like syntax</p></li><li><p>Designed for graphs</p></li></ul></div></section><section id="slide_all_is_pattern"><h2>All is pattern</h2><div class="imageblock" style=""><img src="assets/pattern.png" alt="pattern"></div></section><section id="slide_ascii_art"><h2>Ascii Art</h2><div class="imageblock" style=""><img src="assets/cypher.png" alt="cypher"></div></section><section id="slide_let_see_it_in_action"><h2>Let see it in action</h2></section><section id="slide_indexes"><h2>Indexes</h2><div class="listingblock"><div class="content"><pre class="highlight"><textarea class="cypher language-cypher">CREATE INDEX ON :Person(name)
+CREATE INDEX ON :Movie(title)</textarea></pre></div></div></section><section id="slide_query"><h2>Query</h2><div class="listingblock"><div class="content"><pre class="highlight"><textarea class="cypher language-cypher">MATCH (a)-[:ACTED_IN]-&gt;(m)&lt;-[:DIRECTED]-(a)
+RETURN a.name, m.title;</textarea></pre></div></div></section><section id="slide_list_all_the_characters_in_the_movie_the_matrix"><h2>List all the characters in the movie “The Matrix”</h2><div class="listingblock"><div class="content"><pre class="highlight"><textarea class="cypher language-cypher">MATCH (matrix:Movie)&lt;-[r:ACTED_IN]-(actor)
+WHERE matrix.title="The Matrix"
+RETURN r.roles, actor.name</textarea></pre></div></div></section><section id="slide_query_2"><h2>Query</h2><div class="listingblock"><div class="content"><pre class="highlight"><textarea class="cypher language-cypher">MATCH (tom:Person)-[:ACTED_IN]-&gt;(movie:Movie)
+WHERE tom.name="Tom Hanks"
+AND movie.released &lt; 1992
+RETURN movie.title</textarea></pre></div></div></section><section id="slide_query_3"><h2>Query</h2><div class="listingblock"><div class="content"><pre class="highlight"><textarea class="cypher language-cypher">MATCH (actor:Person)-[r:ACTED_IN]-&gt;(movie)
+WHERE actor.name="Keanu Reeves"
+AND "Neo" IN (r.roles)
+RETURN movie.title</textarea></pre></div></div></section><section id="slide_query_4"><h2>Query</h2><div class="listingblock"><div class="content"><pre class="highlight"><textarea class="cypher language-cypher">MATCH (tom:Person)-[:ACTED_IN]-&gt;(movie),
+      (a:Person)-[:ACTED_IN]-&gt;(movie)
+WHERE tom.name="Tom Hanks"
+  AND a.born &lt; tom.born
+RETURN DISTINCT a.name, (tom.born - a.born) AS diff</textarea></pre></div></div></section><section id="slide_query_5"><h2>Query</h2><div class="listingblock"><div class="content"><pre class="highlight"><textarea class="cypher language-cypher">MATCH (keanu:Person)-[:ACTED_IN]-&gt;(movie),
+      (n)-[:ACTED_IN]-&gt;(movie),
+      (hugo:Person)
+WHERE keanu.name="Keanu Reeves" AND
+      hugo.name="Hugo Weaving"
+AND NOT (hugo)-[:ACTED_IN]-&gt;(movie)
+RETURN DISTINCT n.name</textarea></pre></div></div></section><section id="slide_who_are_the_five_busiest_actors"><h2>Who are the five busiest actors?</h2><div class="listingblock"><div class="content"><pre class="highlight"><textarea class="cypher language-cypher">MATCH (a:Person)-[:ACTED_IN]-&gt;()
+RETURN a.name, count(*) AS count
+ORDER BY count DESC
+LIMIT 5</textarea></pre></div></div></section><section id="slide_recommend_3_actors_that_keanu_reeves_should_work_with_but_hasn_t"><h2>Recommend 3 actors that Keanu Reeves should work with (but hasn’t).</h2><div class="listingblock"><div class="content"><pre class="highlight"><textarea class="cypher language-cypher">MATCH (keanu:Person)-[:ACTED_IN]-&gt;()&lt;-[:ACTED_IN]-(c),
+      (c)-[:ACTED_IN]-&gt;()&lt;-[:ACTED_IN]-(coc)
+WHERE keanu.name="Keanu Reeves"
+  AND coc &lt;&gt; keanu
+  AND NOT((keanu)-[:ACTED_IN]-&gt;()&lt;-[:ACTED_IN]-(coc))
+RETURN coc.name, count(coc)
+ORDER BY count(coc) DESC
+LIMIT 3</textarea></pre></div></div></section><section id="slide_add_knows_relationships_between_all_actors_who_acted_in_the_same_movie"><h2>Add KNOWS relationships between all actors who acted in the same movie</h2><div class="listingblock"><div class="content"><pre class="highlight"><textarea class="cypher language-cypher">MATCH (a:Person)-[:ACTED_IN]-&gt;()&lt;-[:ACTED_IN]-(b:Person)
+MERGE (a)-[:KNOWS]-(b);</textarea></pre></div></div></section><section id="slide_friends_of_friends"><h2>Friends-of-Friends</h2><div class="listingblock"><div class="content"><pre class="highlight"><textarea class="cypher language-cypher">MATCH (keanu:Person)-[:KNOWS*2]-(fof)
+WHERE keanu.name="Keanu Reeves"
+RETURN DISTINCT fof.name</textarea></pre></div></div></section><section id="slide_query_6"><h2>Query</h2><div class="listingblock"><div class="content"><pre class="highlight"><textarea class="cypher language-cypher">MATCH (keanu:Person)-[:KNOWS*2]-(fof)
+WHERE keanu.name="Keanu Reeves"
+  AND keanu &lt;&gt; fof AND NOT (keanu)-[:KNOWS]-(fof)
+RETURN DISTINCT fof.name</textarea></pre></div></div></section><section id="slide_query_7"><h2>Query</h2><div class="listingblock"><div class="content"><pre class="highlight"><textarea class="cypher language-cypher">MATCH p=shortestPath(
+  (charlize:Person)-[:KNOWS*]-(bacon:Person)
+)
+WHERE charlize.name="Charlize Theron" AND
+      bacon.name="Kevin Bacon"
+RETURN length(rels(p))</textarea></pre></div></div></section><section id="slide_return_the_names_of_the_people_joining_charlize_to_kevin"><h2>Return the names of the people joining Charlize to Kevin.</h2><div class="listingblock"><div class="content"><pre class="highlight"><textarea class="cypher language-cypher">MATCH p=shortestPath((charlize:Person)-[:KNOWS*]-(bacon:Person))
+WHERE charlize.name="Charlize Theron" AND
+      bacon.name="Kevin Bacon"
+RETURN [n in nodes(p) | n.name] AS names;</textarea></pre></div></div></section></section>
+<section id="slide_question"><h2>Question ?</h2></section>
+<section id="slide_prochain_vnements"><h2>Prochain évènements</h2><div class="ulist"><ul><li><p><strong>Graph Day Paris :</strong>  mercredi 21 Septembre</p></li><li><p><strong>Training Graph Modeling :</strong> mardi 25 Octobre à Paris</p></li></ul></div></section></div></div><script src="../reveal.js/lib/js/head.min.js"></script><script src="../reveal.js/js/reveal.js"></script><script>// See https://github.com/hakimel/reveal.js#configuration for a full list of configuration options
+Reveal.initialize({
+  // Display controls in the bottom right corner
+  controls: true,
+  // Display a presentation progress bar
+  progress: true,
+  // Display the page number of the current slide
+  slideNumber: false,
+  // Push each slide change to the browser history
+  history: true,
+  // Enable keyboard shortcuts for navigation
+  keyboard: true,
+  // Enable the slide overview mode
+  overview: true,
+  // Vertical centering of slides
+  center: true,
+  // Enables touch navigation on devices with touch input
+  touch: true,
+  // Loop the presentation
+  loop: false,
+  // Change the presentation direction to be RTL
+  rtl: false,
+  // Turns fragments on and off globally
+  fragments: true,
+  // Flags if the presentation is running in an embedded mode,
+  // i.e. contained within a limited portion of the screen
+  embedded: false,
+  // Number of milliseconds between automatically proceeding to the
+  // next slide, disabled when set to 0, this value can be overwritten
+  // by using a data-autoslide attribute on your slides
+  autoSlide: 0,
+  // Stop auto-sliding after user input
+  autoSlideStoppable: true,
+  // Enable slide navigation via mouse wheel
+  mouseWheel: false,
+  // Hides the address bar on mobile devices
+  hideAddressBar: true,
+  // Opens links in an iframe preview overlay
+  previewLinks: false,
+  // Theme (e.g., beige, black, league, night, serif, simple, sky, solarized, white)
+  // NOTE setting the theme in the config no longer works in reveal.js 3.x
+  //theme: Reveal.getQueryHash().theme || 'black',
+  // Transition style (e.g., none, fade, slide, convex, concave, zoom)
+  transition: Reveal.getQueryHash().transition || 'slide',
+  // Transition speed (e.g., default, fast, slow)
+  transitionSpeed: 'default',
+  // Transition style for full page slide backgrounds (e.g., none, fade, slide, convex, concave, zoom)
+  backgroundTransition: 'fade',
+  // Number of slides away from the current that are visible
+  viewDistance: 3,
+  // Parallax background image (e.g., "'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg'")
+  parallaxBackgroundImage: '',
+  // Parallax background size in CSS syntax (e.g., "2100px 900px")
+  parallaxBackgroundSize: '',
+
+  // The "normal" size of the presentation, aspect ratio will be preserved
+  // when the presentation is scaled to fit different resolutions. Can be
+  // specified using percentage units.
+  width: '100%',
+  height: 700,
+
+  // Factor of the display size that should remain empty around the content
+  margin: 0.1,
+
+  // Bounds for smallest/largest possible scale to apply to content
+  minScale: 0.2,
+  maxScale: 1.5,
+
+  // Optional libraries used to extend on reveal.js
+  dependencies: [
+      { src: '../reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+      { src: '../reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: '../reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      
+      { src: '../reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+      { src: '../reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+  ]
+});</script><script src="../themes/neo4j/assets/codemirror/lib/codemirror.js"></script><script src="../themes/neo4j/assets/codemirror/mode/cypher/cypher.js"></script><script src="../themes/neo4j/assets/codemirror/mode/javascript/javascript.js"></script><script src="../themes/neo4j/assets/codemirror/mode/shell/shell.js"></script><script src="../themes/neo4j/assets/codemirror/mode/properties/properties.js"></script><script src="../themes/neo4j/assets/codemirror/mode/xml/xml.js"></script><script src="../themes/neo4j/assets/codemirror/mode/sql/sql.js"></script><script src="../themes/neo4j/assets/codemirror/mode/python/python.js"></script><script src="../themes/neo4j/assets/codemirror/mode/clike/clike.js"></script><script src="../themes/neo4j/assets/codemirror.js"></script></body></html>

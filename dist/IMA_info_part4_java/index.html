@@ -1,0 +1,241 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="author" content="Benoit Simard"><title>Java</title><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui" name="viewport"><link href="../reveal.js/css/reveal.css" rel="stylesheet"><link rel="stylesheet" href="../themes/neo4j/style/main.css" id="theme"><link href="../reveal.js/lib/css/zenburn.css" rel="stylesheet"></head><body><div class="reveal"><div class="slides"><section class="title" data-state="title"><h1>Java</h1><div class="preamble"><div class="paragraph"><p>Cours 4</p></div></div><p class="author"><small>Benoit Simard</small></p></section>
+<section><section id="slide_les_conditions"><h2>Les conditions</h2></section><section id="slide_if_else"><h2>if / else</h2><div class="paragraph"><p>La condition doit renvoyer un <strong>boolean</strong> <code>true</code> / <code>false</code></p></div>
+<div class="listingblock"><div class="content"><pre class="highlight"><textarea class="java language-java">---
+if( condition ) {
+    // Exécution du code si condition remplie
+}
+else {
+// Exécution du code si la condition n'est pas remplie
+}
+---</textarea></pre></div></div></section><section id="slide_les_oprateurs_logiques"><h2>Les opérateurs logiques</h2><div class="ulist"><ul><li><p><code>==</code> : permet de tester l&#8217;égalité.</p></li><li><p><code>!=</code> : permet de tester l’inégalité.</p></li><li><p><code>&lt;</code> : strictement inférieur.</p></li><li><p><code>&#8656;</code> : inférieur ou égal.</p></li><li><p><code>&gt;</code> : strictement supérieur.</p></li><li><p><code>&gt;=</code> : supérieur ou égal.</p></li><li><p><code>&amp;&amp;</code> : l&#8217;opérateur ET.</p></li><li><p><code>||</code> : le OU. Même combat que le précédent.</p></li></ul></div></section><section id="slide_l_algebre_de_boole"><h2>L&#8217;algèbre de Boole</h2><div class="paragraph"><p><strong>La conjonction</strong></p></div>
+<div class="ulist"><ul><li><p>1 ^ 1 = 1</p></li><li><p>0 ^ 0 = 0</p></li><li><p>1 ^ 0 = 0</p></li><li><p>0 ^ 1 = 0</p></li></ul></div></section><section id="slide_l_algebre_de_boole_2"><h2>L&#8217;algèbre de Boole</h2><div class="paragraph"><p><strong>La disjonction</strong></p></div>
+<div class="ulist"><ul><li><p>1 v 1 = 1</p></li><li><p>0 v 0 = 0</p></li><li><p>1 v 0 = 1</p></li><li><p>0 v 1 = 1</p></li></ul></div></section><section id="slide_l_algebre_de_boole_3"><h2>L&#8217;algèbre de Boole</h2><div class="paragraph"><p><strong>La négation</strong></p></div>
+<div class="ulist"><ul><li><p>~(A ^ B) = ~A v ~B</p></li><li><p>~(A V B) = ~A ^ ~B</p></li></ul></div></section><section id="slide_exemple"><h2>Exemple</h2><div class="listingblock"><div class="content"><pre class="highlight"><textarea class="java language-java">int i = 58;
+
+if(i &lt; 100 &amp;&amp; i &gt; 50) {
+  System.out.println("Le nombre est dans l'intervalle.");
+}
+else{
+  System.out.println("Le nombre n'est pas dans l'intervalle.");
+}</textarea></pre></div></div></section><section id="slide_for"><h2>For</h2><div class="listingblock"><div class="content"><pre class="highlight"><textarea class="java language-java">for(int i = 1; i &lt;= 10; i++) {
+
+  System.out.println("Voici la ligne "+i);
+
+}</textarea></pre></div></div></section><section id="slide_switch"><h2>Switch</h2><div class="listingblock"><div class="content"><pre class="highlight"><textarea class="java language-java">switch (/*Variable*/) {
+
+  case /*Argument*/:
+    /*Action*/;
+    break;
+
+  default:
+    /*Action*/;
+    break;
+}</textarea></pre></div></div></section><section id="slide_example"><h2>Example</h2><div class="listingblock"><div class="content"><pre class="highlight"><textarea class="java language-java">int note = 10; //On imagine que la note maximale est 20
+
+switch (note) {
+  case 0:
+    System.out.println("Ouch !");
+    break;
+  case 10:
+    System.out.println("Vous avez juste la moyenne.");
+    break;
+  case 20:
+    System.out.println("Parfait !");
+    break;
+  default:
+    System.out.println("Il faut davantage travailler.");
+}</textarea></pre></div></div></section><section id="slide_while"><h2>While</h2><div class="listingblock"><div class="content"><pre class="highlight"><textarea class="java language-java">while (/* Condition */) {
+
+  //Instructions à répéter
+
+}</textarea></pre></div></div></section><section id="slide_example_2"><h2>Example</h2><div class="listingblock"><div class="content"><pre class="highlight"><textarea class="java language-java">int a = 1, b = 15;
+while (a &lt; b) {
+
+  System.out.println("coucou " + a + " fois !!");
+  a++;
+
+}</textarea></pre></div></div></section><section id="slide_do_while"><h2>Do while</h2><div class="listingblock"><div class="content"><pre class="highlight"><textarea class="java language-java">do {
+
+  //Instructions
+
+} while(a &lt; b);</textarea></pre></div></div></section><section id="slide_exemple_2"><h2>Exemple</h2><div class="listingblock"><div class="content"><pre class="highlight"><textarea class="java language-java">int a = 1, b = 15;
+do {
+
+  System.out.println("coucou " + a + " fois !!");
+  a++;
+
+} while(a &lt; b);</textarea></pre></div></div></section><section id="slide_java_programmation_orient_objet"><h2>Java - programmation orienté objet</h2><div class="paragraph"><p>Tout en java commence par une <strong>classe</strong>, qui représente la définition d&#8217;un objet.</p></div>
+<div class="listingblock"><div class="content"><pre class="highlight"><textarea class="java language-java">public class MaClasse {
+
+    // corps de la classe
+
+}</textarea></pre></div></div></section><section id="slide_l_instance_l_objet"><h2>L&#8217;instance - l&#8217;objet</h2><div class="paragraph"><p><strong>Instancier</strong> une classe, permet de créer un objet correspond à la définition de la classe.</p></div>
+<div class="listingblock"><div class="content"><pre class="highlight"><textarea class="java language-java">MaClasse obj = new MaClasse();</textarea></pre></div></div></section><section id="slide_exemple_3"><h2>Exemple</h2><div class="listingblock"><div class="content"><pre class="highlight"><textarea class="java language-java">public class Point{
+
+   //Variable de l'objet
+   private double x ;
+   private double y ;
+
+   /*
+    * Constructeur par défaut
+    */
+   public Point(double x , double y){
+      this.setX(x) ;
+      this.setY(y) ;
+   }
+
+
+   //Accesseurs correspondant à la variable x.
+   public double getX(){
+      return this.x ;
+   }
+
+   public void setX(double x){
+      this.x = x ;
+   }
+
+   //Accesseurs correspondant à la variable y.
+   public double getY(){
+      return this.y ;
+   }
+
+   public void setY(double y){
+      this.y = y ;
+   }
+
+   public void symetrieSelonX(){
+      this.getY() = -this.getY() ;
+   }
+
+   public void symetrieSelonY(){
+      this.getX() = -this.getX() ;
+   }
+
+}</textarea></pre></div></div></section><section id="slide_le_constructeur"><h2>Le constructeur</h2><div class="paragraph"><p>C&#8217;est la méthode qui sert à créer une instance (ie un objet). Sa déclaration est particulière puisqu’un constructeur ne retourne rien.</p></div>
+<div class="paragraph"><p><strong>Une classe peut avoir plusieurs constructeu</strong></p></div>
+<div class="listingblock"><div class="content"><pre class="highlight"><textarea class="java language-java">public class Point{
+
+   //Variable de l'objet
+   private double x ;
+   private double y ;
+
+   /*
+    * Constructeur 1
+    */
+   public Point(double x , double y){
+      this.setX(x) ;
+      this.setY(y) ;
+   }
+
+   /*
+    * Constructeur 2
+    */
+   public Point(){
+      this.setX(0) ;
+      this.setY(0) ;
+   }
+}</textarea></pre></div></div></section><section id="slide_le_mot_this"><h2>Le mot this</h2><div class="literalblock"><div class="content"><pre>Le `this` n’est pas des plus simples à comprendre.</pre></div></div>
+<div class="literalblock"><div class="content"><pre>Ce terme représente la future l'objet.  Ainsi `this` pointe déjà vers un'objet. La première utilisation que l’on peut remarquer, est celle qui en est faite dans le constructeur avec argument, où les arguments portent le même nom que les variables d'instance mais ces dernières sont différenciées par l'apparition de this devant.</pre></div></div></section><section id="slide_private_public_protected"><h2>Private, Public &amp; protected</h2><div class="ulist"><ul><li><p><strong>Public:</strong>* accessible par toutes les classes ;</p><div class="ulist"><ul><li><p><strong>Protected:</strong> accessibles par toutes les classes héritées et les classes du même paquetage, inaccessibles par les autres ;</p></li><li><p><strong>Private :</strong> inaccessible par toute autre classes.</p></li><li><p><strong>static :</strong> permet  de spécifier des variables ou des méthodes de classe, directement accessible sans construction d&#8217;objet.</p></li></ul></div></li></ul></div></section><section id="slide_exemple_de_programme"><h2>Exemple de programme</h2><div class="listingblock"><div class="content"><pre class="highlight"><textarea class="java language-java">import java.util.Scanner;
+
+public class MonProgramme {
+
+    public static void main() {
+
+        String prenom;
+        char reponse = 'O';
+        Scanner sc = new Scanner(System.in);
+        while (reponse == 'O') {
+
+            System.out.println("Donnez un prénom : ");
+            prenom = sc.nextLine();
+            System.out.println("Bonjour " +prenom+ ", comment vas-tu ?");
+            //Sans ça, nous n'entrerions pas dans la deuxième boucle
+            reponse = ' ';
+
+            //Tant que la réponse n'est pas O ou N, on repose la question
+            while(reponse != 'O' &amp;&amp; reponse != 'N') {
+                //On demande si la personne veut faire un autre essai
+                System.out.println("Voulez-vous réessayer ? (O/N)");
+                reponse = sc.nextLine().charAt(0);
+            }
+        }
+        System.out.println("Au revoir…");
+    }
+}</textarea></pre></div></div></section><section id="slide_a_voir"><h2>A voir</h2><div class="ulist"><ul><li><p>Héritage</p></li><li><p>Création de méthode</p></li></ul></div></section></section></div></div><script src="../reveal.js/lib/js/head.min.js"></script><script src="../reveal.js/js/reveal.js"></script><script>// See https://github.com/hakimel/reveal.js#configuration for a full list of configuration options
+Reveal.initialize({
+  // Display controls in the bottom right corner
+  controls: true,
+  // Display a presentation progress bar
+  progress: true,
+  // Display the page number of the current slide
+  slideNumber: false,
+  // Push each slide change to the browser history
+  history: true,
+  // Enable keyboard shortcuts for navigation
+  keyboard: true,
+  // Enable the slide overview mode
+  overview: true,
+  // Vertical centering of slides
+  center: true,
+  // Enables touch navigation on devices with touch input
+  touch: true,
+  // Loop the presentation
+  loop: false,
+  // Change the presentation direction to be RTL
+  rtl: false,
+  // Turns fragments on and off globally
+  fragments: true,
+  // Flags if the presentation is running in an embedded mode,
+  // i.e. contained within a limited portion of the screen
+  embedded: false,
+  // Number of milliseconds between automatically proceeding to the
+  // next slide, disabled when set to 0, this value can be overwritten
+  // by using a data-autoslide attribute on your slides
+  autoSlide: 0,
+  // Stop auto-sliding after user input
+  autoSlideStoppable: true,
+  // Enable slide navigation via mouse wheel
+  mouseWheel: false,
+  // Hides the address bar on mobile devices
+  hideAddressBar: true,
+  // Opens links in an iframe preview overlay
+  previewLinks: false,
+  // Theme (e.g., beige, black, league, night, serif, simple, sky, solarized, white)
+  // NOTE setting the theme in the config no longer works in reveal.js 3.x
+  //theme: Reveal.getQueryHash().theme || 'black',
+  // Transition style (e.g., none, fade, slide, convex, concave, zoom)
+  transition: Reveal.getQueryHash().transition || 'slide',
+  // Transition speed (e.g., default, fast, slow)
+  transitionSpeed: 'default',
+  // Transition style for full page slide backgrounds (e.g., none, fade, slide, convex, concave, zoom)
+  backgroundTransition: 'fade',
+  // Number of slides away from the current that are visible
+  viewDistance: 3,
+  // Parallax background image (e.g., "'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg'")
+  parallaxBackgroundImage: '',
+  // Parallax background size in CSS syntax (e.g., "2100px 900px")
+  parallaxBackgroundSize: '',
+
+  // The "normal" size of the presentation, aspect ratio will be preserved
+  // when the presentation is scaled to fit different resolutions. Can be
+  // specified using percentage units.
+  width: '100%',
+  height: 700,
+
+  // Factor of the display size that should remain empty around the content
+  margin: 0.1,
+
+  // Bounds for smallest/largest possible scale to apply to content
+  minScale: 0.2,
+  maxScale: 1.5,
+
+  // Optional libraries used to extend on reveal.js
+  dependencies: [
+      { src: '../reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+      { src: '../reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: '../reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      
+      { src: '../reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+      { src: '../reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+  ]
+});</script><script src="../themes/neo4j/assets/codemirror/lib/codemirror.js"></script><script src="../themes/neo4j/assets/codemirror/mode/cypher/cypher.js"></script><script src="../themes/neo4j/assets/codemirror/mode/javascript/javascript.js"></script><script src="../themes/neo4j/assets/codemirror/mode/shell/shell.js"></script><script src="../themes/neo4j/assets/codemirror/mode/properties/properties.js"></script><script src="../themes/neo4j/assets/codemirror/mode/xml/xml.js"></script><script src="../themes/neo4j/assets/codemirror/mode/sql/sql.js"></script><script src="../themes/neo4j/assets/codemirror/mode/python/python.js"></script><script src="../themes/neo4j/assets/codemirror/mode/clike/clike.js"></script><script src="../themes/neo4j/assets/codemirror.js"></script></body></html>

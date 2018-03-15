@@ -1,0 +1,159 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="author" content="Benoit Simard"><title>Top 5 des cas d&#8217;utilisations</title><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui" name="viewport"><link href="../reveal.js/css/reveal.css" rel="stylesheet"><link rel="stylesheet" href="../themes/neo4j/style/main.css" id="theme"><link href="../reveal.js/lib/css/zenburn.css" rel="stylesheet"></head><body><div class="reveal"><div class="slides"><section class="title" data-state="title"><h1>Top 5 des cas d&#8217;utilisations</h1><p class="author"><small>Benoit Simard</small></p></section><section><section id="slide_pourquoi_du_graphe"><h2>Pourquoi du graphe ?</h2></section><section id="slide_le_monde_est_un_graphe"><h2>Le monde est un graphe !</h2><div class="split"><div class="paragraph"><p><span class="image"><img src="assets/neo4j_overview/everything_connected.jpg" alt="everything connected"></span></p></div></div>
+<div class="split"><div class="ulist"><ul><li><p>les gens, les lieux et les évènements</p></li><li><p>Les entreprises, les marchés et les clients</p></li><li><p>la technologie, les réseaux, les machines, les applications et les utilisateurs</p></li><li><p>les applications, le code, les dépendances, les architectures &#8230;&#8203;</p></li><li><p>les criminels, les fraudeurs et leurs comportements</p></li></ul></div></div></section><section id="slide_un_langage_naturel"><h2>Un langage naturel</h2><div class="paragraph"><p><span class="image"><img src="assets/neo4j_overview/triptych-logistics.png" alt="triptych logistics" height="300"></span></p></div></section><section id="slide_un_modele_unique"><h2>Un modèle unique</h2><div class="paragraph"><p>La modélisation fonctionnelle et technique sont identiques</p></div>
+<div class="paragraph"><p><span class="image"><img src="assets/neo4j_overview/whiteboard.png" alt="whiteboard"></span></p></div></section><section id="slide_croisez_vos_donnes"><h2>Croisez vos données</h2><div class="paragraph"><p>Les relations entre les données sont plus importantes que la donnée en elle-même.</p></div>
+<div class="imageblock" style=""><img src="assets/neo4j_overview/linked-data.png" alt="linked data" height="500"></div></section></section>
+<section><section id="slide_quels_sont_les_cas_d_utilisations"><h2>Quels sont les cas d&#8217;utilisations ?</h2></section><section id="slide_les_cas_d_utilisations"><h2>Les cas d&#8217;utilisations</h2><div class="split"><h3>En interne</h3><div class="paragraph"><p>Master Data Management</p></div>
+<div class="paragraph"><p>Analyse des réseaux</p></div>
+<div class="paragraph"><p>Détection de fraude</p></div>
+<div class="imageblock" style=""><img src="assets/use-case/use-case-internal.png" alt="use case internal"></div></div>
+<div class="split"><h3>Orienté client</h3><div class="paragraph"><p>Recommandation</p></div>
+<div class="paragraph"><p>Graph-Based Search</p></div>
+<div class="paragraph"><p>Gestion des accès</p></div>
+<div class="imageblock" style=""><img src="assets/use-case/use-case-external.png" alt="use case external"></div></div></section></section>
+<section><section id="slide_la_recommandation"><h2>La recommandation</h2></section><section id="slide_la_recommandation_2"><h2>La recommandation</h2><div class="paragraph"><p>Offrir une recommandation en <strong>temps réel</strong>, <strong>hautement ciblé</strong> et contextuelle</p></div>
+<div class="paragraph"><p>afin quelle soit <strong>pertinente</strong> pour l&#8217;utilisateur</p></div>
+<div class="imageblock" style=""><img src="assets/use-case/recommandation/recommandation.png" alt="recommandation"></div></section><section id="slide_pourquoi_du_graphe_2"><h2>Pourquoi du graphe ?</h2><div class="paragraph"><p>Faire des recommandations <strong>efficaces</strong> repose sur une base qui <strong>comprend les relations</strong> existants entre les entités, ainsi que la <strong>qualité et la solidité</strong> de ces connexions.</p></div>
+<div class="imageblock" style=""><img src="assets/use-case/recommandation/usecase-recommendation.png" alt="usecase recommendation"></div></section><section id="slide_les_dfis"><h2>Les défis</h2><div class="split"><div class="imageblock" style=""><img src="assets/use-case/recommandation/reco.png" alt="reco"></div></div>
+<div class="split"><div class="paragraph"><p>Traiter de <strong>gros volumes</strong> de données et de <strong>relations</strong> pour comprendre le <strong>contexte</strong></p></div>
+<div class="paragraph"><p>Offrir des recommandations <strong>pertinentes</strong> en <strong>temps réel</strong>, sur des <strong>faits immédiats</strong></p></div>
+<div class="paragraph"><p>Prendre en compte <strong>continuellement</strong> des <strong>données et relations nouvelles</strong></p></div>
+<aside class="notes"><div class="paragraph"><p>Les algorithmes standard de recommandations s’appuient sur des données hautement connectées en expansion rapide.
+La puissance d’un système de suggestion repose sur sa capacité à faire des recommandations en temps réel à l’aide de faits immédiats.
+Du fait de la croissance rapide dans la taille et le volume des données, le système doit prendre en compte à la fois les besoins actuels et futurs.</p></div></aside></div></section><section id="slide_meetic"><h2>Meetic</h2><div class="paragraph"><p>L&#8217;algorithme du <strong>filtrage collaboratif</strong></p></div>
+<div class="imageblock" style=""><img src="assets/use-case/recommandation/meetic-graph.png" alt="meetic graph"></div></section><section id="slide_autres_clients"><h2>Autres clients</h2><div class="imageblock" style=""><img src="assets/use-case/recommandation/walmart.png" alt="walmart"></div>
+<div class="paragraph"><p>Fournit des recommandations en temps réel sur leur service de vente en ligne,
+en utilisant les informations relatives aux préférences des clients.</p></div>
+<div class="imageblock" style=""><img src="assets/use-case/recommandation/ebay.png" alt="ebay"></div>
+<div class="paragraph"><p>Le géant du commerce électronique eBay a également utilisé avec succès un moteur de suggestion fonctionnant sur un graphe,
+en l’occurrence pour une solution sophistiquée d’acheminement de paquets/courrier en temps réel (Ebay now).</p></div></section></section>
+<section><section id="slide_la_dtection_de_fraudes"><h2>La détection de fraudes</h2></section><section id="slide_la_dtection_de_fraudes_2"><h2>La détection de fraudes</h2><div class="ulist"><ul><li><p>La fraude coûte des <strong>milliards</strong> chaque année aux banques et assurances</p></li><li><p>Les techniques de fraudes sont de plus en plus <strong>sophistiquées</strong></p></li><li><p>Il faut constater la fraude en <strong>temps réel</strong>  (ie. avant quelle est lieu)</p></li></ul></div>
+<div class="imageblock" style=""><img src="assets/use-case/fraude/fraude.jpg" alt="fraude"></div></section><section id="slide_pourquoi_du_graphe_3"><h2>Pourquoi du graphe ?</h2><div class="paragraph"><p>Bien qu’aucune mesure de détection de fraudes ne soit parfaite, il est possible d’introduire des améliorations considérables si l’on se penche sur <strong>les connexions qui relient les points de données individuels.</strong></p></div>
+<div class="paragraph"><p>Il faut étudier l'<strong>interconnexion des données</strong>.</p></div>
+<div class="imageblock" style=""><img src="assets/use-case/fraude/fraud-graph-vs-analytics.png" alt="fraud graph vs analytics"></div></section><section id="slide_les_dfis_2"><h2>Les défis</h2><div class="split"><div class="imageblock" style=""><img src="assets/use-case/fraude/fraud.png" alt="fraud"></div></div>
+<div class="split"><div class="paragraph"><p>Effectuer une <strong>analyse complexe des liens</strong> pour découvrir les <strong>schémas et les réseaux de fraude</strong></p></div>
+<div class="paragraph"><p>Détecter et empêcher les fraudes <strong>en temps réel</strong></p></div>
+<div class="paragraph"><p>Réseaux de fraude en <strong>évolution et dynamiques</strong></p></div></div></section><section id="slide_les_paradise_papers"><h2>Les Paradise Papers</h2><div class="imageblock" style=""><img src="assets/use-case/fraude/paradise-papers.jpg" alt="paradise papers" height="500"></div>
+<div class="paragraph"><p><a href="https://projects.icij.org/paradise-papers/the-influencers/#/" class="bare">https://projects.icij.org/paradise-papers/the-influencers/#/</a></p></div></section><section id="slide_fraude_dans_le_e_commerce"><h2>Fraude dans le e-commerce</h2><div class="paragraph"><p>Graphe d’une série de transactions effectuée avec fraude probable se produisant à l’adresse IP1.</p></div>
+<div class="paragraph"><p>( IP : Adresse IP, CC : carte de crédit, ID : Identifiant de l&#8217;utilisateur, CK : Adresse de livraison)</p></div>
+<div class="imageblock" style=""><img src="assets/use-case/fraude/fraud-detection-use-case-with-graph-databases.jpg" alt="fraud detection use case with graph databases"></div></section></section>
+<section><section id="slide_la_gestion_de_donnes_de_rfrence"><h2>La gestion de données de référence</h2></section><section id="slide_la_gestion_de_donnes_de_rfrence_2"><h2>La gestion de données de référence</h2><div class="paragraph"><p>Les données de référence constituent le <strong>pilier de votre entreprise</strong> et incluent des
+données telles que les utilisateurs, les clients, les produits, les comptes, les partenaires, les sites, les unités commerciales, &#8230;&#8203;</p></div>
+<div class="ulist"><ul><li><p>stockées à différents emplacements (<strong>effet silo)</strong></p></li><li><p>avec des <strong>chevauchements</strong> et des <strong>redondances</strong></p></li><li><p>et des <strong>qualités variables</strong></p></li></ul></div></section><section id="slide_pourquoi_du_graphe_4"><h2>Pourquoi du graphe ?</h2><div class="split"><div class="imageblock" style=""><img src="assets/use-case/mdm/usecase-master-data-management1.png" alt="usecase master data management1"></div></div>
+<div class="split"><div class="ulist"><ul><li><p>Les données sont <strong>hautements connectées</strong></p></li><li><p>Les systèmes de gestion traditionnels ne sont pas <strong>flexibles</strong></p></li><li><p>L'<strong>interconnexion des données</strong> de références permettent d&#8217;obtenir un <strong>avantage concurrentiel</strong></p></li></ul></div></div></section><section id="slide_la_modlisation_rh_d_une_entreprise"><h2>La modélisation RH d&#8217;une entreprise</h2><div class="paragraph"><p>Réseau de données de référence détaillant les relations de rapport et de supervision d’employé, ici avec une plus grande complexité du <strong>monde réel</strong>.</p></div>
+<div class="split"><div class="imageblock" style=""><img src="assets/use-case/mdm/master-data-management-hierarchy.png" alt="master data management hierarchy" height="500"></div></div>
+<div class="split"><div class="imageblock" style=""><img src="assets/use-case/mdm/master-data-management-network.jpg" alt="master data management network"></div></div></section><section id="slide_l_entreprise_connecte"><h2>L&#8217;entreprise connectée</h2><div class="imageblock" style=""><img src="assets/use-case/mdm/connected-enterprise.png" alt="connected enterprise" height="600"></div></section><section id="slide_client"><h2>Client</h2><div class="imageblock" style=""><img src="assets/use-case/mdm/adidas.png" alt="adidas" height="100"></div>
+<div class="paragraph"><p>Adidas utilise Neo4j pour créer leur référentiel interne, incluant les données sur les produits, les marchés, les médias sociaux, les actifs numériques, &#8230;&#8203;</p></div>
+<div class="imageblock" style=""><img src="assets/use-case/mdm/Wine-Data-System.jpg" alt="Wine Data System"></div>
+<div class="paragraph"><p>Wine Data System utilise Neo4j pour réconcilier les bases de données des négociants afin de construire un référentiel unique.</p></div></section></section>
+<section><section id="slide_la_gestion_des_identits_et_des_accs"><h2>La gestion des identités et des accès</h2></section><section id="slide_c_est_un_graphe"><h2>C&#8217;est un graphe !</h2><div class="split"><div class="imageblock" style=""><img src="assets/use-case/acl/ACL.png" alt="ACL"></div></div>
+<div class="split"><div class="paragraph"><p>Des <strong>personnes</strong> qui appartiennent a des <strong>groupes</strong>, qui eux-mêmes peuvent appartennir à des <strong>groupes</strong>.</p></div>
+<div class="paragraph"><p>Les groupes et utilisateurs possèdent des <strong>rôles</strong>.</p></div>
+<div class="paragraph"><p><em>Est-ce que l&#8217;utilisateur <strong>Benoit</strong> a accès en écriture au répertoire <strong>\\samba\clients</strong> ?</em></p></div></div></section><section id="slide_les_dfis_3"><h2>Les défis</h2><div class="split"><div class="imageblock" style=""><img src="assets/use-case/acl/acl-.png" alt="acl "></div></div>
+<div class="split"><div class="paragraph"><p>Les identités et autorisations d’accès sont <strong>hautement interconnectées</strong></p></div>
+<div class="paragraph"><p>Garder la <strong>cohérence des données</strong> et faciliter sa <strong>compréhension</strong></p></div>
+<div class="paragraph"><p>Retrouver un accès en <strong>quelques millisecondes</strong> pour satisfaire les clients</p></div>
+<aside class="notes"><div class="paragraph"><p>Pour vérifier une identité précise et ses autorisations d’accès,
+le système doit traverser un jeu de données hautement interconnectées dont le volume et la complexité augmentent en permanence.</p></div>
+<div class="paragraph"><p>À mesure que le volume d’utilisateurs, de produits et d’autorisations augmente, les systèmes traditionnels n’assurent plus de réponses réactives, ce qui se traduit par une frustration chez les utilisateurs.</p></div>
+<div class="paragraph"><p>Avec l’augmentation rapide de la taille des utilisateurs et de leurs métadonnées associées, votre application doit prendre en compte les besoins de gestion des identités à la fois actuels et futurs.</p></div></aside></div></section><section id="slide_telenor"><h2>Telenor</h2><div class="split"><div class="imageblock" style=""><img src="assets/use-case/acl/identity-access-management-telenor.jpg" alt="identity access management telenor" height="700"></div></div>
+<div class="split"><div class="paragraph"><p>Telenor permet à ses clients de gérer les services de leurs employés.</p></div>
+<div class="paragraph"><p>Les administrateurs ne voient que les parties de l’entreprise et les services qu’ils ont le droit de gérer.</p></div>
+<div class="ulist"><ul><li><p><strong>5 millions</strong> de clients, souscriptions et accords</p></li><li><p><strong>dépendances complexes</strong> entre les groupes, sociétés, individus, comptes, produits, souscriptions, services et accords</p></li></ul></div></div></section></section>
+<section><section id="slide_les_rseaux_informatiques"><h2>Les réseaux informatiques</h2></section><section id="slide_un_rseau_est_un_graphe"><h2>Un réseau est un graphe !</h2><div class="split"><div class="imageblock" style=""><img src="assets/use-case/network/usecase-network-it.png" alt="usecase network it"></div></div>
+<div class="split"><div class="ulist"><ul><li><p>Modélisation et stockage naturel</p></li><li><p>Meilleur visualisation et appréhension des données</p></li><li><p>Permet de réaliser des analyses d&#8217;impacts en cas de panne</p></li><li><p>A l&#8217;inverse, voir les redondances du réseau</p></li></ul></div></div></section><section id="slide_les_dfis_4"><h2>Les défis</h2><div class="split"><div class="imageblock" style=""><img src="assets/use-case/network/usecase-network-it.png" alt="usecase network it"></div></div>
+<div class="split"><div class="paragraph"><p><strong>Résolution des problèmes sur un réseau</strong> : trouver la source d&#8217;un dysfonctionnement le plus rapidement possible</p></div>
+<div class="paragraph"><p><strong>Analyse d&#8217;impact</strong> : vérifier la résilience du réseau</p></div>
+<div class="paragraph"><p><strong>Nombre croissant de noeuds physiques et virtuels</strong></p></div>
+<aside class="notes"><div class="paragraph"><p>Les interdépendances physiques et humaines sont extrêmement complexes dans un réseau
+ou un environnement informatique, ce qui rend difficile la résolution des problèmes.</p></div>
+<div class="paragraph"><p>Les relations existant parmi les noeuds d’un réseau ne sont ni purement linéaires ni hiérarchiques
+et il est donc difficile de déterminer les interdépendances des éléments du réseau les uns envers les autres.</p></div>
+<div class="paragraph"><p>Du fait de la croissance rapide dans la taille et le volume des données,
+le système doit prendre en compte à la fois les besoins actuels et futurs.</p></div></aside></div></section><section id="slide_analyse_d_impact_chez_sfr"><h2>Analyse d&#8217;impact chez SFR</h2><div class="split"><div class="imageblock" style=""><img src="assets/use-case/network/sfr.png" alt="sfr" height="600"></div></div>
+<div class="split"><div class="paragraph"><p>Identification <strong>temps réel</strong> des clients <strong>liées</strong> à une panne, ou une maintenance.</p></div>
+<div class="paragraph"><p>Gestion d’inventaire réseaux <strong>très flexible</strong>.</p></div>
+<div class="paragraph"><p><strong>Une seule source de vérité</strong> (Neo4j) représentant le réseau entier.</p></div>
+<div class="paragraph"><p>Système dynamique de chargement (ETL)  des données issues de <strong>+30 sources variées</strong>.</p></div>
+<div class="paragraph"><p>Identifier les <strong>faiblesses du réseau</strong></p></div>
+<aside class="notes"><div class="ulist"><ul><li><p>Une semaine entière pour planifier une maintenance.</p></li><li><p>Analyste d’impact sur de multiples systèmes (&gt;30).</p></li><li><p>Changements quotidiens dans l’infrastructure.</p></li><li><p>Identifier les clients impactés par une maintenance.</p></li><li><p>Identifier les faiblesses du réseau (Deuxième projet).</p></li><li><p>Une semaine entière pour connaître le noeud de raccordement d&#8217;un nouveau client (Troisième projet).</p></li></ul></div></aside></div></section></section>
+<section><section id="slide_graphs_are_everywhere"><h2>Graphs are everywhere !</h2></section><section id="slide_des_questions"><h2>Des questions ?</h2><div class="split"><div class="imageblock" style=""><img src="assets/questions.png" alt="questions"></div></div>
+<div class="split"><div class="paragraph"><p>Suivez nous sur <em>twitter</em> <strong>@neojfr</strong> &amp; <strong>@neo4j</strong></p></div>
+<div class="paragraph"><p>Posez vos questions par email sur les <em>google groups</em> <strong>Neo4jfr</strong> &amp; <strong>Neo4j</strong>, ou sur <strong>stackoverflow</strong>  avec les tags <strong>neo4j</strong> &amp; <strong>cypher</strong></p></div>
+<div class="paragraph"><p>Parlez avec nous sur <strong>Slack</strong></p></div></div></section></section></div></div><script src="../reveal.js/lib/js/head.min.js"></script><script src="../reveal.js/js/reveal.js"></script><script>// See https://github.com/hakimel/reveal.js#configuration for a full list of configuration options
+Reveal.initialize({
+  // Display controls in the bottom right corner
+  controls: true,
+  // Display a presentation progress bar
+  progress: true,
+  // Display the page number of the current slide
+  slideNumber: false,
+  // Push each slide change to the browser history
+  history: true,
+  // Enable keyboard shortcuts for navigation
+  keyboard: true,
+  // Enable the slide overview mode
+  overview: true,
+  // Vertical centering of slides
+  center: true,
+  // Enables touch navigation on devices with touch input
+  touch: true,
+  // Loop the presentation
+  loop: false,
+  // Change the presentation direction to be RTL
+  rtl: false,
+  // Turns fragments on and off globally
+  fragments: true,
+  // Flags if the presentation is running in an embedded mode,
+  // i.e. contained within a limited portion of the screen
+  embedded: false,
+  // Number of milliseconds between automatically proceeding to the
+  // next slide, disabled when set to 0, this value can be overwritten
+  // by using a data-autoslide attribute on your slides
+  autoSlide: 0,
+  // Stop auto-sliding after user input
+  autoSlideStoppable: true,
+  // Enable slide navigation via mouse wheel
+  mouseWheel: false,
+  // Hides the address bar on mobile devices
+  hideAddressBar: true,
+  // Opens links in an iframe preview overlay
+  previewLinks: false,
+  // Theme (e.g., beige, black, league, night, serif, simple, sky, solarized, white)
+  // NOTE setting the theme in the config no longer works in reveal.js 3.x
+  //theme: Reveal.getQueryHash().theme || 'black',
+  // Transition style (e.g., none, fade, slide, convex, concave, zoom)
+  transition: Reveal.getQueryHash().transition || 'slide',
+  // Transition speed (e.g., default, fast, slow)
+  transitionSpeed: 'default',
+  // Transition style for full page slide backgrounds (e.g., none, fade, slide, convex, concave, zoom)
+  backgroundTransition: 'fade',
+  // Number of slides away from the current that are visible
+  viewDistance: 3,
+  // Parallax background image (e.g., "'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg'")
+  parallaxBackgroundImage: '',
+  // Parallax background size in CSS syntax (e.g., "2100px 900px")
+  parallaxBackgroundSize: '',
+
+  // The "normal" size of the presentation, aspect ratio will be preserved
+  // when the presentation is scaled to fit different resolutions. Can be
+  // specified using percentage units.
+  width: '100%',
+  height: 700,
+
+  // Factor of the display size that should remain empty around the content
+  margin: 0.1,
+
+  // Bounds for smallest/largest possible scale to apply to content
+  minScale: 0.2,
+  maxScale: 1.5,
+
+  // Optional libraries used to extend on reveal.js
+  dependencies: [
+      { src: '../reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+      { src: '../reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: '../reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      
+      { src: '../reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+      { src: '../reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+  ]
+});</script><script src="../themes/neo4j/assets/codemirror/lib/codemirror.js"></script><script src="../themes/neo4j/assets/codemirror/mode/cypher/cypher.js"></script><script src="../themes/neo4j/assets/codemirror/mode/javascript/javascript.js"></script><script src="../themes/neo4j/assets/codemirror/mode/shell/shell.js"></script><script src="../themes/neo4j/assets/codemirror/mode/properties/properties.js"></script><script src="../themes/neo4j/assets/codemirror/mode/xml/xml.js"></script><script src="../themes/neo4j/assets/codemirror/mode/sql/sql.js"></script><script src="../themes/neo4j/assets/codemirror/mode/python/python.js"></script><script src="../themes/neo4j/assets/codemirror/mode/clike/clike.js"></script><script src="../themes/neo4j/assets/codemirror.js"></script></body></html>
