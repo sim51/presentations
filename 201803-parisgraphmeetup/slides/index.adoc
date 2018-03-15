@@ -1,0 +1,90 @@
+:revealjs_width: '100%'
+:revealjs_customtheme: ../themes/neo4j/style/main.css
+:author: Benoit Simard (@logisima)
+
+= Graph Meetup Paris
+
+Mars 2018
+
+== Graph Meetup Paris
+
+=== Meetup
+
+GraphDB Paris Meetup 
+
+https://www.meetup.com/graphdb-france/
+
+Paris Machine Learning Applications Group 
+
+https://www.meetup.com/Paris-Machine-learning-applications-group
+
+Big Data Classes 
+
+https://www.meetup.com/fr-FR/Paris-Big-Data-Classes/
+
+Paris Data Students 
+
+https://www.meetup.com/Paris-Data-Students/ 
+
+=== Agenda
+
+* **18:30 :** Début du meetup
+* **19:00 :** Introduction
+* **19:10 :** Présentation I - Graph-Powered Machine Learning
+* **20:00 :** Présentation II -  Knowledge Graphs et Interfaces Conversationnelles avec Neo4j et Amazon Alexa
+* **20:45 :** Apéro
+
+=== Graph-Powered Machine Learning
+
+==== Speaker
+
+**Dr. Vlasta Kus (@VlastaKus)**
+
+image::assets/presentateur1.jpg[]
+
+==== Description
+
+Graph-based machine learning is becoming an important trend in Artificial Intelligence, transcending a lot of other techniques. Using graphs as a basic representation of data for ML purposes has several advantages.
+
+=== Knowledge Graphs et Amazon Alexa
+
+==== Speaker
+
+**Christophe (@ikwattro)**
+
+image::assets/presentateur2.jpg[]
+
+==== Description
+
+Les Knowledge Graph sont devenus une partie primordiale dans les processus d'aggrégation des données, de classification de documents et compréhension de langage
+Christophe vous décrira une approche basée sur les graphes pour de l'informatique cognitive et vous détaillera ce processus .
+
+== Les sponsors
+
+=== La salle
+
+Merci à Criteo pour la salle.
+
+image::assets/criteo.jpeg[]
+
+=== Solide et liquide
+
+Merci à Graph Aware pour le solide et le liquide.
+
+image::assets/graphaware.png[]
+
+=== Pour l'organisation
+
+Merci à Neo4j et Zenika pour l'organisation
+
+==== http://www.neo4j.com
+
+image::assets/neo4j.png[]
+
+==== http://www.zenika.fr 
+
+image::assets/zenika.png[]
+
+
+
+

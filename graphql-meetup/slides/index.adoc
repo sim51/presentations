@@ -107,7 +107,9 @@ image::assets/neo4j-browser.png[]
 
 === Example : a movie application
 
-TODO: Screenshot
+https://github.com/sim51/grand-movies-example
+
+image::assets/demo.png[]
 
 == Focus on Neo4j
 
@@ -534,7 +536,7 @@ export class MovieSearchComponent implements OnInit {
   ngOnInit() {
     this.query = this.apollo.watchQuery(
       {
-        query: QUERY_SEARCH_CLAIM,
+        query: QUERY_SEARCH,
         variables: { search: this.search, limit: this.limit, offset: this.offset, }
       }
     );
@@ -548,10 +550,26 @@ export class MovieSearchComponent implements OnInit {
 }
 ----
 
-== Demo time
+=== Typescript generation
 
-== Thanks !
+https://github.com/apollographql/apollo-codegen
+
+[source,shell]
+----
+cd ~/worspaces/grandstack/grand-movies-examples/
+apollo-codegen introspect-schema http://localhost:3000/graphql --output schema.json 
+cd front-angular/src/app/movie/search/
+apollo-codegen generate ./search.graphql.ts --schema ~/worspaces/grandstack/grand-movies-examples/schema.json --target typescript --output search.graphql.type..ts
+----
+
+== Demo
 
 === Any questions ?
 
 image::assets/questions.png[]
+
+== Thanks
+
+=== Resource
+
+Thanks to Will Lyon from Neo4j for the help
