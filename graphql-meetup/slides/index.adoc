@@ -169,16 +169,28 @@ image::assets/movie-graph.svg[height=800]
 
 === Recommendation
 
+==== !
+
 [source,cypher]
 ----
-MATCH (m:Movie {title:'Matrix, The'})-[:IN_GENRE]->(g:Genre)<-[:IN_GENRE]-(movie:Movie)
+MATCH 
+  (m:Movie {title:'Matrix, The'}),
+  (m)-[:IN_GENRE]->(:Genre)<-[:IN_GENRE]-(movie:Movie)
 WITH m, movie, COUNT(*) AS genreOverlap
+
   MATCH (m)<-[:RATED]-(:User)-[:RATED]->(movie)
   WITH movie, genreOverlap, COUNT(*) AS userRatedScore
   RETURN movie 
-  ORDER BY (0.9 * genreOverlap) + (0.1 * userRatedScore)  DESC 
+  ORDER BY 
+    (0.9 * genreOverlap) + (0.1 * userRatedScore)  
+    DESC 
   LIMIT 3
 ----
+
+==== !
+
+image::assets/reco-graph.svg[width=800]
+
 
 == Focus on GraphQL
 

@@ -21,13 +21,19 @@
 <div class="split"><div class="imageblock" style=""><img src="assets/pattern.png" alt="pattern" width="800"></div></div></section><section id="slide_the_movie_dataset"><h2>The movie dataset</h2><div class="split"><div class="imageblock" style=""><img src="assets/imdb.png" alt="imdb" height="100"></div>
 <div class="paragraph"><p><a href="https://neo4j.com/sandbox-v2/" class="bare">https://neo4j.com/sandbox-v2/</a></p></div>
 <div class="imageblock" style=""><img src="assets/sandbox-imdb.png" alt="sandbox imdb"></div></div>
-<div class="split"><div class="imageblock" style=""><img src="assets/movie-graph.svg" alt="movie graph" height="800"></div></div></section><section id="slide_recommendation"><h2>Recommendation</h2><div class="listingblock"><div class="content"><pre class="highlight"><textarea class="cypher language-cypher">MATCH (m:Movie {title:'Matrix, The'})-[:IN_GENRE]-&gt;(g:Genre)&lt;-[:IN_GENRE]-(movie:Movie)
+<div class="split"><div class="imageblock" style=""><img src="assets/movie-graph.svg" alt="movie graph" height="800"></div></div></section><section id="slide_recommendation"><h2>Recommendation</h2><div class="split"><div class="listingblock"><div class="content"><pre class="highlight"><textarea class="cypher language-cypher">MATCH
+  (m:Movie {title:'Matrix, The'}),
+  (m)-[:IN_GENRE]-&gt;(:Genre)&lt;-[:IN_GENRE]-(movie:Movie)
 WITH m, movie, COUNT(*) AS genreOverlap
+
   MATCH (m)&lt;-[:RATED]-(:User)-[:RATED]-&gt;(movie)
   WITH movie, genreOverlap, COUNT(*) AS userRatedScore
   RETURN movie
-  ORDER BY (0.9 * genreOverlap) + (0.1 * userRatedScore)  DESC
-  LIMIT 3</textarea></pre></div></div></section></section>
+  ORDER BY
+    (0.9 * genreOverlap) + (0.1 * userRatedScore)
+    DESC
+  LIMIT 3</textarea></pre></div></div></div>
+<div class="split"><div class="imageblock" style=""><img src="assets/reco-graph.svg" alt="reco graph" width="800"></div></div></section></section>
 <section><section id="slide_focus_on_graphql"><h2>Focus on GraphQL</h2></section><section id="slide_a_large_adoption"><h2>A large adoption</h2><div class="imageblock" style=""><img src="assets/graphql-adoption.png" alt="graphql adoption"></div></section><section id="slide_graphql_2"><h2>GraphQL</h2><div class="split"><div class="paragraph"><p>“A query language for your API, and a server-side runtime for executing queries by using a type system you define for your data”</p></div>
 <div class="paragraph"><p>“GraphQL isn&#8217;t tied to any specific database or storage engine”</p></div>
 <div class="paragraph"><p>“A GraphQL service is created by defining types and fields on those types, then providing resolver functions for each field on each type”</p></div></div>
