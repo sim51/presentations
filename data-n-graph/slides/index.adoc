@@ -14,13 +14,32 @@ image::assets/me.JPG[height=500]
 
 ==== !
 
-* Ancien de l'IMA
 * **Graphe addicte**
 * Libérateur de données
-* benoit.simard@neotechnology.com
+* benoit@neo4j.com
 * @logisima
 
+=== L'IMA et moi
+
+==== Mon parcours 
+ 
+* Ancien de l'IMA (2007)
+* Vacataire
+** En technologies web de 2010 à 2013
+** En algorithmique et Java de 2016 à 2017
+
+==== Ce que j'ai appris
+
+* Statistiques
+* L'informatique
+* Les graphes
+* La comptabilité
+
 == La data
+
+=== Le nouveau pétrole 
+
+image::assets/data-petrole.jpg[height=500]
 
 === Une question de taille ?
 
@@ -36,7 +55,7 @@ image::assets/big-data.png[height=500]
 
 **La valeur n'est pas dans la donnée, mais dans ses relations**
 
-image::assets/linked-data.png[height=700]
+image::assets/linked-data.png[height=500]
 
 === Le processing
 
@@ -44,56 +63,11 @@ complexity = f(size, **connectivité**)
 
 image::assets/processing-time.png[height=500]
 
-__A quand les ordinateurs quantiques ?__
-
-== Les bases de données
-
-=== Les bases relationnelles
-
-* Existent depuis les années 80
-* Base ACID
-* Gèrent les relations
-* Données très structurées
-* Peux stocker de grosse volumétrie (plusieurs To)
-
-http://www.postgresqlfr.org/temoignages:le_bon_coin
-
-(3To de données - 1To RAM - 160 cores)
-
-=== ACID
-
-image::assets/acid.png[height=500]
-
-__Opposé à eventuellement consistant, mais distribué (BASE & CAP théorème)__
-
-=== La mouvance NoSQL
-
-image::assets/nosql-graph.png[height=500]
-
-=== Le monde ensembliste
-
-image::assets/sql-joins.jpg[height=500]
-
-=== RDBMS
-
-**Les relations sont calculés => dans le pire des cas cela revient à faire un produit cartésian des tables**
-
-image::assets/rdbms.png[height=500]
-
 === Les bases graphes
-
-**Les relations sont persistés sur le disque, le travail est local**
 
 image::assets/graph-model.png[height=500]
 
-=== Performance
-
- * les données/requêtes connectées
- * le temps-réel
-
-image::assets/graph-vs-sql-time.jpg[]
-
-== Qui s'en sert ?
+== A quoi cela peut servir ?
 
 === !
 
@@ -101,6 +75,10 @@ image::assets/google.png[]
 
 Google est devenu le premier moteur de recherche grâce à son algorithme basé sur les graphes : +
 *le page rank*
+
+**Cartographie thématique du web**
+
+image::assets/PageRank.png[height=500]
 
 === !
 
@@ -117,18 +95,11 @@ image::assets/tf-idf.jpg[height=500]
 
 image::assets/seo-invisible-text.jpg[height=500]
 
-=== Page Rank
-
-**Cartographie thématique du web**
-
-image::assets/PageRank.png[height=500]
-
-
 == Recommendation
 
 === Moteur de recommandation en temps réel
 
-Des réseaux sociaux, à la vente au détail, de service ou dans le secteur des médias, la recommandation est partout !
+La recommandation est partout : des réseaux sociaux, a la vente, la publicité, les médias, ...
 
 **Objectif :** offrir une recommandation en temps réel, hautement ciblés et contextuelles afin quelle soit pertinentes pour l'utilisateur
 
@@ -136,17 +107,38 @@ image::assets/recommandation.png[]
 
 === Filtrage collaboratif
 
-Le système est simple : trouver des personnes qui me ressemblent, et voir ce qu'elles ont fait et que je n'ai pas fait
-
 **Les amis de mes amis avec lesquels je ne suis pas ami**
+
+* trouver des personnes qui me ressemblent, 
+* voir ce qu'elles ont fait et que je n'ai pas fait
 
 === Meetic
 
 image::assets/meetic-graph.png[]
 
+=== Quel est le modèle économique de
+
+==== !
+
+* Facebook
+* Google
+* Twitter
+* ... 
+
+==== !
+
+image::assets/questions.png[]
+
+=== La publicité
+
+**Vendre de la publicité ultra-ciblée**
+
+image::assets/cochon.jpg[height=600]
+
+
 == La detection de fraude
 
-=== Les panama papers
+=== Les paradise papers
 
 C'est la plus large fuite de données de l'histoire, et de loin !
 
@@ -166,6 +158,12 @@ __Il faut suivre les petits cailloux__
 
 == Le routing
 
+=== GPS
+
+**Calcul du plus court chemin**
+
+image::assets/GPS.jpg[width=800]
+
 === Ebay Now !
 
 **La livraison en moins de deux heures !**
@@ -176,7 +174,7 @@ https://vimeo.com/110675062
 
 __Même principe qu'Uber pool__
 
-== L'analyse des réseaux
+== L'analyse des dépendances
 
 === SFR
 
@@ -190,13 +188,20 @@ image::assets/sfr.png[height="600"]
 * Identifier les clients impactés par une maintenance ou une panne.
 * Identifier les faiblesses du réseau
 
+=== Airbus
+
+==== !
+
+image::assets/airbus.jpg[height="600"]
+
+==== Maintenance des avions
+
+* Manuel de la maintenance
+* Analyse des risque d'une modification
+
 == Graphs are everywhere !
 
-=== Les cas d'utilisation
-
-image::assets/customer.jpg[height=800]
-
-=== un est tout, tout est un
+=== Un est tout et tout est un
 
 **Le monde est connecté**
 
