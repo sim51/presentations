@@ -34,7 +34,19 @@ image::assets/me.JPG[height=500]
 * **WIFI :** network: `SKEMA_GUEST` | login: `event2018` | password : `Riviera1`
 * **Working together today :** Pair on the exercises | Ask relevant questions immediately, raise your hand if you have problems
 * **1 break** of 15 min exactly
-* **Slides :**
+* **Slides :** https://bit.ly/2k168IY
+
+=== Exercices
+**Use hosted online demo services**
+
+* Neo4j Sandbox :  https://neo4jsandbox.com
+* Apollo Launchpad : https://launchpad.graphql.com
+* CodeSandbox : https://codesandbox.io
+
+**Locally**
+
+* Github repo : https://bit.ly/grandstack
+* Requirement : Neo4j (3.2), Node & NPM
 
 === Agenda
 
@@ -43,10 +55,9 @@ image::assets/me.JPG[height=500]
 * Build a simple Movie application
 ** A graph model with Neo4j
 ** How to query it ?
-** GraphQL Schema defintion
+** GraphQL Schema definition
 ** Implement GraphQl schema with Apollo
 ** React'ing
-
 
 === La GRAND stack
 
@@ -137,9 +148,9 @@ image::assets/movie-app-info.png[]
 
 === Neo4j
 
-image::assets/neo4j.png[]
-
 http://www.neo4j.com/developper
+
+image::assets/neo4j.png[]
 
 === Neo4j is a database
 
@@ -245,10 +256,11 @@ image::assets/movie-graph.svg[height=800]
 ** __Hint: explore the browser guide for ideas__
 ** _Save these queries, we’ll use them in the next exercise_
 
-__For those that want to do it locally, you can download the dataset here : TODO
-And use `:play https://guides.neo4j.com/sandbox/recommendations/index.html` to launch the guide__
+For those that want to do it locally, you can download the dataset here : https://bit.ly/2wNbhgI
 
-=== Answer
+And use `:play https://guides.neo4j.com/sandbox/recommendations/index.html` to launch the guide
+
+=== Exercice 1: answer
 
 * Search for a Movie by title substring
 
@@ -440,6 +452,13 @@ https://wehavefaces.net/graphql-shorthand-notation-cheatsheet-17cd715861b6[Graph
 * **Query :** What queries you can do
 * **Mutations :** What changes you can do
 
+=== Exercice 3
+
+**Define the GraphQl schema of our web application**
+
+* Take a look a the Neo4j model
+* Think about `entities` and `queries` we need
+
 === Type
 
 ==== Movie
@@ -617,7 +636,7 @@ image::assets/neo4j-graphql-js.png[]
 
 https://launchpad.graphql.com/7kp8l0p4j
 
-=== Exercice 2
+=== Exercice 3
 
 **Goal: Build a GraphQL service that connects to Neo4j, allow for querying movies and recommended movies via GraphQL**
 
@@ -626,7 +645,7 @@ https://launchpad.graphql.com/7kp8l0p4j
 * Complete the GraphQL service implementation by adding your Cypher queries from Exercise 1
 * [optional] Use the JS GraphQL→ Cypher integrations instead of Cypher in resolver functions.
 
-=== Exercice 2 : answer
+=== Exercice 3 : answer
 
 https://launchpad.graphql.com/x57134qwl
 
@@ -736,7 +755,7 @@ https://codesandbox.io/s/pk4219zyp0
 
 image::app-codesandbox.png[]
 
-=== Exercice 3
+=== Exercice 4
 
 **Goal: Complete the skeleton React app by adding Apollo Client and fetch data from the GraphQL API you created in Exercise #2**
 
@@ -747,6 +766,9 @@ image::app-codesandbox.png[]
 * See: https://github.com/apollographql/react-apollo
 * You’ll need to add react-apollo and apollo-client NPM dependencies
 
+=== Exercice 4 : answer
+
+https://codesandbox.io/s/1vn07jo3j3
 
 === Any questions ?
 
