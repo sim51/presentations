@@ -37,6 +37,7 @@ image::assets/me.JPG[height=500]
 * **Slides :** https://bit.ly/2k168IY
 
 === Exercices
+
 **Use hosted online demo services**
 
 * Neo4j Sandbox :  https://neo4jsandbox.com
@@ -109,7 +110,6 @@ image::assets/apollo.png[]
 * Frontend framework integrations
 * Caching
 * Code generation
-
 
 ==== Server-side tooling
 
@@ -452,11 +452,11 @@ https://wehavefaces.net/graphql-shorthand-notation-cheatsheet-17cd715861b6[Graph
 * **Query :** What queries you can do
 * **Mutations :** What changes you can do
 
-=== Exercice 3
+=== Exercice 2
 
 **Define the GraphQl schema of our web application**
 
-* Take a look a the Neo4j model
+* Take a look at the Neo4j model
 * Think about `entities` and `queries` we need
 
 === Type
@@ -561,7 +561,7 @@ Query: {
 
 === Apollo Launchpad
 
-https://launchpad.graphql.com/3x984k8mv
+https://launchpad.graphql.com/lkvl73r1xq
 
 image::assets/apollo-lauchpad.png[height=800]
 
@@ -634,7 +634,7 @@ image::assets/graphql-to-cypher.png[]
 
 image::assets/neo4j-graphql-js.png[]
 
-https://launchpad.graphql.com/7kp8l0p4j
+https://launchpad.graphql.com/xnx0k35lrl
 
 === Exercice 3
 
@@ -647,7 +647,7 @@ https://launchpad.graphql.com/7kp8l0p4j
 
 === Exercice 3 : answer
 
-https://launchpad.graphql.com/x57134qwl
+https://launchpad.graphql.com/4rpj783r59
 
 __Note the GraphQl endpoint, we will use it later__
 
