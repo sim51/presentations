@@ -1,0 +1,372 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="author" content="Benoit Simard (@logisima)"><title>GRAND Stack Workshop</title><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui" name="viewport"><link href="../reveal.js/css/reveal.css" rel="stylesheet"><link rel="stylesheet" href="../themes/neo4j/style/main.css" id="theme"><link href="../reveal.js/lib/css/zenburn.css" rel="stylesheet"></head><body><div class="reveal"><div class="slides"><section class="title" data-state="title"><h1>GRAND Stack Workshop</h1><p class="author"><small>Benoit Simard (@logisima)</small></p></section><section><section id="slide_welcome"><h2>Welcome !</h2></section><section id="slide_welcome_everyone"><h2>Welcome everyone</h2><div class="imageblock" style=""><img src="assets/hello.jpeg" alt="hello"></div>
+<div class="paragraph"><p>Please say hi to each other.</p></div>
+<div class="paragraph"><p>We&#8217;ll spend the afternoon together.</p></div></section><section id="slide_benoit_simard"><h2>Benoit Simard</h2><div class="split"><div class="imageblock" style=""><img src="assets/me.JPG" alt="me" height="500"></div></div>
+<div class="split"><div class="ulist"><ul><li><p><strong>Graph addict</strong></p></li><li><p>Data liberator</p></li><li><p>Web developer</p></li><li><p>Works at <a href="http://www.neo4j.com">Neo4j</a></p></li><li><p><a href="mailto:benoit@neo4j.com">benoit@neo4j.com</a></p></li><li><p><a href="https://twitter.com/logisima">@logisima</a></p></li></ul></div></div></section><section id="slide_logistic"><h2>Logistic</h2><div class="ulist"><ul><li><p><strong>WIFI :</strong> network: <code>SKEMA_GUEST</code> | login: <code>event2018</code> | password : <code>Riviera1</code></p></li><li><p><strong>Working together today :</strong> Pair on the exercises | Ask relevant questions immediately, raise your hand if you have problems</p></li><li><p><strong>1 break</strong> of 15 min exactly</p></li><li><p><strong>Slides :</strong></p></li></ul></div></section><section id="slide_agenda"><h2>Agenda</h2><div class="ulist"><ul><li><p>What is this Stack ?</p></li><li><p>Why a new stack?</p></li><li><p>Build a simple Movie application</p><div class="ulist"><ul><li><p>A graph model with Neo4j</p></li><li><p>How to query it ?</p></li><li><p>GraphQL Schema defintion</p></li><li><p>Implement GraphQl schema with Apollo</p></li><li><p>React&#8217;ing</p></li></ul></div></li></ul></div></section><section id="slide_la_grand_stack"><h2>La GRAND stack</h2><div class="paragraph"><p><a href="http://grandstack.io" class="bare">http://grandstack.io</a></p></div>
+<div class="imageblock" style=""><img src="assets/grand.png" alt="grand" height="800px"></div></section></section>
+<section><section id="slide_a_quick_overview"><h2>A quick overview</h2></section><section id="slide_graphql"><h2>GraphQL</h2><div class="imageblock" style=""><img src="assets/graphql.png" alt="graphql"></div>
+<div class="split"><div class="imageblock" style=""><img src="assets/graphiql.png" alt="graphiql"></div></div>
+<div class="split"><div class="ulist"><ul><li><p>A new paradigm for <strong>building APIs</strong></p></li><li><p><strong>Schema</strong> definition</p></li><li><p>Query language for APIs</p></li><li><p>Community of tools</p></li></ul></div></div></section><section id="slide_react"><h2>React</h2><div class="imageblock" style=""><img src="assets/react.png" alt="react" height="150"></div>
+<div class="split"><div class="ulist"><ul><li><p>JavaScript library for building user interfaces</p><div class="ulist"><ul><li><p>Web, mobile (React Native)</p></li></ul></div></li><li><p>Component based</p><div class="ulist"><ul><li><p>Reusable</p></li><li><p>Composable</p></li></ul></div></li></ul></div></div>
+<div class="split"><div class="imageblock" style=""><img src="assets/react-code.png" alt="react code" height="550"></div></div></section><section id="slide_apollo"><h2>Apollo</h2><div class="imageblock" style=""><img src="assets/apollo.png" alt="apollo"></div>
+<div class="paragraph"><p>“A set of tools designed to leverage GraphQL and work together to create a great workflow”</p></div>
+<div class="split"><h3>Client-side tooling</h3><div class="ulist"><ul><li><p>Frontend framework integrations</p></li><li><p>Caching</p></li><li><p>Code generation</p></li></ul></div></div>
+<div class="split"><h3>Server-side tooling</h3><div class="ulist"><ul><li><p>Schema creation</p></li><li><p>Mocking</p></li><li><p>Schema stitching</p></li><li><p>Performance monitoring</p></li></ul></div></div></section><section id="slide_neo4j"><h2>Neo4j</h2><div class="imageblock" style=""><img src="assets/neo4j.png" alt="neo4j" height="150"></div>
+<div class="split"><div class="ulist"><ul><li><p>Is a graph <strong>database</strong> (ACID compliant)</p></li><li><p>Is a <strong>graph</strong> database (Native)</p></li><li><p>Schema less</p></li><li><p>Exists since 2010</p></li><li><p>Open-source</p></li></ul></div></div>
+<div class="split"><div class="imageblock" style=""><img src="assets/neo4j-browser.png" alt="neo4j browser"></div></div></section><section id="slide_a_movie_application"><h2>A movie application</h2><div class="paragraph"><p><a href="https://1vn07jo3j3.codesandbox.io/" class="bare">https://1vn07jo3j3.codesandbox.io/</a></p></div>
+<div class="imageblock" style=""><img src="assets/movie-app.png" alt="movie app"></div></section><section id="slide_a_movie_application_2"><h2>A movie application</h2><div class="imageblock" style=""><img src="assets/movie-app-info.png" alt="movie app info"></div></section></section>
+<section><section id="slide_focus_on_neo4j"><h2>Focus on Neo4j</h2></section><section id="slide_neo4j_2"><h2>Neo4j</h2><div class="imageblock" style=""><img src="assets/neo4j.png" alt="neo4j"></div>
+<div class="paragraph"><p><a href="http://www.neo4j.com/developper" class="bare">http://www.neo4j.com/developper</a></p></div></section><section id="slide_neo4j_is_a_database"><h2>Neo4j is a database</h2><div class="imageblock" style=""><img src="assets/neo4j-database.png" alt="neo4j database"></div></section><section id="slide_neo4j_is_a_native_graph_database"><h2>Neo4j is a native graph database</h2><div class="imageblock" style=""><img src="assets/neo4j-graph-database.png" alt="neo4j graph database"></div></section><section id="slide_a_graph_of_properties"><h2>A graph of properties</h2><div class="split"><div class="imageblock" style=""><img src="assets/graph1.png" alt="graph1"></div></div>
+<div class="split"><div class="paragraph"><p><strong>Nodes</strong></p></div>
+<div class="ulist"><ul><li><p>The entity of your model</p></li><li><p>Can have labels</p></li><li><p>Can have properties</p></li></ul></div>
+<div class="paragraph"><p><strong>Relationships</strong></p></div>
+<div class="ulist"><ul><li><p>Links two nodes, with a <strong>direction</strong> and a <strong>type</strong></p></li><li><p>Can have properties</p></li></ul></div></div></section><section id="slide_a_local_approach"><h2>A local approach</h2><div class="split"><div class="imageblock" style=""><img src="assets/whiteboard.png" alt="whiteboard"></div></div>
+<div class="split"><div class="imageblock" style=""><img src="assets/rdbms.png" alt="rdbms"></div></div></section><section id="slide_cypher"><h2>Cypher</h2><div class="paragraph"><p><strong>OpenCypher.org</strong></p></div>
+<div class="paragraph"><p>Aims to deliver a full and open specification of the industry&#8217;s most widely adopted graph database query langage.</p></div>
+<div class="split"><div class="imageblock" style=""><img src="assets/cypher-pattern.png" alt="cypher pattern" width="800"></div></div>
+<div class="split"><div class="imageblock" style=""><img src="assets/pattern.png" alt="pattern" width="800"></div></div></section><section id="slide_ascii_art_node"><h2>Ascii Art : Node</h2><div class="ulist"><ul><li><p><strong><code>()</code> or <code>(n)</code></strong></p><div class="ulist"><ul><li><p>Surrounded with parentheses</p></li><li><p>Use an alias to refer to our node later</p></li></ul></div></li><li><p><strong><code>(n:Label1:Label2)</code></strong></p><div class="ulist"><ul><li><p>Specify a Label, starts with a  colon <code>:</code></p></li><li><p>Group nodes by roles or types, think of labels as tags</p></li></ul></div></li><li><p><strong><code>(n:Label {prop: 'value'})</code></strong></p><div class="ulist"><ul><li><p>Nodes can have properties</p></li></ul></div></li></ul></div></section><section id="slide_ascii_art_relationship"><h2>Ascii Art : Relationship</h2><div class="ulist"><ul><li><p><strong><code>-&#8594;</code> or <code>-[r:TYPE]&#8594;</code></strong></p><div class="ulist"><ul><li><p>Wrapped with hyphens &amp; square brackets</p></li><li><p>Like labels, a relationship type starts with a colon <code>:</code></p></li></ul></div></li><li><p><strong><code>&lt;</code> <code>&gt;</code> Specify the direction of the relationship <code>-[:KNOWS {since: 2010}]&#8594;</code></strong></p><div class="ulist"><ul><li><p>Relationships can have properties too!</p></li></ul></div></li></ul></div></section><section id="slide_the_movie_dataset"><h2>The movie dataset</h2><div class="split"><div class="imageblock" style=""><img src="assets/imdb.png" alt="imdb" height="100"></div>
+<div class="paragraph"><p><a href="https://neo4j.com/sandbox-v2/" class="bare">https://neo4j.com/sandbox-v2/</a></p></div>
+<div class="imageblock" style=""><img src="assets/sandbox-imdb.png" alt="sandbox imdb"></div></div>
+<div class="split"><div class="imageblock" style=""><img src="assets/movie-graph.svg" alt="movie graph" height="800"></div></div></section><section id="slide_exercice_1"><h2>Exercice 1</h2><div class="paragraph"><p><strong>Goal: Query for Movie by title and find recommended movies</strong></p></div>
+<div class="ulist"><ul><li><p>Sign in to Neo4j Sandbox: neo4jsandbox.com</p></li><li><p>Create a “Recommendations” sandbox</p></li><li><p>Explore the data in Neo4j Browser</p></li><li><p>Write two Cypher queries:</p></li><li><p>Search for a Movie by title substring</p></li><li><p>For a given movie, find recommended movies</p><div class="ulist"><ul><li><p><em>Hint: explore the browser guide for ideas</em></p></li><li><p><em>Save these queries, we’ll use them in the next exercise</em></p></li></ul></div></li></ul></div>
+<div class="paragraph"><p><em>For those that want to do it locally, you can download the dataset here : TODO
+And use <code>:play <a href="https://guides.neo4j.com/sandbox/recommendations/index.html" class="bare">https://guides.neo4j.com/sandbox/recommendations/index.html</a></code> to launch the guide</em></p></div></section><section id="slide_answer"><h2>Answer</h2><div class="ulist"><ul><li><p>Search for a Movie by title substring</p></li></ul></div>
+<div class="listingblock"><div class="content"><pre class="highlight"><textarea class="cypher language-cypher">MATCH (movie:Movie) WHERE toLower(movie.title) CONTAINS toLower($subString) RETURN movie LIMIT $limit;</textarea></pre></div></div>
+<div class="ulist"><ul><li><p>For a given movie, find recommended movies</p></li></ul></div>
+<div class="listingblock"><div class="content"><pre class="highlight"><textarea class="cypher language-cypher">MATCH (m:Movie)-[:IN_GENRE]-&gt;(:Genre)&lt;-[:IN_GENRE]-(movie:Movie)
+WHERE m.movieId= $movieIds
+WITH m, movie, COUNT(*) AS genreOverlap
+
+  MATCH (m)&lt;-[:RATED]-(:User)-[:RATED]-&gt;(movie)
+  WITH movie, genreOverlap, COUNT(*) AS userRatedScore
+  RETURN movie
+  ORDER BY
+    (0.9 * genreOverlap) + (0.1 * userRatedScore)
+    DESC
+  LIMIT 3</textarea></pre></div></div>
+<div class="paragraph"><p><em><a href="https://github.com/grand-stack/grand-stack-movies-workshop/blob/master/neo4j-database/answers.md" class="bare">https://github.com/grand-stack/grand-stack-movies-workshop/blob/master/neo4j-database/answers.md</a></em></p></div></section><section id="slide_recommendation"><h2>Recommendation</h2><div class="split"><div class="listingblock"><div class="content"><pre class="highlight"><textarea class="cypher language-cypher">MATCH
+  (m:Movie {title:'Matrix, The'}),
+  (m)-[:IN_GENRE]-&gt;(:Genre)&lt;-[:IN_GENRE]-(movie:Movie)
+WITH m, movie, COUNT(*) AS genreOverlap
+
+  MATCH (m)&lt;-[:RATED]-(:User)-[:RATED]-&gt;(movie)
+  WITH movie, genreOverlap, COUNT(*) AS userRatedScore
+  RETURN movie
+  ORDER BY
+    (0.9 * genreOverlap) + (0.1 * userRatedScore)
+    DESC
+  LIMIT 3</textarea></pre></div></div></div>
+<div class="split"><div class="imageblock" style=""><img src="assets/reco-graph.svg" alt="reco graph" width="800"></div></div></section></section>
+<section><section id="slide_focus_on_graphql"><h2>Focus on GraphQL</h2></section><section id="slide_a_large_adoption"><h2>A large adoption</h2><div class="imageblock" style=""><img src="assets/graphql-adoption.png" alt="graphql adoption"></div></section><section id="slide_what_is_graphql"><h2>What is GraphQl</h2><div class="paragraph"><p><strong>“A query language for your API”</strong></p></div>
+<div class="ulist"><ul><li><p>Developed by Facebook iOS team for iOS app</p><div class="ulist"><ul><li><p>Reduce number of round trip requests in face of low latency</p></li></ul></div></li><li><p>Declarative, state what fields you want
+Alternative to REST
+Self documenting (schema and types)
+Limited support for “queries”
+Logic is implemented in server</p></li></ul></div></section><section id="slide_graphql_2"><h2>GraphQL</h2><div class="split"><div class="ulist"><ul><li><p>“A query language for your API, and a server-side runtime for executing queries by using a type system you define for your data”</p></li><li><p>“GraphQL isn&#8217;t tied to any specific database or storage engine”</p></li><li><p>“A GraphQL service is created by defining types and fields on those types, then providing resolver functions for each field on each type”</p></li></ul></div></div>
+<div class="split"><div class="imageblock" style=""><img src="assets/graphql-model.png" alt="graphql model"></div></div></section><section id="slide_your_application_model_is_a_graph"><h2>Your application model is a Graph !</h2><div class="split"><div class="listingblock"><div class="content"><pre class="highlight"><textarea class="javascript language-javascript">query($id:ID = 2571) {
+  Movie(movieId:$id) {
+    movieId
+    title
+    plot
+    poster
+    imdbRating
+    genres{
+      name
+    }
+    directors {
+      name
+    }
+    actors {
+      name
+      actedIn {
+        title
+      }
+    }
+  }
+}</textarea></pre></div></div></div>
+<div class="split"><div class="imageblock" style=""><img src="assets/movie-graphql.svg" alt="movie graphql" height="600"></div></div></section><section id="slide_your_application_model_is_a_graph_2"><h2>Your application model is a Graph !</h2><div class="split"><div class="listingblock"><div class="content"><pre class="highlight"><textarea class="javascript language-javascript">query($id:ID = 2571) {
+  Movie(movieId:$id) {
+    movieId
+    title
+    plot
+    poster
+    imdbRating
+    genres{
+      name
+    }
+    directors {
+      name
+    }
+    actors {
+      name
+      actedIn {
+        title
+      }
+    }
+  }
+}</textarea></pre></div></div></div>
+<div class="split"><div class="listingblock"><div class="content"><pre class="highlight"><textarea class="javascript language-javascript">{
+  "Movie": {
+    "movieId": "2571",
+    "title": "Matrix, The",
+    "plot": "A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.",
+    "poster": "http://ia.media-imdb.com/images/M/MV5BMTkxNDYxOTA4M15BMl5BanBnXkFtZTgwNTk0NzQxMTE@._V1_SX300.jpg",
+    "imdbRating": 8.7,
+    "genres": [ { "name": "Thriller" }, { "name": "Sci-Fi" }, { "name": "Action" } ],
+    "directors": [ { "name": " Lana Wachowski" }, { "name": "Andy Wachowski" } ],
+    "actors": [
+      {
+        "name": "Keanu Reeves",
+        "actedIn": [ { "title": "John Wick" }, { "title": "47 Ronin" }, ...]
+      },
+      ...
+    ]
+  }
+}</textarea></pre></div></div></div></section><section id="slide_graphql_first_development"><h2>GraphQl First Development</h2><div class="split"><div class="imageblock" style=""><img src="assets/graphql-first-dev.png" alt="graphql first dev"></div></div>
+<div class="split"><div class="paragraph"><p>Schema is your friend, and GraphQl schema is the API spec</p></div>
+<div class="ulist"><ul><li><p><strong>Design API schema</strong></p></li><li><p><strong>Build UI and backend</strong></p></li><li><p><strong>Deploy !</strong></p></li></ul></div></div></section><section id="slide_schema_definition_language"><h2>Schema Definition Language</h2><div class="paragraph"><p><a href="https://wehavefaces.net/graphql-shorthand-notation-cheatsheet-17cd715861b6">GraphQL Cheat Sheet</a></p></div>
+<div class="ulist"><ul><li><p><strong>Type :</strong> The graph model definition</p></li><li><p><strong>Query :</strong> What queries you can do</p></li><li><p><strong>Mutations :</strong> What changes you can do</p></li></ul></div></section><section id="slide_type"><h2>Type</h2><div class="split"><h3>Movie</h3><div class="listingblock"><div class="content"><pre class="highlight"><textarea class="javascript language-javascript">type Movie {
+  movieId: ID!
+  title: String
+  released: Int
+  plot: String
+  poster: String
+  imdbRating: Float
+  actors: [Actor]
+  recommendations(skip: Int = 0, limit: Int = 5): [Movie]
+}</textarea></pre></div></div></div>
+<div class="split"><h3>Actor</h3><div class="listingblock"><div class="content"><pre class="highlight"><textarea class="javascript language-javascript">interface Person {
+  name: ID!
+}
+
+type Actor implements Person {
+  name: ID!
+  actedIn(skip: Int = 0, limit: Int = 5): [Movie]
+}</textarea></pre></div></div></div></section><section id="slide_queries_mutation"><h2>Queries / Mutation</h2><div class="split"><h3>Movie</h3><div class="listingblock"><div class="content"><pre class="highlight"><textarea class="javascript language-javascript">type Query {
+  movieById(movieId: ID!): Movie
+  movieSearch(search: String = "", skip: Int = 0, limit: Int = 10): [Movie]
+}
+
+type Mutation {
+  movieMerge(movieId: ID, title: String!, actors:[String], ...): Movie
+}</textarea></pre></div></div></div>
+<div class="split"><h3>Actor</h3><div class="listingblock"><div class="content"><pre class="highlight"><textarea class="javascript language-javascript">type Query {
+  actorById(id: ID!): Actor
+  actorSearch(search:String!): [Actor]
+}
+
+type Mutation {
+  actorMerge(name:String!): Actor
+}</textarea></pre></div></div></div></section><section id="slide_api_workflow"><h2>API Workflow</h2><div class="imageblock" style=""><img src="assets/graphql-api-workflow.png" alt="graphql api workflow" height="800"></div></section></section>
+<section><section id="slide_apollo_2"><h2>Apollo</h2></section><section id="slide_resolvers"><h2>Resolvers</h2><div class="paragraph"><p><strong>How to fetch the data</strong></p></div>
+<div class="listingblock"><div class="content"><pre class="highlight"><textarea class="javascript language-javascript">Movie {
+
+  recommendations: async ( current, _, context ) =&gt; {
+    let result = await Neo4j.run( context.driver.session(), queries.RECO, current, Neo4j.mappingNodeN );
+    return result;
+  }
+
+},
+
+Query: {
+
+  movieById( root, params, context, resolveInfo ) {
+    let result = await Neo4j.run( context.driver.session(), queries.GET, params, Neo4j.mappingNodeN );
+    return result;
+  },
+
+  movieSearch: async ( root, params, context, resolveInfo  ) =&gt; {
+    let session = context.driver.session();
+    let query = "MATCH (movie:Movie) WHERE movie.title CONTAINS $search RETURN movie LIMIT $first;"
+    return session.run(query, params)
+      .then( result =&gt; { return result.records.map(record =&gt; { return record.get("movie").properties })})
+  },
+
+}</textarea></pre></div></div></section><section id="slide_apollo_launchpad"><h2>Apollo Launchpad</h2><div class="paragraph"><p><a href="https://launchpad.graphql.com/3x984k8mv" class="bare">https://launchpad.graphql.com/3x984k8mv</a></p></div>
+<div class="imageblock" style=""><img src="assets/apollo-lauchpad.png" alt="apollo lauchpad" height="800"></div></section><section id="slide_graphql_server"><h2>GraphQl Server</h2><div class="paragraph"><p>Just an express.js server with some custom endpoints.</p></div>
+<div class="listingblock"><div class="content"><pre class="highlight"><textarea class="javascript language-javascript">import express from 'express';
+import { graphqlExpress, graphiqlExpress } from 'apollo-server-express';
+import bodyParser from 'body-parser';
+
+const PORT = 3000;
+const server = express();
+
+/**
+ * GraphQL endpoint
+ */
+server.use( '/graphql', bodyParser.json(), graphqlExpress( async ( request ) =&gt; {  return {
+  // your graphql schema
+  schema: schema,
+  // some context for the endpoint (here the Neo4j driver)
+  context: Neo4j.context( request.headers, process.env )
+}}));
+
+/**
+ * Create the graphiql endpoint.
+ */
+server.use( '/graphiql', graphiqlExpress( { endpointURL: '/graphql', query:'' }));
+
+/**
+ * Run the server.
+ */
+server.listen( PORT, () =&gt; { console.log( `GraphQL Server is now running on http://localhost:${PORT}/graphql` ) } );</textarea></pre></div></div></section><section id="slide_graphql_server_ii"><h2>GraphQl Server - II</h2><div class="listingblock"><div class="content"><pre class="highlight"><textarea class="javascript language-javascript">/**
+ * Enable CORS + OPTIONS request for the graphql endpoint.
+ */
+server.use(
+  '/graphql',
+  ( req, res, next ) =&gt; {
+    res.header( 'Access-Control-Allow-Credentials', true );
+    res.header( 'Access-Control-Allow-Headers', 'content-type, authorization, content-length, x-requested-with, accept, origin' );
+    res.header( 'Access-Control-Allow-Methods', 'POST, GET, OPTIONS' );
+    res.header( 'Allow', 'POST, GET, OPTIONS' );
+    res.header( 'Access-Control-Allow-Origin', '*' );
+
+    if ( req.method === 'OPTIONS' ) {
+      res.sendStatus( 200 );
+    } else {
+      next();
+    }
+  }
+);</textarea></pre></div></div></section><section id="slide_use_the_schema_luke"><h2>Use The Schema, Luke</h2><div class="paragraph"><p><a href="http://github.com/neo4j-graphql/neo4j-graphql-js">neo4j-graphql-js</a> &amp; <a href="https://github.com/neo4j-graphql/neo4j-graphql">neo4j-graphql plugin</a></p></div>
+<div class="paragraph"><p>Translate your schema directly in Cypher, thanks to drirectives.</p></div>
+<div class="imageblock" style=""><img src="assets/graphql-to-cypher.png" alt="graphql to cypher"></div>
+<div class="imageblock" style=""><img src="assets/neo4j-graphql-js.png" alt="neo4j graphql js"></div>
+<div class="paragraph"><p><a href="https://launchpad.graphql.com/7kp8l0p4j" class="bare">https://launchpad.graphql.com/7kp8l0p4j</a></p></div></section><section id="slide_exercice_2"><h2>Exercice 2</h2><div class="paragraph"><p><strong>Goal: Build a GraphQL service that connects to Neo4j, allow for querying movies and recommended movies via GraphQL</strong></p></div>
+<div class="ulist"><ul><li><p>Start with skeleton Launchpad: launchpad.graphql.com/3x984k8mv</p></li><li><p>Fork it, then add your Neo4j Sandbox credentials to secrets</p></li><li><p>Complete the GraphQL service implementation by adding your Cypher queries from Exercise 1</p></li><li><p>[optional] Use the JS GraphQL→ Cypher integrations instead of Cypher in resolver functions.</p></li></ul></div></section><section id="slide_exercice_2_answer"><h2>Exercice 2 : answer</h2><div class="paragraph"><p><a href="https://launchpad.graphql.com/x57134qwl" class="bare">https://launchpad.graphql.com/x57134qwl</a></p></div>
+<div class="paragraph"><p><em>Note the GraphQl endpoint, we will use it later</em></p></div></section></section>
+<section><section id="slide_focus_on_react"><h2>Focus on React</h2></section><section id="slide_everything_is_component"><h2>Everything is component</h2><div class="imageblock" style=""><img src="app-react.png" alt="app react"></div></section><section id="slide_react_apollo_client"><h2>React Apollo : client</h2><div class="paragraph"><p><a href="https://github.com/apollographql/react-apollo" class="bare">https://github.com/apollographql/react-apollo</a></p></div>
+<div class="paragraph"><p>Create an Apollo client by providing the GraphQl endpoint</p></div>
+<div class="listingblock"><div class="content"><pre class="highlight"><textarea class="javascript language-javascript">import { ApolloClient } from 'apollo-boost';
+
+const client = new ApolloClient({
+  uri: 'https://mpjk0plp9.lp.gql.zone/graphql',
+});</textarea></pre></div></div></section><section id="slide_react_apollo_wrap_application"><h2>React Apollo : wrap application</h2><div class="paragraph"><p>Wrap your react application with <code>ApolloProvider</code></p></div>
+<div class="listingblock"><div class="content"><pre class="highlight"><textarea class="javascript language-javascript">import React from 'react';
+import { render } from 'react-dom';
+import { ApolloProvider } from 'react-apollo';
+
+const WrappedApp = (
+  &lt;ApolloProvider client={client}&gt;
+    &lt;App /&gt;
+  &lt;/ApolloProvider&gt;
+);
+
+render(WrappedApp, document.getElementById('root'));</textarea></pre></div></div></section><section id="slide_react_apollo_component"><h2>React Apollo : component</h2><div class="paragraph"><p>====!</p></div>
+<div class="listingblock"><div class="content"><pre class="highlight"><textarea class="javascript language-javascript">import {Component} from "react";
+import gql from "graphql-tag";
+import { graphql} from "react-apollo";
+
+class MovieList extends Component {
+
+  render() {
+    const {data} = this.props;
+    if (data.loading) return &lt;div&gt;Loading...&lt;/div&gt;;
+    if (data.movies.length === 0) return &lt;div&gt;No movies!&lt;/div&gt;;
+
+    ...
+
+  }
+}
+
+export default graphql(gql`${GRAPHQL_QUERY}`)(MovieList);</textarea></pre></div></div>
+<div class="paragraph"><p>====!</p></div>
+<div class="ulist"><ul><li><p>Using React’s Higher Order Component feature : we can populate a component’s props to a GraphQL query</p></li><li><p>graphql() enhancer function</p></li><li><p>Now whenever TodoApp component is rendered, the GraphQL query is executed</p></li></ul></div></section><section id="slide_react_apollo_use_the_query_component"><h2>React Apollo : Use the query component</h2><div class="listingblock"><div class="content"><pre class="highlight"><textarea class="javascript language-javascript">import {Component} from "react";
+import gql from "graphql-tag";
+import { Query } from "react-apollo";
+
+class MovieList extends Component {
+
+  render() {
+    &lt;Query query={GRAPHQL_QUERY}&gt;
+      {
+        ({ loading, data: { movies } }) =&gt; {
+          if (loading)  return &lt;div&gt;loading....&lt;/div&gt;
+          if (movies.length === 0) return &lt;div&gt;No movies!&lt;/div&gt;;
+
+          ...
+        }
+      }
+    &lt;/Query&gt;
+  }
+}
+
+export default MovieList;</textarea></pre></div></div></section><section id="slide_codesandbox"><h2>Codesandbox</h2><div class="paragraph"><p><a href="https://codesandbox.io/s/pk4219zyp0" class="bare">https://codesandbox.io/s/pk4219zyp0</a></p></div>
+<div class="imageblock" style=""><img src="app-codesandbox.png" alt="app codesandbox"></div></section><section id="slide_exercice_3"><h2>Exercice 3</h2><div class="paragraph"><p><strong>Goal: Complete the skeleton React app by adding Apollo Client and fetch data from the GraphQL API you created in Exercise #2</strong></p></div>
+<div class="ulist"><ul><li><p>Start with skeleton CodeSandbox: <a href="https://codesandbox.io/s/pk4219zyp0" class="bare">https://codesandbox.io/s/pk4219zyp0</a></p></li><li><p>Fork it</p></li><li><p>Complete the app by adding Apollo Client as a higher order component and connecting to your GraphQL API, using GraphQL to render movie data and recommendations</p></li><li><p>See: <a href="https://github.com/apollographql/react-apollo" class="bare">https://github.com/apollographql/react-apollo</a></p></li><li><p>You’ll need to add react-apollo and apollo-client NPM dependencies</p></li></ul></div></section><section id="slide_any_questions"><h2>Any questions ?</h2><div class="imageblock" style=""><img src="assets/questions.png" alt="questions"></div></section></section>
+<section id="slide_thanks"><h2>Thanks</h2></section></div></div><script src="../reveal.js/lib/js/head.min.js"></script><script src="../reveal.js/js/reveal.js"></script><script>// See https://github.com/hakimel/reveal.js#configuration for a full list of configuration options
+Reveal.initialize({
+  // Display controls in the bottom right corner
+  controls: true,
+  // Display a presentation progress bar
+  progress: true,
+  // Display the page number of the current slide
+  slideNumber: false,
+  // Push each slide change to the browser history
+  history: true,
+  // Enable keyboard shortcuts for navigation
+  keyboard: true,
+  // Enable the slide overview mode
+  overview: true,
+  // Vertical centering of slides
+  center: true,
+  // Enables touch navigation on devices with touch input
+  touch: true,
+  // Loop the presentation
+  loop: false,
+  // Change the presentation direction to be RTL
+  rtl: false,
+  // Turns fragments on and off globally
+  fragments: true,
+  // Flags if the presentation is running in an embedded mode,
+  // i.e. contained within a limited portion of the screen
+  embedded: false,
+  // Number of milliseconds between automatically proceeding to the
+  // next slide, disabled when set to 0, this value can be overwritten
+  // by using a data-autoslide attribute on your slides
+  autoSlide: 0,
+  // Stop auto-sliding after user input
+  autoSlideStoppable: true,
+  // Enable slide navigation via mouse wheel
+  mouseWheel: false,
+  // Hides the address bar on mobile devices
+  hideAddressBar: true,
+  // Opens links in an iframe preview overlay
+  previewLinks: false,
+  // Theme (e.g., beige, black, league, night, serif, simple, sky, solarized, white)
+  // NOTE setting the theme in the config no longer works in reveal.js 3.x
+  //theme: Reveal.getQueryHash().theme || 'black',
+  // Transition style (e.g., none, fade, slide, convex, concave, zoom)
+  transition: Reveal.getQueryHash().transition || 'slide',
+  // Transition speed (e.g., default, fast, slow)
+  transitionSpeed: 'default',
+  // Transition style for full page slide backgrounds (e.g., none, fade, slide, convex, concave, zoom)
+  backgroundTransition: 'fade',
+  // Number of slides away from the current that are visible
+  viewDistance: 3,
+  // Parallax background image (e.g., "'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg'")
+  parallaxBackgroundImage: '',
+  // Parallax background size in CSS syntax (e.g., "2100px 900px")
+  parallaxBackgroundSize: '',
+
+  // The "normal" size of the presentation, aspect ratio will be preserved
+  // when the presentation is scaled to fit different resolutions. Can be
+  // specified using percentage units.
+  width: '100%',
+  height: 700,
+
+  // Factor of the display size that should remain empty around the content
+  margin: 0.1,
+
+  // Bounds for smallest/largest possible scale to apply to content
+  minScale: 0.2,
+  maxScale: 1.5,
+
+  // Optional libraries used to extend on reveal.js
+  dependencies: [
+      { src: '../reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+      { src: '../reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: '../reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      
+      { src: '../reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+      { src: '../reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+  ]
+});</script><script src="../themes/neo4j/assets/codemirror/lib/codemirror.js"></script><script src="../themes/neo4j/assets/codemirror/mode/cypher/cypher.js"></script><script src="../themes/neo4j/assets/codemirror/mode/javascript/javascript.js"></script><script src="../themes/neo4j/assets/codemirror/mode/shell/shell.js"></script><script src="../themes/neo4j/assets/codemirror/mode/properties/properties.js"></script><script src="../themes/neo4j/assets/codemirror/mode/xml/xml.js"></script><script src="../themes/neo4j/assets/codemirror/mode/sql/sql.js"></script><script src="../themes/neo4j/assets/codemirror/mode/python/python.js"></script><script src="../themes/neo4j/assets/codemirror/mode/clike/clike.js"></script><script src="../themes/neo4j/assets/codemirror.js"></script></body></html>
