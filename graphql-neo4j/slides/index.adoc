@@ -1,0 +1,671 @@
+:revealjs_width: '100%'
+:revealjs_customtheme: ../themes/neo4j/style/main.css
+:author: Benoit Simard (@logisima)
+
+= Libérer la puissance des graphes avec GraphQL et Neo4j
+
+== Les graphes
+
+=== Benoit Simard
+
+==== !
+
+image::assets/me.JPG[height=500]
+
+==== !
+
+* **Dépendant aux graphes**
+* Libérateur de données
+* Développeur Web
+* Consultant chez http://www.neo4j.com[Neo4j]
+* benoit@neo4j.com
+* https://twitter.com/logisima[@logisima]
+
+=== 7 ponts de Königsberg
+
+image::assets/7ponts.png[height=400]
+
+_A la base de théorie des graphes par Léonard Euler au 18e_
+
+=== Outil de modélisation
+
+_La modélisation en graphe est ultra intuitive_
+
+image::assets/whiteboard.png[height=550]
+
+=== Outil mathématique et informatique
+
+_On utilise du graphe tous les jours_
+
+* File System
+* GPS - chemin le plus court
+* Moteur de recherche - Page Rank
+* La recommandation : filtrage collaboratif
+* Les indexes en base de données - Binary Search Trees
+* Big Data : DisinfoLab sur Benalla avec la détection de communautés
+
+=== Les graphes sont partout
+
+image::assets/graph-everywhere.jpg[height=700]
+
+== GraphQL
+
+=== Qu'est ce que c'est ?
+
+**GraphQL est une spécification de langage**
+
+__Un langage de requête pour vos APIS__
+
+image::assets/graphql.png[]
+
+* Développer par Facebook (iOS team)
+* Langage déclaratif, où vous définissez les champs que vous souhaitez
+* Auto-documenté (basé sur un schéma typé)
+* Alternative à REST
+
+=== Une large adoption / communauté
+
+image::assets/graphql-adoption.png[]
+
+=== Quelques extraits de la documentation
+
+==== !
+
+* “A query language for your API, and a **server-side** runtime for executing queries by using a **type system** you define for your data”
+
+* “GraphQL isn't tied to **any specific database** or storage engine”
+
+* “A GraphQL service is created by *defining types and fields* on those types, then providing **resolver** functions for each field on each type”
+
+==== !
+
+image::assets/graphql-model.png[]
+
+=== Prenons un exemple
+
+==== Requête
+
+[source,javascript]
+----
+query($id:ID = 2571) {
+  Movie(movieId:$id) {
+    movieId
+    title
+    plot
+    poster
+    imdbRating
+    genres{
+      name
+    }
+    directors {
+      name
+    }
+    actors {
+      name
+      actedIn {
+        title
+      }
+    }
+  }
+}
+----
+
+==== Résultat
+
+[source,javascript]
+----
+{
+  "Movie": {
+    "movieId": "2571",
+    "title": "Matrix, The",
+    "plot": "A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.",
+    "poster": "http://ia.media-imdb.com/images/M/MV5BMTkxNDYxOTA4M15BMl5BanBnXkFtZTgwNTk0NzQxMTE@._V1_SX300.jpg",
+    "imdbRating": 8.7,
+    "genres": [ { "name": "Thriller" }, { "name": "Sci-Fi" }, { "name": "Action" } ],
+    "directors": [ { "name": " Lana Wachowski" }, { "name": "Andy Wachowski" } ],
+    "actors": [
+      {
+        "name": "Keanu Reeves",
+        "actedIn": [ { "title": "John Wick" }, { "title": "47 Ronin" }, ...]
+      },
+      ...
+    ]
+  }
+}
+----
+
+=== It's a Graph !
+
+image::assets/itsagraph.jpeg[height=600]
+
+=== Votre modèle est un graphe
+
+==== !
+
+[source,javascript]
+----
+query($id:ID = 2571) {
+  Movie(movieId:$id) {
+    movieId
+    title
+    plot
+    poster
+    imdbRating
+    genres{
+      name
+    }
+    directors {
+      name
+    }
+    actors {
+      name
+      actedIn {
+        title
+      }
+    }
+  }
+}
+----
+
+==== !
+
+image::assets/movie-graphql.svg[height=600]
+
+=== Schema Definition Language
+
+https://wehavefaces.net/graphql-shorthand-notation-cheatsheet-17cd715861b6[GraphQL Cheat Sheet]
+
+* **Type :** La définition de votre modèle
+* **Query :** La liste des fonctions disponibles pour la lecture
+* **Mutations :** La liste des fonctions disponibles pour l'écriture
+
+=== Type
+
+==== Movie
+
+[source,javascript]
+----
+type Movie {
+  movieId: ID!
+  title: String
+  released: Int
+  plot: String
+  poster: String
+  imdbRating: Float
+  actors: [Actor]
+  recommendations(skip: Int = 0, limit: Int = 5): [Movie]
+}
+----
+
+==== Actor
+
+[source,javascript]
+----
+interface Person {
+  name: ID!
+}
+
+type Actor implements Person {
+  name: ID!
+  actedIn(skip: Int = 0, limit: Int = 5): [Movie]
+}
+----
+
+=== Queries / Mutation
+
+==== Movie
+
+[source,javascript]
+----
+type Query {
+  movieById(movieId: ID!): Movie
+  movieSearch(search: String = "", skip: Int = 0, limit: Int = 10): [Movie]
+}
+
+type Mutation {
+  movieMerge(movieId: ID, title: String!, actors:[String], ...): Movie
+}
+----
+
+==== Actor
+
+[source,javascript]
+----
+type Query {
+  actorById(id: ID!): Actor
+  actorSearch(search:String = ""): [Actor]
+}
+
+type Mutation {
+  actorMerge(name:String!): Actor
+}
+----
+
+=== Resolvers
+
+**C'est une fonction où vous codez comment récupérer la donnée**
+
+==== !
+
+[source,javascript]
+----
+Movie {
+  recommendations: async ( obj, params, context, resolverInfo) => {
+    // Your code here
+    return [];
+  }
+},
+Query: {
+  movieById: async (obj, params, context, resolverInfo) => {
+    // Your code here
+    return {};
+  },
+  movieSearch: async (root, params, context, resolverInfo) => {
+    // Your code here
+    return [];
+  },
+}
+----
+
+==== !
+
+* *obj :* Le résultat de l'objet parent. Dans le cas de la recommandation, ce sera l'objet film.
+* *params :* La liste des arguments passée aux fonctions.
+* *context :* Objet partagé par tous les _resolvers_ d'une même requête
+* *resolverInfo :* Réservé pour les usages avancés
+
+== Pourquoi GraphQL ?
+
+=== Il existe déja REST non ?
+
+==== !
+
+image:assets/graphql-vs-rest.png[height=750]
+
+==== !
+
+* Typage des éléments
+* C'est un langage de requête : vous définissez le retour que vous souhaitez !
+* Une seule requête au lieu de X : le modèle est un graphe et vos requêtes aussi
+
+=== Un petit goût de savon ?
+
+image::assets/graphql-soap.jpeg[height=600]
+
+=== GraphQL et SOAP
+
+==== !
+
+image::assets/cestpasfaux.jpeg[height=500]
+
+==== !
+
+* Tout est fait en **POST** dans un body sur un **unique endpoint**
+* Tout est défini dans un **schéma** faisant l'interface entre le client/serveur
+* Le système de typage est **fort**
+* **MAIS :**
+** pas de XML
+** facile à implémenter
+** focaliser sur les données (non service)
+** __agnostique sur la technologie__
+
+== Les problèmes liés a GraphQL
+
+=== Les 5 problèmes de GraphQL
+
+https://medium.freecodecamp.org/five-common-problems-in-graphql-apps-and-how-to-fix-them-ac74d37a293c[Five Common Problems in GraphQL Apps]
+
+de Sacha Greif.
+
+== Duplication du schéma
+
+=== Explication
+
+__Namely, you need one schema for your database, and another one for your GraphQL endpoint.__
+
+__Your database and GraphQL API will have different schemas, which translate into different document shapes.__
+
+* Un schema pour la base
+* Un schéma pour GraphQL
+* Une fonction de transformation
+
+=== Et si on les fusionne ?
+
+**Il faut une base qui gère le modèle de GraphQL**
+
+image::assets/fusion.jpeg[height=400]
+
+__Les bases **relationnelles** et **graphes**__
+
+=== Un Graphe de propriétés
+
+==== !
+
+image::assets/graph1.png[]
+
+==== !
+
+**Noeuds**
+
+* Les entités du model
+* Peuvent avoir des `labels`
+* Peuvent avoir des `propriétés`
+
+
+**Relations**
+
+* Lient deux noeuds entre eux, avec une `direction` et un `type`
+* Peuvent avoir des `propriétés`
+
+=== neo4j et graphql
+
+**Première règle de GraphQL : tout commence et finit par le schéma !**
+
+https://github.com/neo4j-graphql
+
+image::assets/neo4j-graphql-logo.png[]
+
+Permet de gérer toutes les données de la base, grâce a la définition d'un schéma GraphQL (auto-généré ou fourni).
+
+=== Exemple de schéma
+
+[source,javascript]
+----
+type Movie {
+  movieId: ID!
+  title: String
+  released: Int
+  plot: String
+  poster: String
+  imdbRating: Float
+  genres: [Genre] @relation(name: "IN_GENRE", direction:"OUT")
+  directors: [Director] @relation(name: "DIRECTED", direction:"IN")
+  actors: [Actor] @relation(name: "ACTED_IN", direction:"IN")
+  recommendations(skip: Int = 0, limit: Int = 10): [Movie] @cypher(statement:"MATCH ... RETURN m SKIP $skip LIMIT $limit")
+}
+
+type Actor {
+  name: ID!
+  actedIn: [Movie] @relation(name: "ACTED_IN", direction:"OUT")
+}
+
+type Director {
+  name: ID!
+  directed: [Movie] @relation(name: "DIRECTED", direction:"OUT")
+}
+----
+
+=== La magie - les queries
+
+**Neo4j génère automatiquement les queries**
+
+`Movie(movieId, title, released, ...,  first, offset, _id, orderBy, filter): [Movie]`
+
+==== !
+
+[source,javascript]
+----
+query Nineties($released: Long, $letter: String){
+  Movie(released: $released,
+    filter: {
+      title_starts_with: $letter,
+      actors_some: { name_contains: $letter}
+    }
+  ) {
+    title
+    released
+    actors(first: 3) {
+      name
+      born
+      movies(first: 1, orderBy: title_desc) {
+        title
+        released
+      }
+    }
+  }
+}
+
+# query variables
+{ "released":1995, "letter":"A"}
+----
+
+==== !
+
+* Tous les champs du type sont définis dans la query, pour un controle d'égalité
+* `filter` vous permet de réaliser des filtres plus complexes
+* `orderBy` pour trier vos résultats
+* `first` & `offset` pour la pagination
+
+=== La magie - les mutations
+
+**Neo4j génère automatiquement les mutations**
+
+__vous pouvez aussi surcharger leurs comportements__
+
+==== !
+
+[source,javascript]
+----
+// Pour les noeuds
+createMovie(movieId: ID!, title: String, released: Int, ...) : String
+updateMovie(movieId: ID!, title: String, released: Int, ...) : String
+deleteMovie(movieId: ID!) : String
+
+// Pour les relations
+addMovieActors(movieId: ID!, actors:[ID]!) : String
+deleteMovieActors(movieId: ID!, actors:[ID]!) : String
+----
+
+==== !
+
+[source,javascript]
+----
+// query
+mutation {
+    createActor(name:"Chadwick Boseman", born: 1977)
+}
+// resultat
+{ "data": {
+    "createActor": "Nodes created: 1\nProperties set: 2\nLabels added: 1\n"
+  }
+}
+----
+
+=== Beaucoup de code pour pas grand chose ...
+
+__This is by no means an issue exclusive to GraphQL apps, but it’s true that they generally require you to write a lot of similar boilerplate code.__
+
+image::assets/Check.png[]
+
+== Des performances au rabais
+
+=== Explication
+
+__On one hand you want to take full advantage of GraphQL’s graph traversal features (“show me the authors of the comments of the author of the post of…” etc.).
+But on the other hand, you don’t want your app to become slow and unresponsive.__
+
+==== GraphQL
+
+[source,javascript]
+----
+query($id:ID = 2571) {
+  Post(id:$id) {
+    title,
+    text,
+    comments {
+      author {
+        name {
+          posts {
+            title,
+            comments  {
+              author {
+                name,
+                ...
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+----
+
+==== SQL
+
+__Désolé j'ai pas assez de place pour les jointures :)__
+
+=== Killer feature de GraphQl
+
+**Au sens propre et figuré**
+
+image::assets/greatpower.jpeg[]
+
+=== Le paradigme des bases de données graphe
+
+==== !
+
+image:assets/paradigme-sql.png[height=400]
+
+==== !
+
+image:assets/paradigme-graph.png[height=400]
+
+=== Les traversés en graphe
+
+image:assets/traversal.png[]
+
+__C'est un peu barbar mais il y a plus simple, attendez un peu :)__
+
+== Des requêtes en nombres et parfois inutiles
+
+=== Explication
+
+__Imagine a list of posts, each of which has a user attached to it. You now want to display 10 of these posts, along with the name of their author.__
+
+* Une requête pour avoir la liste des `posts`
+* Une requête *par* `post` pour récupérer les auteurs
+
+**Cette unique requête GraphQL fait 11 appels à la base !!! **
+
+=== Une solution ?
+
+**https://github.com/facebook/dataloader[Dataloader]**
+
+Batche les requêtes et met en place un système de cache sur les objets basés sur leurs `ID`.
+
+=== Et si on pouvait générer qu'une seule requête ?
+
+**Et laisser la base se débrouiller toute seule, c'est son job non ?**
+
+image:assets/cypher.jpg[]
+
+Une requête en **Cypher**
+
+=== Cypher
+
+* SQL du Graph
+* Langage déclaratif
+* Développer par Neo4j en 2013
+* open-source depuis 2016 (opencypher)
+* Implémenter dans Neo4j, SAP Hana, Redis, AgensGraph, ...
+* Est en cours standardisation (https://gql.today/)
+
+=== Cypher - une histoire pattern
+
+image:assets/pattern.png[]
+
+=== Cypher - ASCIIART
+
+image::assets/cypher-pattern.png[]
+
+=== Cypher - Example
+
+[source,cypher]
+----
+MATCH (tom:Person {name:"Tom Hanks"})-[:ACTED_IN]->(m)<-[:ACTED_IN]-(coActors),
+      (coActors)-[:ACTED_IN]->(m2)<-[:ACTED_IN]-(cocoActors)
+WHERE NOT (tom)-[:ACTED_IN]->()<-[:ACTED_IN]-(cocoActors) AND tom <> cocoActors
+RETURN cocoActors.name AS Recommended, count(*) AS Strength ORDER BY Strength DESC
+----
+
+=== Cypher - GraphQL
+
+**Same, same ... but different**
+
+==== GraphQL
+
+[source,javascript]
+----
+{
+  Movie(title: "River Runs Through It, A") {
+    title
+    year
+    imdbRating
+    actors {
+      name
+    }
+  }
+}
+----
+
+==== Cypher
+
+[source,cypher]
+----
+MATCH (movie:Movie {title:"River Runs Through It, A"})
+RETURN
+  movie {
+    .title ,
+    .year ,
+    .imdbRating,
+    actors: [
+      (movie)<-[ACTED_IN]-(movie_actors:Actor) |
+      movie_actors {
+        .name
+      }
+    ]
+  } AS movie
+SKIP 0
+----
+
+== GRAND Stack
+
+=== GRAND Stack
+
+http://grandstack.io/
+
+image::assets/grand.png[]
+
+=== Apollo
+
+image::assets/apollo.png[]
+
+“A set of tools designed to leverage GraphQL and work together to create a great workflow”
+
+==== Client-side tooling
+
+* Intégration avec les framework frontend
+* Politique de cache
+* Génération de code
+
+==== Server-side tooling
+
+* Création du schema avec ses resolvers
+* Mocking
+* Monitoring
+
+
+=== Architecture
+
+image::assets/graphql-api-workflow.png[height=700]
+
+=== Kit de démarrage
+
+`git clone https://github.com/grand-stack/grand-stack-starter.git`
+
+== Merci
+
+=== Des questions ?
+
+image::assets/questions.png[]

@@ -1,0 +1,343 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="author" content="Benoit Simard (@logisima)"><title>Libérer la puissance des graphes avec GraphQL et Neo4j</title><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui" name="viewport"><link href="../reveal.js/css/reveal.css" rel="stylesheet"><link rel="stylesheet" href="../themes/neo4j/style/main.css" id="theme"><link href="../reveal.js/lib/css/zenburn.css" rel="stylesheet"></head><body><div class="reveal"><div class="slides"><section class="title" data-state="title"><h1>Libérer la puissance des graphes avec GraphQL et Neo4j</h1><p class="author"><small>Benoit Simard (@logisima)</small></p></section><section><section id="slide_les_graphes"><h2>Les graphes</h2></section><section id="slide_benoit_simard"><h2>Benoit Simard</h2><div class="split"><div class="imageblock" style=""><img src="assets/me.JPG" alt="me" height="500"></div></div>
+<div class="split"><div class="ulist"><ul><li><p><strong>Dépendant aux graphes</strong></p></li><li><p>Libérateur de données</p></li><li><p>Développeur Web</p></li><li><p>Consultant chez <a href="http://www.neo4j.com">Neo4j</a></p></li><li><p><a href="mailto:benoit@neo4j.com">benoit@neo4j.com</a></p></li><li><p><a href="https://twitter.com/logisima">@logisima</a></p></li></ul></div></div></section><section id="slide_7_ponts_de_knigsberg"><h2>7 ponts de Königsberg</h2><div class="imageblock" style=""><img src="assets/7ponts.png" alt="7ponts" height="400"></div>
+<div class="paragraph"><p><em>A la base de théorie des graphes par Léonard Euler au 18e</em></p></div></section><section id="slide_outil_de_modlisation"><h2>Outil de modélisation</h2><div class="paragraph"><p><em>La modélisation en graphe est ultra intuitive</em></p></div>
+<div class="imageblock" style=""><img src="assets/whiteboard.png" alt="whiteboard" height="550"></div></section><section id="slide_outil_mathmatique_et_informatique"><h2>Outil mathématique et informatique</h2><div class="paragraph"><p><em>On utilise du graphe tous les jours</em></p></div>
+<div class="ulist"><ul><li><p>File System</p></li><li><p>GPS - chemin le plus court</p></li><li><p>Moteur de recherche - Page Rank</p></li><li><p>La recommandation : filtrage collaboratif</p></li><li><p>Les indexes en base de données - Binary Search Trees</p></li><li><p>Big Data : DisinfoLab sur Benalla avec la détection de communautés</p></li></ul></div></section><section id="slide_les_graphes_sont_partout"><h2>Les graphes sont partout</h2><div class="imageblock" style=""><img src="assets/graph-everywhere.jpg" alt="graph everywhere" height="700"></div></section></section>
+<section><section id="slide_graphql"><h2>GraphQL</h2></section><section id="slide_qu_est_ce_que_c_est"><h2>Qu&#8217;est ce que c&#8217;est ?</h2><div class="paragraph"><p><strong>GraphQL est une spécification de langage</strong></p></div>
+<div class="paragraph"><p><em>Un langage de requête pour vos APIS</em></p></div>
+<div class="imageblock" style=""><img src="assets/graphql.png" alt="graphql"></div>
+<div class="ulist"><ul><li><p>Développer par Facebook (iOS team)</p></li><li><p>Langage déclaratif, où vous définissez les champs que vous souhaitez</p></li><li><p>Auto-documenté (basé sur un schéma typé)</p></li><li><p>Alternative à REST</p></li></ul></div></section><section id="slide_une_large_adoption_communaut"><h2>Une large adoption / communauté</h2><div class="imageblock" style=""><img src="assets/graphql-adoption.png" alt="graphql adoption"></div></section><section id="slide_quelques_extraits_de_la_documentation"><h2>Quelques extraits de la documentation</h2><div class="split"><div class="ulist"><ul><li><p>“A query language for your API, and a <strong>server-side</strong> runtime for executing queries by using a <strong>type system</strong> you define for your data”</p></li><li><p>“GraphQL isn&#8217;t tied to <strong>any specific database</strong> or storage engine”</p></li><li><p>“A GraphQL service is created by <strong>defining types and fields</strong> on those types, then providing <strong>resolver</strong> functions for each field on each type”</p></li></ul></div></div>
+<div class="split"><div class="imageblock" style=""><img src="assets/graphql-model.png" alt="graphql model"></div></div></section><section id="slide_prenons_un_exemple"><h2>Prenons un exemple</h2><div class="split"><h3>Requête</h3><div class="listingblock"><div class="content"><pre class="highlight"><textarea class="javascript language-javascript">query($id:ID = 2571) {
+  Movie(movieId:$id) {
+    movieId
+    title
+    plot
+    poster
+    imdbRating
+    genres{
+      name
+    }
+    directors {
+      name
+    }
+    actors {
+      name
+      actedIn {
+        title
+      }
+    }
+  }
+}</textarea></pre></div></div></div>
+<div class="split"><h3>Résultat</h3><div class="listingblock"><div class="content"><pre class="highlight"><textarea class="javascript language-javascript">{
+  "Movie": {
+    "movieId": "2571",
+    "title": "Matrix, The",
+    "plot": "A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.",
+    "poster": "http://ia.media-imdb.com/images/M/MV5BMTkxNDYxOTA4M15BMl5BanBnXkFtZTgwNTk0NzQxMTE@._V1_SX300.jpg",
+    "imdbRating": 8.7,
+    "genres": [ { "name": "Thriller" }, { "name": "Sci-Fi" }, { "name": "Action" } ],
+    "directors": [ { "name": " Lana Wachowski" }, { "name": "Andy Wachowski" } ],
+    "actors": [
+      {
+        "name": "Keanu Reeves",
+        "actedIn": [ { "title": "John Wick" }, { "title": "47 Ronin" }, ...]
+      },
+      ...
+    ]
+  }
+}</textarea></pre></div></div></div></section><section id="slide_it_s_a_graph"><h2>It&#8217;s a Graph !</h2><div class="imageblock" style=""><img src="assets/itsagraph.jpeg" alt="itsagraph" height="600"></div></section><section id="slide_votre_modle_est_un_graphe"><h2>Votre modèle est un graphe</h2><div class="split"><div class="listingblock"><div class="content"><pre class="highlight"><textarea class="javascript language-javascript">query($id:ID = 2571) {
+  Movie(movieId:$id) {
+    movieId
+    title
+    plot
+    poster
+    imdbRating
+    genres{
+      name
+    }
+    directors {
+      name
+    }
+    actors {
+      name
+      actedIn {
+        title
+      }
+    }
+  }
+}</textarea></pre></div></div></div>
+<div class="split"><div class="imageblock" style=""><img src="assets/movie-graphql.svg" alt="movie graphql" height="600"></div></div></section><section id="slide_schema_definition_language"><h2>Schema Definition Language</h2><div class="paragraph"><p><a href="https://wehavefaces.net/graphql-shorthand-notation-cheatsheet-17cd715861b6">GraphQL Cheat Sheet</a></p></div>
+<div class="ulist"><ul><li><p><strong>Type :</strong> La définition de votre modèle</p></li><li><p><strong>Query :</strong> La liste des fonctions disponibles pour la lecture</p></li><li><p><strong>Mutations :</strong> La liste des fonctions disponibles pour l&#8217;écriture</p></li></ul></div></section><section id="slide_type"><h2>Type</h2><div class="split"><h3>Movie</h3><div class="listingblock"><div class="content"><pre class="highlight"><textarea class="javascript language-javascript">type Movie {
+  movieId: ID!
+  title: String
+  released: Int
+  plot: String
+  poster: String
+  imdbRating: Float
+  actors: [Actor]
+  recommendations(skip: Int = 0, limit: Int = 5): [Movie]
+}</textarea></pre></div></div></div>
+<div class="split"><h3>Actor</h3><div class="listingblock"><div class="content"><pre class="highlight"><textarea class="javascript language-javascript">interface Person {
+  name: ID!
+}
+
+type Actor implements Person {
+  name: ID!
+  actedIn(skip: Int = 0, limit: Int = 5): [Movie]
+}</textarea></pre></div></div></div></section><section id="slide_queries_mutation"><h2>Queries / Mutation</h2><div class="split"><h3>Movie</h3><div class="listingblock"><div class="content"><pre class="highlight"><textarea class="javascript language-javascript">type Query {
+  movieById(movieId: ID!): Movie
+  movieSearch(search: String = "", skip: Int = 0, limit: Int = 10): [Movie]
+}
+
+type Mutation {
+  movieMerge(movieId: ID, title: String!, actors:[String], ...): Movie
+}</textarea></pre></div></div></div>
+<div class="split"><h3>Actor</h3><div class="listingblock"><div class="content"><pre class="highlight"><textarea class="javascript language-javascript">type Query {
+  actorById(id: ID!): Actor
+  actorSearch(search:String = ""): [Actor]
+}
+
+type Mutation {
+  actorMerge(name:String!): Actor
+}</textarea></pre></div></div></div></section><section id="slide_resolvers"><h2>Resolvers</h2><div class="paragraph"><p><strong>C&#8217;est une fonction où vous codez comment récupérer la donnée</strong></p></div>
+<div class="split"><div class="listingblock"><div class="content"><pre class="highlight"><textarea class="javascript language-javascript">Movie {
+  recommendations: async ( obj, params, context, resolverInfo) =&gt; {
+    // Your code here
+    return [];
+  }
+},
+Query: {
+  movieById: async (obj, params, context, resolverInfo) =&gt; {
+    // Your code here
+    return {};
+  },
+  movieSearch: async (root, params, context, resolverInfo) =&gt; {
+    // Your code here
+    return [];
+  },
+}</textarea></pre></div></div></div>
+<div class="split"><div class="ulist"><ul><li><p><strong>obj :</strong> Le résultat de l&#8217;objet parent. Dans le cas de la recommandation, ce sera l&#8217;objet film.</p></li><li><p><strong>params :</strong> La liste des arguments passée aux fonctions.</p></li><li><p><strong>context :</strong> Objet partagé par tous les <em>resolvers</em> d&#8217;une même requête</p></li><li><p><strong>resolverInfo :</strong> Réservé pour les usages avancés</p></li></ul></div></div></section></section>
+<section><section id="slide_pourquoi_graphql"><h2>Pourquoi GraphQL ?</h2></section><section id="slide_il_existe_dja_rest_non"><h2>Il existe déja REST non ?</h2><div class="split"><div class="paragraph"><p><span class="image"><img src="assets/graphql-vs-rest.png" alt="graphql vs rest" height="750"></span></p></div></div>
+<div class="split"><div class="ulist"><ul><li><p>Typage des éléments</p></li><li><p>C&#8217;est un langage de requête : vous définissez le retour que vous souhaitez !</p></li><li><p>Une seule requête au lieu de X : le modèle est un graphe et vos requêtes aussi</p></li></ul></div></div></section><section id="slide_un_petit_got_de_savon"><h2>Un petit goût de savon ?</h2><div class="imageblock" style=""><img src="assets/graphql-soap.jpeg" alt="graphql soap" height="600"></div></section><section id="slide_graphql_et_soap"><h2>GraphQL et SOAP</h2><div class="split"><div class="imageblock" style=""><img src="assets/cestpasfaux.jpeg" alt="cestpasfaux" height="500"></div></div>
+<div class="split"><div class="ulist"><ul><li><p>Tout est fait en <strong>POST</strong> dans un body sur un <strong>unique endpoint</strong></p></li><li><p>Tout est défini dans un <strong>schéma</strong> faisant l&#8217;interface entre le client/serveur</p></li><li><p>Le système de typage est <strong>fort</strong></p></li><li><p><strong>MAIS :</strong></p><div class="ulist"><ul><li><p>pas de XML</p></li><li><p>facile à implémenter</p></li><li><p>focaliser sur les données (non service)</p></li><li><p><em>agnostique sur la technologie</em></p></li></ul></div></li></ul></div></div></section></section>
+<section><section id="slide_les_problmes_lis_a_graphql"><h2>Les problèmes liés a GraphQL</h2></section><section id="slide_les_5_problmes_de_graphql"><h2>Les 5 problèmes de GraphQL</h2><div class="paragraph"><p><a href="https://medium.freecodecamp.org/five-common-problems-in-graphql-apps-and-how-to-fix-them-ac74d37a293c">Five Common Problems in GraphQL Apps</a></p></div>
+<div class="paragraph"><p>de Sacha Greif.</p></div></section></section>
+<section><section id="slide_duplication_du_schma"><h2>Duplication du schéma</h2></section><section id="slide_explication"><h2>Explication</h2><div class="paragraph"><p><em>Namely, you need one schema for your database, and another one for your GraphQL endpoint.</em></p></div>
+<div class="paragraph"><p><em>Your database and GraphQL API will have different schemas, which translate into different document shapes.</em></p></div>
+<div class="ulist"><ul><li><p>Un schema pour la base</p></li><li><p>Un schéma pour GraphQL</p></li><li><p>Une fonction de transformation</p></li></ul></div></section><section id="slide_et_si_on_les_fusionne"><h2>Et si on les fusionne ?</h2><div class="paragraph"><p><strong>Il faut une base qui gère le modèle de GraphQL</strong></p></div>
+<div class="imageblock" style=""><img src="assets/fusion.jpeg" alt="fusion" height="400"></div>
+<div class="paragraph"><p><em>Les bases <strong>relationnelles</strong> et <strong>graphes</strong></em></p></div></section><section id="slide_un_graphe_de_proprits"><h2>Un Graphe de propriétés</h2><div class="split"><div class="imageblock" style=""><img src="assets/graph1.png" alt="graph1"></div></div>
+<div class="split"><div class="paragraph"><p><strong>Noeuds</strong></p></div>
+<div class="ulist"><ul><li><p>Les entités du model</p></li><li><p>Peuvent avoir des <code>labels</code></p></li><li><p>Peuvent avoir des <code>propriétés</code></p></li></ul></div>
+<div class="paragraph"><p><strong>Relations</strong></p></div>
+<div class="ulist"><ul><li><p>Lient deux noeuds entre eux, avec une <code>direction</code> et un <code>type</code></p></li><li><p>Peuvent avoir des <code>propriétés</code></p></li></ul></div></div></section><section id="slide_neo4j_et_graphql"><h2>neo4j et graphql</h2><div class="paragraph"><p><strong>Première règle de GraphQL : tout commence et finit par le schéma !</strong></p></div>
+<div class="paragraph"><p><a href="https://github.com/neo4j-graphql" class="bare">https://github.com/neo4j-graphql</a></p></div>
+<div class="imageblock" style=""><img src="assets/neo4j-graphql-logo.png" alt="neo4j graphql logo"></div>
+<div class="paragraph"><p>Permet de gérer toutes les données de la base, grâce a la définition d&#8217;un schéma GraphQL (auto-généré ou fourni).</p></div></section><section id="slide_exemple_de_schma"><h2>Exemple de schéma</h2><div class="listingblock"><div class="content"><pre class="highlight"><textarea class="javascript language-javascript">type Movie {
+  movieId: ID!
+  title: String
+  released: Int
+  plot: String
+  poster: String
+  imdbRating: Float
+  genres: [Genre] @relation(name: "IN_GENRE", direction:"OUT")
+  directors: [Director] @relation(name: "DIRECTED", direction:"IN")
+  actors: [Actor] @relation(name: "ACTED_IN", direction:"IN")
+  recommendations(skip: Int = 0, limit: Int = 10): [Movie] @cypher(statement:"MATCH ... RETURN m SKIP $skip LIMIT $limit")
+}
+
+type Actor {
+  name: ID!
+  actedIn: [Movie] @relation(name: "ACTED_IN", direction:"OUT")
+}
+
+type Director {
+  name: ID!
+  directed: [Movie] @relation(name: "DIRECTED", direction:"OUT")
+}</textarea></pre></div></div></section><section id="slide_la_magie_les_queries"><h2>La magie - les queries</h2><div class="paragraph"><p><strong>Neo4j génère automatiquement les queries</strong></p></div>
+<div class="paragraph"><p><code>Movie(movieId, title, released, &#8230;&#8203;,  first, offset, _id, orderBy, filter): [Movie]</code></p></div>
+<div class="split"><div class="listingblock"><div class="content"><pre class="highlight"><textarea class="javascript language-javascript">query Nineties($released: Long, $letter: String){
+  Movie(released: $released,
+    filter: {
+      title_starts_with: $letter,
+      actors_some: { name_contains: $letter}
+    }
+  ) {
+    title
+    released
+    actors(first: 3) {
+      name
+      born
+      movies(first: 1, orderBy: title_desc) {
+        title
+        released
+      }
+    }
+  }
+}
+
+# query variables
+{ "released":1995, "letter":"A"}</textarea></pre></div></div></div>
+<div class="split"><div class="ulist"><ul><li><p>Tous les champs du type sont définis dans la query, pour un controle d&#8217;égalité</p></li><li><p><code>filter</code> vous permet de réaliser des filtres plus complexes</p></li><li><p><code>orderBy</code> pour trier vos résultats</p></li><li><p><code>first</code> &amp; <code>offset</code> pour la pagination</p></li></ul></div></div></section><section id="slide_la_magie_les_mutations"><h2>La magie - les mutations</h2><div class="paragraph"><p><strong>Neo4j génère automatiquement les mutations</strong></p></div>
+<div class="paragraph"><p><em>vous pouvez aussi surcharger leurs comportements</em></p></div>
+<div class="split"><div class="listingblock"><div class="content"><pre class="highlight"><textarea class="javascript language-javascript">// Pour les noeuds
+createMovie(movieId: ID!, title: String, released: Int, ...) : String
+updateMovie(movieId: ID!, title: String, released: Int, ...) : String
+deleteMovie(movieId: ID!) : String
+
+// Pour les relations
+addMovieActors(movieId: ID!, actors:[ID]!) : String
+deleteMovieActors(movieId: ID!, actors:[ID]!) : String</textarea></pre></div></div></div>
+<div class="split"><div class="listingblock"><div class="content"><pre class="highlight"><textarea class="javascript language-javascript">// query
+mutation {
+    createActor(name:"Chadwick Boseman", born: 1977)
+}
+// resultat
+{ "data": {
+    "createActor": "Nodes created: 1\nProperties set: 2\nLabels added: 1\n"
+  }
+}</textarea></pre></div></div></div></section><section id="slide_beaucoup_de_code_pour_pas_grand_chose"><h2>Beaucoup de code pour pas grand chose &#8230;&#8203;</h2><div class="paragraph"><p><em>This is by no means an issue exclusive to GraphQL apps, but it’s true that they generally require you to write a lot of similar boilerplate code.</em></p></div>
+<div class="imageblock" style=""><img src="assets/Check.png" alt="Check"></div></section></section>
+<section><section id="slide_des_performances_au_rabais"><h2>Des performances au rabais</h2></section><section id="slide_explication_2"><h2>Explication</h2><div class="paragraph"><p><em>On one hand you want to take full advantage of GraphQL’s graph traversal features (“show me the authors of the comments of the author of the post of…” etc.).
+But on the other hand, you don’t want your app to become slow and unresponsive.</em></p></div>
+<div class="split"><h3>GraphQL</h3><div class="listingblock"><div class="content"><pre class="highlight"><textarea class="javascript language-javascript">query($id:ID = 2571) {
+  Post(id:$id) {
+    title,
+    text,
+    comments {
+      author {
+        name {
+          posts {
+            title,
+            comments  {
+              author {
+                name,
+                ...
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}</textarea></pre></div></div></div>
+<div class="split"><h3>SQL</h3><div class="paragraph"><p><em>Désolé j&#8217;ai pas assez de place pour les jointures :)</em></p></div></div></section><section id="slide_killer_feature_de_graphql"><h2>Killer feature de GraphQl</h2><div class="paragraph"><p><strong>Au sens propre et figuré</strong></p></div>
+<div class="imageblock" style=""><img src="assets/greatpower.jpeg" alt="greatpower"></div></section><section id="slide_le_paradigme_des_bases_de_donnes_graphe"><h2>Le paradigme des bases de données graphe</h2><div class="split"><div class="paragraph"><p><span class="image"><img src="assets/paradigme-sql.png" alt="paradigme sql" height="400"></span></p></div></div>
+<div class="split"><div class="paragraph"><p><span class="image"><img src="assets/paradigme-graph.png" alt="paradigme graph" height="400"></span></p></div></div></section><section id="slide_les_traverss_en_graphe"><h2>Les traversés en graphe</h2><div class="paragraph"><p><span class="image"><img src="assets/traversal.png" alt="traversal"></span></p></div>
+<div class="paragraph"><p><em>C&#8217;est un peu barbar mais il y a plus simple, attendez un peu :)</em></p></div></section></section>
+<section><section id="slide_des_requtes_en_nombres_et_parfois_inutiles"><h2>Des requêtes en nombres et parfois inutiles</h2></section><section id="slide_explication_3"><h2>Explication</h2><div class="paragraph"><p><em>Imagine a list of posts, each of which has a user attached to it. You now want to display 10 of these posts, along with the name of their author.</em></p></div>
+<div class="ulist"><ul><li><p>Une requête pour avoir la liste des <code>posts</code></p></li><li><p>Une requête <strong>par</strong> <code>post</code> pour récupérer les auteurs</p></li></ul></div>
+<div class="paragraph"><p><strong>Cette unique requête GraphQL fait 11 appels à la base !!! </strong></p></div></section><section id="slide_une_solution"><h2>Une solution ?</h2><div class="paragraph"><p><strong><a href="https://github.com/facebook/dataloader">Dataloader</a></strong></p></div>
+<div class="paragraph"><p>Batche les requêtes et met en place un système de cache sur les objets basés sur leurs <code>ID</code>.</p></div></section><section id="slide_et_si_on_pouvait_gnrer_qu_une_seule_requte"><h2>Et si on pouvait générer qu&#8217;une seule requête ?</h2><div class="paragraph"><p><strong>Et laisser la base se débrouiller toute seule, c&#8217;est son job non ?</strong></p></div>
+<div class="paragraph"><p><span class="image"><img src="assets/cypher.jpg" alt="cypher"></span></p></div>
+<div class="paragraph"><p>Une requête en <strong>Cypher</strong></p></div></section><section id="slide_cypher"><h2>Cypher</h2><div class="ulist"><ul><li><p>SQL du Graph</p></li><li><p>Langage déclaratif</p></li><li><p>Développer par Neo4j en 2013</p></li><li><p>open-source depuis 2016 (opencypher)</p></li><li><p>Implémenter dans Neo4j, SAP Hana, Redis, AgensGraph, &#8230;&#8203;</p></li><li><p>Est en cours standardisation (<a href="https://gql.today/" class="bare">https://gql.today/</a>)</p></li></ul></div></section><section id="slide_cypher_une_histoire_pattern"><h2>Cypher - une histoire pattern</h2><div class="paragraph"><p><span class="image"><img src="assets/pattern.png" alt="pattern"></span></p></div></section><section id="slide_cypher_asciiart"><h2>Cypher - ASCIIART</h2><div class="imageblock" style=""><img src="assets/cypher-pattern.png" alt="cypher pattern"></div></section><section id="slide_cypher_example"><h2>Cypher - Example</h2><div class="listingblock"><div class="content"><pre class="highlight"><textarea class="cypher language-cypher">MATCH (tom:Person {name:"Tom Hanks"})-[:ACTED_IN]-&gt;(m)&lt;-[:ACTED_IN]-(coActors),
+      (coActors)-[:ACTED_IN]-&gt;(m2)&lt;-[:ACTED_IN]-(cocoActors)
+WHERE NOT (tom)-[:ACTED_IN]-&gt;()&lt;-[:ACTED_IN]-(cocoActors) AND tom &lt;&gt; cocoActors
+RETURN cocoActors.name AS Recommended, count(*) AS Strength ORDER BY Strength DESC</textarea></pre></div></div></section><section id="slide_cypher_graphql"><h2>Cypher - GraphQL</h2><div class="paragraph"><p><strong>Same, same &#8230;&#8203; but different</strong></p></div>
+<div class="split"><h3>GraphQL</h3><div class="listingblock"><div class="content"><pre class="highlight"><textarea class="javascript language-javascript">{
+  Movie(title: "River Runs Through It, A") {
+    title
+    year
+    imdbRating
+    actors {
+      name
+    }
+  }
+}</textarea></pre></div></div></div>
+<div class="split"><h3>Cypher</h3><div class="listingblock"><div class="content"><pre class="highlight"><textarea class="cypher language-cypher">MATCH (movie:Movie {title:"River Runs Through It, A"})
+RETURN
+  movie {
+    .title ,
+    .year ,
+    .imdbRating,
+    actors: [
+      (movie)&lt;-[ACTED_IN]-(movie_actors:Actor) |
+      movie_actors {
+        .name
+      }
+    ]
+  } AS movie
+SKIP 0</textarea></pre></div></div></div></section></section>
+<section><section id="slide_grand_stack"><h2>GRAND Stack</h2></section><section id="slide_grand_stack_2"><h2>GRAND Stack</h2><div class="paragraph"><p><a href="http://grandstack.io/" class="bare">http://grandstack.io/</a></p></div>
+<div class="imageblock" style=""><img src="assets/grand.png" alt="grand"></div></section><section id="slide_apollo"><h2>Apollo</h2><div class="imageblock" style=""><img src="assets/apollo.png" alt="apollo"></div>
+<div class="paragraph"><p>“A set of tools designed to leverage GraphQL and work together to create a great workflow”</p></div>
+<div class="split"><h3>Client-side tooling</h3><div class="ulist"><ul><li><p>Intégration avec les framework frontend</p></li><li><p>Politique de cache</p></li><li><p>Génération de code</p></li></ul></div></div>
+<div class="split"><h3>Server-side tooling</h3><div class="ulist"><ul><li><p>Création du schema avec ses resolvers</p></li><li><p>Mocking</p></li><li><p>Monitoring</p></li></ul></div></div></section><section id="slide_architecture"><h2>Architecture</h2><div class="imageblock" style=""><img src="assets/graphql-api-workflow.png" alt="graphql api workflow" height="700"></div></section><section id="slide_kit_de_dmarrage"><h2>Kit de démarrage</h2><div class="paragraph"><p><code>git clone <a href="https://github.com/grand-stack/grand-stack-starter.git" class="bare">https://github.com/grand-stack/grand-stack-starter.git</a></code></p></div></section></section>
+<section><section id="slide_merci"><h2>Merci</h2></section><section id="slide_des_questions"><h2>Des questions ?</h2><div class="imageblock" style=""><img src="assets/questions.png" alt="questions"></div></section></section></div></div><script src="../reveal.js/lib/js/head.min.js"></script><script src="../reveal.js/js/reveal.js"></script><script>// See https://github.com/hakimel/reveal.js#configuration for a full list of configuration options
+Reveal.initialize({
+  // Display controls in the bottom right corner
+  controls: true,
+  // Display a presentation progress bar
+  progress: true,
+  // Display the page number of the current slide
+  slideNumber: false,
+  // Push each slide change to the browser history
+  history: true,
+  // Enable keyboard shortcuts for navigation
+  keyboard: true,
+  // Enable the slide overview mode
+  overview: true,
+  // Vertical centering of slides
+  center: true,
+  // Enables touch navigation on devices with touch input
+  touch: true,
+  // Loop the presentation
+  loop: false,
+  // Change the presentation direction to be RTL
+  rtl: false,
+  // Turns fragments on and off globally
+  fragments: true,
+  // Flags if the presentation is running in an embedded mode,
+  // i.e. contained within a limited portion of the screen
+  embedded: false,
+  // Number of milliseconds between automatically proceeding to the
+  // next slide, disabled when set to 0, this value can be overwritten
+  // by using a data-autoslide attribute on your slides
+  autoSlide: 0,
+  // Stop auto-sliding after user input
+  autoSlideStoppable: true,
+  // Enable slide navigation via mouse wheel
+  mouseWheel: false,
+  // Hides the address bar on mobile devices
+  hideAddressBar: true,
+  // Opens links in an iframe preview overlay
+  previewLinks: false,
+  // Theme (e.g., beige, black, league, night, serif, simple, sky, solarized, white)
+  // NOTE setting the theme in the config no longer works in reveal.js 3.x
+  //theme: Reveal.getQueryHash().theme || 'black',
+  // Transition style (e.g., none, fade, slide, convex, concave, zoom)
+  transition: Reveal.getQueryHash().transition || 'slide',
+  // Transition speed (e.g., default, fast, slow)
+  transitionSpeed: 'default',
+  // Transition style for full page slide backgrounds (e.g., none, fade, slide, convex, concave, zoom)
+  backgroundTransition: 'fade',
+  // Number of slides away from the current that are visible
+  viewDistance: 3,
+  // Parallax background image (e.g., "'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg'")
+  parallaxBackgroundImage: '',
+  // Parallax background size in CSS syntax (e.g., "2100px 900px")
+  parallaxBackgroundSize: '',
+
+  // The "normal" size of the presentation, aspect ratio will be preserved
+  // when the presentation is scaled to fit different resolutions. Can be
+  // specified using percentage units.
+  width: '100%',
+  height: 700,
+
+  // Factor of the display size that should remain empty around the content
+  margin: 0.1,
+
+  // Bounds for smallest/largest possible scale to apply to content
+  minScale: 0.2,
+  maxScale: 1.5,
+
+  // Optional libraries used to extend on reveal.js
+  dependencies: [
+      { src: '../reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+      { src: '../reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: '../reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      
+      { src: '../reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+      { src: '../reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+  ]
+});</script><script src="../themes/neo4j/assets/codemirror/lib/codemirror.js"></script><script src="../themes/neo4j/assets/codemirror/mode/cypher/cypher.js"></script><script src="../themes/neo4j/assets/codemirror/mode/javascript/javascript.js"></script><script src="../themes/neo4j/assets/codemirror/mode/shell/shell.js"></script><script src="../themes/neo4j/assets/codemirror/mode/properties/properties.js"></script><script src="../themes/neo4j/assets/codemirror/mode/xml/xml.js"></script><script src="../themes/neo4j/assets/codemirror/mode/sql/sql.js"></script><script src="../themes/neo4j/assets/codemirror/mode/python/python.js"></script><script src="../themes/neo4j/assets/codemirror/mode/clike/clike.js"></script><script src="../themes/neo4j/assets/codemirror.js"></script></body></html>
