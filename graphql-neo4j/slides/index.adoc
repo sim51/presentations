@@ -519,7 +519,7 @@ __Désolé j'ai pas assez de place pour les jointures :)__
 
 **Au sens propre et figuré**
 
-image::assets/greatpower.jpeg[]
+image::assets/greatpower.jpeg[height=600]
 
 === Le paradigme des bases de données graphe
 
@@ -577,7 +577,7 @@ image:assets/pattern.png[]
 
 === Cypher - ASCIIART
 
-image::assets/cypher-pattern.png[]
+image::assets/cypher-pattern.png[height=700]
 
 === Cypher - Example
 
