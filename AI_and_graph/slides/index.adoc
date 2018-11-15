@@ -1,0 +1,299 @@
+:revealjs_width: '100%'
+:revealjs_customtheme: ../themes/neo4j/style/main.css
+:author: Benoit Simard (@logisima)
+
+= IA, Machine Learning & Graphs
+
+== Bonjour a tous !
+
+=== Benoit Simard
+
+==== !
+
+image::assets/me.JPG[height=500]
+
+==== !
+
+* Consultant Neo4j
+* Addicte aux graphes
+* Libérateur de données
+* @logisima
+* benoit@neo4j.com
+
+== Intelligence Artificielle
+
+=== IA, ML,  DL
+
+==== !
+
+image::assets/ai_ml_dl.png[]
+
+==== !
+
+L'IA est l'ensemble des théories et des techniques mises en œuvre en vue de réaliser des machines capables de **simuler l'intelligence**.
+
+Le machine learning se base sur des approches **statistiques** pour donner aux ordinateurs la capacité d'apprendre à partir de données, c'est-à-dire d'améliorer leurs performances sans être **explicitement programmés**.
+
+=== Le soulèvement des machines
+
+==== !
+
+image::assets/hal9000.png[height=300]
+
+==== !
+
+* Capable d'effectuer des millions de calculs
+* Se souviennent de tout
+* Grâce à ces capacités, elles simulent l'intelligence
+* Hyper-spécialisées
+
+**C'est pas pour demain !**
+
+=== Pourquoi on parle d'IA aujourd'hui ?
+
+L'intelligence artificielle en tant que domaine de recherche a été créé en **1959**
+
+image::assets/ai.jpeg[height=200]
+
+* **Deep learning :** 2012 - ImageNet Large Scale Visual Recognition Challenge (ILSVRC)
+* **Loi de Moore :** Puissance de calcul et la parallélisation
+* **Eco-système :**  Microsoft Cognitive Toolkit (2016, MIT), TensorFlow (2017, Apache), ...
+* **Big Data :** base de données volumineuse pour l'apprentissage
+
+=== Mise à contribution
+
+image::assets/captcha.png[]
+
+=== L'apprentissage humain
+
+image::assets/learning_1.png[]
+
+=== L'apprentissage contextuel
+
+Une notion de "bon sens" ou de "connaissance naturelle"
+
+image::assets/learning_2.png[height=600]
+
+=== Le graphe & IA
+
+__mais on n'en est pas la ... **encore que ...** __
+
+image::assets/graph-context.png[]
+
+=== Jours d’un avenir passé
+
+image::assets/past-futur.jpeg[height=600]
+
+== Deep Blue
+
+=== 1997 - Deep Blue vs Kasparov
+
+==== !
+
+image::assets/ibm_deep_blue.jpg[]
+
+==== !
+
+**30 cores à 120 MHz**, c'est le **259e** ordinateur le plus puissant en **1997**.
+
+image::assets/ibm.png[height=150]
+
+* **1996 :** 2 - 4 (gagne une partie)
+* **1997 :** 3,5 - 2,5 (gagne 3 parties et le match)
+
+=== Brute Force - Morpion
+
+Calcul de l'arbre de **tous les jeux** et utilisation de l'algorithme **Min-Max**
+
+image::assets/graph-tic-tac-toe.jpg[height=600]
+
+=== Le jeu d'échecs
+
+Il y a  environ **10^120** possible parties (10^80 est le nombre des particules dans l'univers).
+
+image::assets/chess-tree.png[height=600]
+
+=== L'algorithme
+
+==== !
+
+image::assets/arbre.png[height=600]
+
+==== !
+
+Génération de l'arbre de jeux (en profondeur) sur les **20 prochains coups**.
+
+Mise en place d'une **fonction d'évaluation** permettant de calculer la probabilité de gagner selon l'état du plateau.
+
+**SCORE = valeur des pièces blanches - valeur des pièces noires**
+
+=== Le graphe
+
+==== !
+
+image::assets/graph-modelisation.png[]
+
+==== !
+
+* Modélisation de l'arbre
+* Traversé du graphe pour les calculs statistiques
+
+== AlphaGO
+
+=== Le jeu de GO
+
+Beaucoup plus compliqué que les échecs, le nombre de parties possibles est estimé à **10^600**
+
+image::assets/go.png[height=500]
+
+===  De 2015 à 2017
+
+==== !
+
+image::assets/alphago.png[height=150]
+
+==== !
+
+* **2015 :** Gagne contre un joueur professionnel
+* **2016 :** Gagne contre le neuvième joueur mondial
+* **2017 :** Gagne contre le meilleur joueur mondial
+
+=== L'algorithme
+
+==== !
+
+image::assets/arbre.png[height=600]
+
+==== !
+
+* Génération d'un l'arbre de jeux restreint
+** Sur les X prochains coups
+** Uniquement avec des coups "non-stupide" et de façon aléatoire
+* Mise en place d'une fonction d'évaluation avec du **Machine learning**
+
+=== Le graphe
+
+==== !
+
+image::assets/graph-modelisation.png[]
+image::assets/graph-knowledge.png[]
+image::assets/graph-ml.png[]
+
+==== !
+
+* Modélisation de l'arbre
+* Traversé du graphe pour le calcul statistique
+* Base de connaissance pour les coups "non-stupide"
+* Stockage graphe des parties passées
+
+=== AlphaGO Zero
+
+Version développée sans l'aide de données provenant de parties jouées, ni de connaissances autres que les règles du jeu.
+
+image::assets/alphago_zero.jpeg[height=300]
+
+* Reseaux de neurones
+* Apprentissage par renforcement (apprendre par l'expérience) en jouant contre lui-même
+
+=== Les réseaux de neurones
+
+Un réseau de neurones est composé d'une succession de couches dont chacune prend ses entrées sur les sorties de la précédente.
+
+image::assets/neural_network.png[height=500]
+
+=== Les neurones
+
+==== !
+
+image::assets/neural.png[height=500]
+
+==== Paramétrage
+
+* Poids synaptique (apprentissage)
+* Fonction de combinaison
+* Fonction d'activation
+* Seuil d'activation
+
+=== Compréhension / Prédiction
+
+image::assets/neural-network-example.png[]
+
+=== Le graphe
+
+==== !
+
+image::assets/graph-modelisation.png[]
+image::assets/graph-ml.png[]
+image::assets/graph-ai.png[]
+
+==== !
+
+**Compréhension des données**
+
+* Cartographier les données de l'apprentissage
+* Générer de nouvelle données d'apprentissage par inférence
+
+**Compréhension de la prédiction**
+
+* Modélisation du réseaux avec son état
+* Reproduire son comportement et de trouver les chemins utilisés
+
+== Chatbot
+
+=== 2016 - Microsoft Tay
+
+__Microsoft deletes 'teen girl' IA after it became a Hitler-loving sex robot within 24 hours.__
+
+image::assets/microsoft_tay.jpeg[]
+
+=== Les chaînes de Markov
+
+L'information utile pour la **prédiction du futur** est entièrement contenue dans l'**état présent** du processus et n'est pas dépendante des états antérieurs
+
+image::assets/markov-graph.png[]
+
+=== Apprentissage
+
+Analyse des textes et mise à jour des statistiques dans le graphe.
+
+image::assets/markov-2.png[height=500]
+
+__Un schéma de pensée par association d'idées ?__
+
+=== Le graphe
+
+==== !
+
+image::assets/graph-modelisation.png[]
+image::assets/graph-knowledge.png[]
+image::assets/graph-ml.png[]
+image::assets/graph-ai.png[]
+
+==== !
+
+* Modélisation
+* Stockage
+* Traverser le graphe en temps réel
+* Ajout de données sémantique (ontologie) pour différencier les homonymes et donner du contexte
+
+== Les graphes sont partout en IA
+
+=== Graphe de connaissance
+
+**Base de connaissance != Graphe de connaissance**
+
+image::assets/knowledge.jpg[height=600]
+
+=== Les algorithmes de graphe
+
+image::assets/graph-algos.png[]
+
+=== Le plus grand graphe du monde
+
+image::assets/brain.png[]
+
+== Merci
+
+=== Des questions ?
+
+image::assets/questions.png[]
